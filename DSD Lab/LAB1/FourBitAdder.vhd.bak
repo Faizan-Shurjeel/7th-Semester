@@ -1,0 +1,23 @@
+library IEEE;
+use ieee.std_logic_1164.all;
+
+entity FourBitAdder is port (
+	a : in std_logic;
+	b : in std_logic;
+	c : in std_logic;
+	
+	sum : out std_logic;
+	carry : out std_logic
+); end FourBitAdder;
+
+architecture FourBitAdder of LAB is
+	signal t0,t1,t2 : std_logic := '0';
+begin
+	t0 <= a xor b;
+	sum <= c xor t0;
+	
+	t1 <= t0 and c;
+	t2 <= a and b;
+	 carry <= t2 or t1;
+
+end behv;

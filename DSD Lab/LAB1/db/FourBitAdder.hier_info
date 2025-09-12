@@ -1,0 +1,73 @@
+|FourBitAdder
+A[0] => bitadder:unit1.A
+A[1] => bitadder:unit2.A
+A[2] => bitadder:unit3.A
+A[3] => bitadder:unit4.A
+B[0] => bitadder:unit1.B
+B[1] => bitadder:unit2.B
+B[2] => bitadder:unit3.B
+B[3] => bitadder:unit4.B
+C => bitadder:unit1.C
+sum[0] << bitadder:unit1.sum
+sum[1] << bitadder:unit2.sum
+sum[2] << bitadder:unit3.sum
+sum[3] << bitadder:unit4.sum
+cout << bitadder:unit4.cout
+
+
+|FourBitAdder|bitadder:unit1
+A => sum.IN0
+A => cout.IN0
+A => cout.IN0
+B => sum.IN1
+B => cout.IN1
+B => cout.IN0
+C => sum.IN1
+C => cout.IN1
+C => cout.IN1
+sum <= sum.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|FourBitAdder|bitadder:unit2
+A => sum.IN0
+A => cout.IN0
+A => cout.IN0
+B => sum.IN1
+B => cout.IN1
+B => cout.IN0
+C => sum.IN1
+C => cout.IN1
+C => cout.IN1
+sum <= sum.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|FourBitAdder|bitadder:unit3
+A => sum.IN0
+A => cout.IN0
+A => cout.IN0
+B => sum.IN1
+B => cout.IN1
+B => cout.IN0
+C => sum.IN1
+C => cout.IN1
+C => cout.IN1
+sum <= sum.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|FourBitAdder|bitadder:unit4
+A => sum.IN0
+A => cout.IN0
+A => cout.IN0
+B => sum.IN1
+B => cout.IN1
+B => cout.IN0
+C => sum.IN1
+C => cout.IN1
+C => cout.IN1
+sum <= sum.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
