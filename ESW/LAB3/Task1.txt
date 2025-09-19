@@ -1,0 +1,70 @@
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "driver/adc.h"
+#include "esp_adc_cal.h"
+#include "driver/gpio.h"
+
+//ADC settings
+#define DEFAULT_VREF 1100 // Default reference voltage (in mV) for ESP32
+#define NO_OF_SAMPLES 8 // Multisampling
+#define ADC_CHANNEL ADC2_CHANNEL_0 // ADC2 channel connected to GPIO4
+#define LED_PIN GPIO_NUM_2 // On-board LED pin
+#define PRESET_TEMP 30.0 // Pre-set temperature threshold in Celsius
+
+// Delay for milliseconds
+void delay_ms(unsigned int ms){
+    vTaskDelay(pdMS_TO_TICKS(ms));
+}
+
+//function to read average value of multi-conversion result
+uint16_t ADC_result(uint8_t samples){
+    uint16_t adc = 0;
+    int raw_reading;
+    for (uint8_t i = 0; i < samples; i++) {
+        adc2_get_raw(ADC_CHANNEL, ADC_WIDTH_BIT_12, &raw_reading);
+        adc += raw_reading;
+    }
+    adc /= samples; // Average the samples
+    return(adc);
+}
+
+// Convert ADC reading to temperature
+float ADC_to_temperature(uint16_t adc_value) {
+    // Convert ADC reading to voltage (mV)
+    float voltage = (adc_value * 3300.0) / 4095.0;
+    // LM35 gives 10mV per degree Celsius
+    float temperature = voltage / 10.0;
+    return temperature;
+}
+
+/********************************************************************************/
+void app_main() {
+    uint16_t ADC = 0;
+    float temperature = 0.0;
+    
+    // Initialize the LED GPIO
+    gpio_config_t io_conf;
+    io_conf.intr_type = GPIO_INTR_DISABLE;
+    io_conf.mode = GPIO_MODE_OUTPUT;
+    io_conf.pin_bit_mask = (1ULL << LED_PIN);
+    io_conf.pull_down_en = GPIO_PULLDOWN_DISABLE;
+    io_conf.pull_up_en = GPIO_PULLUP_DISABLE;
+    gpio_config(&io_conf);
+    
+    // Initialize the ADC2
+    adc2_config_channel_atten(ADC_CHANNEL, ADC_ATTEN_DB_11);
+
+    for(;;){
+        ADC = ADC_result(8);
+        temperature = ADC_to_temperature(ADC);
+        
+        // Control LED based on temperature
+        if (temperature < PRESET_TEMP) {
+            gpio_set_level(LED_PIN, 1); // Turn LED on
+        } else {
+            gpio_set_level(LED_PIN, 0); // Turn LED off
+        }
+        
+        delay_ms(500);
+    }
+}

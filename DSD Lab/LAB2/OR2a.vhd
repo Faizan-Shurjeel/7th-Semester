@@ -1,0 +1,13 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+
+entity OR2a is port (
+ina1, in2b: in std_logic;
+out1a: out std_logic
+);
+end OR2a;
+
+architecture behav of OR2a is
+begin
+	out1a <= ina1 OR in2b;
+end behav;

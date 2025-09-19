@@ -1,0 +1,51 @@
+#include "driver/adc.h"
+#include "driver/gpio.h"
+#include "esp_adc_cal.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+
+// ADC settings
+#define DEFAULT_VREF 1100 // Default reference voltage (in mV) for ESP32
+#define NO_OF_SAMPLES 8	  // Multisampling
+#define ADC_CHANNEL ADC1_CHANNEL_6 // ADC1 channel connected to GPIO34
+#define LED_PIN GPIO_NUM_2
+// Delay for milliseconds
+void delay_ms(unsigned int ms) { vTaskDelay(pdMS_TO_TICKS(ms)); }
+// function to read average value of multi-conversion result
+uint16_t ADC_result(uint8_t samples) {
+	uint16_t adc = 0;
+	for (uint8_t i = 0; i < samples; i++) {
+		adc += adc1_get_raw(ADC_CHANNEL);
+	}
+	adc /= samples; // Average the samples
+	return (adc);
+}
+/********************************************************************************/
+void app_main() {
+	uint16_t ADC = 0;
+
+	gpio_config_t io_conf;
+	io_conf.intr_type = GPIO_INTR_DISABLE;
+	io_conf.mode = GPIO_MODE_OUTPUT;
+	io_conf.pin_bit_mask = (1ULL << LED_PIN);
+	io_conf.pull_down_en = GPIO_PULLDOWN_DISABLE;
+	io_conf.pull_up_en = GPIO_PULLUP_DISABLE;
+	gpio_config(&io_conf);
+
+	// Initialize the ADC
+	adc1_config_width(ADC_WIDTH_BIT_12); // 12-bit ADC width
+	adc1_config_channel_atten(ADC_CHANNEL, ADC_ATTEN_DB_12);
+
+	for (;;) {
+		ADC = ADC_result(8);
+
+		// Control LED based on ADC value
+		if (ADC >= 1000 && ADC <= 2500) {
+			gpio_set_level(LED_PIN, 1); // Turn LED on
+		} else {
+			gpio_set_level(LED_PIN, 0); // Turn LED off
+		}
+
+		delay_ms(200);
+	}
+}
