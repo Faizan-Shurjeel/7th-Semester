@@ -1,0 +1,38 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+
+ENTITY MUX IS
+    PORT (
+        I0, I1, I2, I3 : out STD_LOGIC;  -- 4 input lines
+        SEL : IN STD_LOGIC_VECTOR(1 DOWNTO 0);  -- 2-bit select lines
+        Y : OUT STD_LOGIC  -- output
+    );
+END MUX;
+
+ARCHITECTURE structural OF MUX IS
+BEGIN
+    PROCESS(I0, I1, I2, I3, SEL)
+    BEGIN
+        IF SEL = "00" THEN
+            I0 <= '1';
+				I1 <= '0';
+				I2 <= '0';
+				I3 <= '0';
+        ELSIF SEL = "01" THEN
+            I0 <= '0';
+				I1 <= '1';
+				I2 <= '0';
+				I3 <= '0';
+        ELSIF SEL = "10" THEN
+            I0 <= '0';
+				I1 <= '0';
+				I2 <= '1';
+				I3 <= '0';
+        ELSE  -- SEL = "11"
+            I0 <= '0';
+				I1 <= '0';
+				I2 <= '0';
+				I3 <= '1';
+        END IF;
+    END PROCESS;
+END structural;
