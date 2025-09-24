@@ -1,0 +1,49 @@
+#include "driver/gpio.h"
+#include "driver/uart.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "esp_rom_sys.h"
+
+#define TXD_PIN GPIO_NUM_17
+#define RXD_PIN GPIO_NUM_16
+#define UART_NUM UART_NUM_2
+#define BAUD 9600
+#define RX_BUF_SIZE 32
+
+void UART_init(void) {
+    const uart_config_t uart_config = {
+        .baud_rate = BAUD,
+        .data_bits = UART_DATA_8_BITS,
+        .parity = UART_PARITY_DISABLE,
+        .stop_bits = UART_STOP_BITS_1,
+        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
+        .source_clk = UART_SCLK_DEFAULT,
+    };
+    
+    uart_driver_install(UART_NUM, RX_BUF_SIZE * 2, 0, 0, NULL, 0);
+    uart_param_config(UART_NUM, &uart_config);
+    uart_set_pin(UART_NUM, TXD_PIN, RXD_PIN, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
+}
+
+void UART_tx(unsigned char byte) {
+    uart_write_bytes(UART_NUM, &byte, 1);
+}
+
+// Delay for milliseconds
+void delay_ms(unsigned int i){
+    vTaskDelay(i / portTICK_PERIOD_MS);
+}
+
+// Delay for microseconds
+void delay_us(unsigned int i){
+    esp_rom_delay_us(i);
+}
+
+void app_main(){
+    UART_init();
+    
+    for(;;){
+        UART_tx(0x55);  // This will cause LED to flash on TX2 pin
+        delay_ms(10);
+    }
+}

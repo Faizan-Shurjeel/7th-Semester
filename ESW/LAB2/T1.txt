@@ -1,0 +1,78 @@
+#include "driver/gpio.h"
+#include "driver/uart.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include <stdio.h>
+
+#define UART_NUM UART_NUM_0  // Using UART0
+#define LED_PIN GPIO_NUM_18  // LED connected to GPIO18
+#define RX_BUF_SIZE 128
+
+void UART_init(void) {
+    const uart_config_t uart_config = {
+        .baud_rate = 115200,  // Standard baud rate for UART0
+        .data_bits = UART_DATA_8_BITS,
+        .parity = UART_PARITY_DISABLE,
+        .stop_bits = UART_STOP_BITS_1,
+        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
+        .source_clk = UART_SCLK_DEFAULT,
+    };
+    
+    uart_driver_install(UART_NUM, RX_BUF_SIZE * 2, 0, 0, NULL, 0);
+    uart_param_config(UART_NUM, &uart_config);
+    uart_set_pin(UART_NUM, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
+}
+
+void LED_init(void) {
+    gpio_reset_pin(LED_PIN);
+    gpio_set_direction(LED_PIN, GPIO_MODE_OUTPUT);
+    gpio_set_level(LED_PIN, 0); // Initially turn off LED
+}
+
+unsigned char UART_rx(void) {
+    uint8_t data;
+    int len = uart_read_bytes(UART_NUM, &data, 1, portMAX_DELAY);
+    if (len > 0) {
+        return (unsigned char)data;
+    }
+    return 0;
+}
+
+bool is_decimal_digit(unsigned char ch) {
+    return (ch >= '0' && ch <= '9');
+}
+
+void flash_LED_10_times(void) {
+    for (int i = 0; i < 10; i++) {
+        gpio_set_level(LED_PIN, 1); // Turn on LED
+        vTaskDelay(pdMS_TO_TICKS(200)); // LED on for 200ms
+        
+        gpio_set_level(LED_PIN, 0); // Turn off LED
+        vTaskDelay(pdMS_TO_TICKS(200)); // LED off for 200ms
+    }
+}
+
+void app_main(void) {
+    unsigned char received_char;
+    
+    // Initialize UART0 and LED
+    UART_init();
+    LED_init();
+    
+    printf("ESP32 ready! Send decimal digits (0-9) via UART0\n");
+    printf("LED on GPIO18 will flash 10 times when a digit is received.\n\n");
+    
+    for(;;) {
+        received_char = UART_rx(); // Wait for incoming data
+        
+        printf("Received: '%c' (0x%02X)\n", received_char, received_char);
+        
+        if (is_decimal_digit(received_char)) {
+            printf("Decimal digit detected! Flashing LED 10 times...\n");
+            flash_LED_10_times();
+            printf("LED flashing complete.\n\n");
+        } else {
+            printf("Not a decimal digit. LED remains off.\n\n");
+        }
+    }
+}

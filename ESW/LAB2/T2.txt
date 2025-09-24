@@ -1,0 +1,182 @@
+// ============================================================================
+// TX BOARD CODE (Transmitter ESP32)
+// ============================================================================
+
+/*
+Hardware Connections for TX Board:
+- TX Board GPIO17 (UART2_TX) → RX Board GPIO16 (UART2_RX)
+- TX Board GPIO16 (UART2_RX) → RX Board GPIO17 (UART2_TX)
+- TX Board GND → RX Board GND
+- On-board LED typically on GPIO2
+*/
+
+#include "driver/gpio.h"
+#include "driver/uart.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include <stdio.h>
+#include <string.h>
+
+#define UART_NUM UART_NUM_2
+#define TXD_PIN GPIO_NUM_17
+#define RXD_PIN GPIO_NUM_16
+#define LED_PIN GPIO_NUM_2  // On-board LED
+#define BAUD_RATE 9600
+#define RX_BUF_SIZE 128
+#define STREAM_SIZE 64
+
+// Sample 64-character stream with mixed case letters and other characters
+const char test_stream[STREAM_SIZE + 1] = "AbCdEfGhIjKlMnOpQrStUvWxYz1234567890!@#$%^&*()abcdefghijklmnop";
+
+void UART_init(void) {
+    const uart_config_t uart_config = {
+        .baud_rate = BAUD_RATE,
+        .data_bits = UART_DATA_8_BITS,
+        .parity = UART_PARITY_DISABLE,
+        .stop_bits = UART_STOP_BITS_1,
+        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
+        .source_clk = UART_SCLK_DEFAULT,
+    };
+    
+    uart_driver_install(UART_NUM, RX_BUF_SIZE * 2, 0, 0, NULL, 0);
+    uart_param_config(UART_NUM, &uart_config);
+    uart_set_pin(UART_NUM, TXD_PIN, RXD_PIN, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
+}
+
+void LED_init(void) {
+    gpio_reset_pin(LED_PIN);
+    gpio_set_direction(LED_PIN, GPIO_MODE_OUTPUT);
+    gpio_set_level(LED_PIN, 0);
+}
+
+void send_stream(const char* stream) {
+    uart_write_bytes(UART_NUM, stream, STREAM_SIZE);
+    printf("TX: Sent 64-character stream\n");
+}
+
+uint8_t receive_count(void) {
+    uint8_t count;
+    int len = uart_read_bytes(UART_NUM, &count, 1, pdMS_TO_TICKS(5000)); // 5 second timeout
+    if (len > 0) {
+        printf("TX: Received count = %d\n", count);
+        return count;
+    }
+    printf("TX: Timeout waiting for count\n");
+    return 0;
+}
+
+void app_main(void) {
+    UART_init();
+    LED_init();
+    
+    printf("TX Board Ready\n");
+    printf("Test stream: %s\n", test_stream);
+    
+    for(;;) {
+        // Send the 64-character stream
+        send_stream(test_stream);
+        
+        // Wait for count response from RX board
+        uint8_t received_count = receive_count();
+        
+        // Check if count > 32 and control LED
+        if (received_count > 32) {
+            printf("TX: Count > 32, turning LED ON for 1 second\n");
+            gpio_set_level(LED_PIN, 1);
+            vTaskDelay(pdMS_TO_TICKS(1000));
+            gpio_set_level(LED_PIN, 0);
+            printf("TX: LED OFF\n");
+        } else {
+            printf("TX: Count <= 32, LED remains OFF\n");
+            gpio_set_level(LED_PIN, 0);
+        }
+        
+        // Wait before next transmission
+        vTaskDelay(pdMS_TO_TICKS(3000));
+    }
+}
+
+// ============================================================================
+// RX BOARD CODE (Receiver ESP32)
+// ============================================================================
+
+/*
+Hardware Connections for RX Board:
+- RX Board GPIO16 (UART2_RX) → TX Board GPIO17 (UART2_TX)  
+- RX Board GPIO17 (UART2_TX) → TX Board GPIO16 (UART2_RX)
+- RX Board GND → TX Board GND
+*/
+
+/*
+#include "driver/gpio.h"
+#include "driver/uart.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include <stdio.h>
+
+#define UART_NUM UART_NUM_2
+#define TXD_PIN GPIO_NUM_17
+#define RXD_PIN GPIO_NUM_16
+#define BAUD_RATE 9600
+#define RX_BUF_SIZE 128
+#define STREAM_SIZE 64
+
+void UART_init(void) {
+    const uart_config_t uart_config = {
+        .baud_rate = BAUD_RATE,
+        .data_bits = UART_DATA_8_BITS,
+        .parity = UART_PARITY_DISABLE,
+        .stop_bits = UART_STOP_BITS_1,
+        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
+        .source_clk = UART_SCLK_DEFAULT,
+    };
+    
+    uart_driver_install(UART_NUM, RX_BUF_SIZE * 2, 0, 0, NULL, 0);
+    uart_param_config(UART_NUM, &uart_config);
+    uart_set_pin(UART_NUM, TXD_PIN, RXD_PIN, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
+}
+
+uint8_t count_lowercase_letters(const char* stream, int length) {
+    uint8_t count = 0;
+    for (int i = 0; i < length; i++) {
+        if (stream[i] >= 'a' && stream[i] <= 'z') {
+            count++;
+        }
+    }
+    return count;
+}
+
+void send_count(uint8_t count) {
+    uart_write_bytes(UART_NUM, &count, 1);
+    printf("RX: Sent count = %d\n", count);
+}
+
+void app_main(void) {
+    UART_init();
+    
+    printf("RX Board Ready\n");
+    
+    char received_stream[STREAM_SIZE + 1];
+    
+    for(;;) {
+        // Wait for 64-character stream
+        int len = uart_read_bytes(UART_NUM, received_stream, STREAM_SIZE, pdMS_TO_TICKS(10000));
+        
+        if (len == STREAM_SIZE) {
+            received_stream[STREAM_SIZE] = '\0'; // Null terminate for printing
+            printf("RX: Received stream: %s\n", received_stream);
+            
+            // Count lowercase letters
+            uint8_t count = count_lowercase_letters(received_stream, STREAM_SIZE);
+            printf("RX: Lowercase letter count = %d\n", count);
+            
+            // Send count back to TX board
+            send_count(count);
+        } else {
+            printf("RX: Timeout or incomplete data received (got %d bytes)\n", len);
+        }
+        
+        vTaskDelay(pdMS_TO_TICKS(100));
+    }
+}
+*/

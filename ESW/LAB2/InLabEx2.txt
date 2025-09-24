@@ -1,0 +1,59 @@
+#include "driver/gpio.h"
+#include "driver/uart.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+
+#define UART_NUM UART_NUM_2
+#define TXD_PIN GPIO_NUM_17
+#define RXD_PIN GPIO_NUM_16
+#define BAUD 9600
+#define LED_PIN GPIO_NUM_2  // On-board LED pin for most ESP32 boards
+
+static const int RX_BUF_SIZE = 32;
+
+void UART_init(void){
+    const uart_config_t uart_config = {
+        .baud_rate = BAUD,
+        .data_bits = UART_DATA_8_BITS,
+        .parity = UART_PARITY_DISABLE,
+        .stop_bits = UART_STOP_BITS_1,
+        .flow_ctrl = UART_HW_FLOWCTRL_DISABLE,
+        .source_clk = UART_SCLK_DEFAULT,
+    };
+    uart_driver_install(UART_NUM, RX_BUF_SIZE * 2, 0, 0, NULL, 0);
+    uart_param_config(UART_NUM, &uart_config);
+    uart_set_pin(UART_NUM, TXD_PIN, RXD_PIN, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
+}
+
+void LED_init(void){
+    gpio_reset_pin(LED_PIN);
+    gpio_set_direction(LED_PIN, GPIO_MODE_OUTPUT);
+    gpio_set_level(LED_PIN, 0); // Initially turn off LED
+}
+
+unsigned char UART_rx(){
+    uint8_t data;
+    // Fixed: Added the missing uart_read_bytes function call
+    uart_read_bytes(UART_NUM, &data, 1, portMAX_DELAY);
+    return (unsigned char)data;
+}
+
+void app_main(){
+    unsigned char in;
+    
+    // Initialize UART and LED
+    UART_init();
+    LED_init();
+    
+    for(;;){
+        in = UART_rx(); // Receive character from HC05-06
+        
+        if(in == 'A'){
+            // Turn on LED for 1 second when 'A' is received
+            gpio_set_level(LED_PIN, 1);
+            vTaskDelay(pdMS_TO_TICKS(1000)); // Wait for 1 second
+            gpio_set_level(LED_PIN, 0); // Turn off LED
+        }
+        // For any other character, LED remains off (no action needed)
+    }
+}
