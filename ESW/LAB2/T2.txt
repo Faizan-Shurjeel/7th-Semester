@@ -16,7 +16,6 @@ Hardware Connections for TX Board:
 #include "freertos/task.h"
 #include <stdio.h>
 #include <string.h>
-
 #define UART_NUM UART_NUM_2
 #define TXD_PIN GPIO_NUM_17
 #define RXD_PIN GPIO_NUM_16
@@ -24,10 +23,8 @@ Hardware Connections for TX Board:
 #define BAUD_RATE 9600
 #define RX_BUF_SIZE 128
 #define STREAM_SIZE 64
-
 // Sample 64-character stream with mixed case letters and other characters
 const char test_stream[STREAM_SIZE + 1] = "AbCdEfGhIjKlMnOpQrStUvWxYz1234567890!@#$%^&*()abcdefghijklmnop";
-
 void UART_init(void) {
     const uart_config_t uart_config = {
         .baud_rate = BAUD_RATE,
@@ -42,13 +39,11 @@ void UART_init(void) {
     uart_param_config(UART_NUM, &uart_config);
     uart_set_pin(UART_NUM, TXD_PIN, RXD_PIN, UART_PIN_NO_CHANGE, UART_PIN_NO_CHANGE);
 }
-
 void LED_init(void) {
     gpio_reset_pin(LED_PIN);
     gpio_set_direction(LED_PIN, GPIO_MODE_OUTPUT);
     gpio_set_level(LED_PIN, 0);
 }
-
 void send_stream(const char* stream) {
     uart_write_bytes(UART_NUM, stream, STREAM_SIZE);
     printf("TX: Sent 64-character stream\n");
