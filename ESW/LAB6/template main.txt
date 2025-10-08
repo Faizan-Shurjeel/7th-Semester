@@ -1,0 +1,113 @@
+#include "driver/gpio.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#define CLK 18			// CLK line of MAX7219
+#define LOAD 19			// LOAD line of MAX7219
+#define D_IN 21			// DIN line of MAX7219
+#define SCAN_DIGITS 4	// number of digits to scan
+#define INTENS_VAL 0x0F // intensity of display. 0x04 for normal view
+#define DASH 0x01		// code for '-' sign
+// addresses of MAX7219 registers
+#define DIG0 0x01
+#define DIG1 0x02
+#define DIG2 0x03
+#define DIG3 0x04
+#define DIG4 0x05
+#define DIG5 0x06
+#define DIG6 0x07
+#define DIG7 0x08
+#define DECODE 0x09
+#define INTENS 0x0A
+#define SCAN_LIMIT 0x0B
+#define SHUT_DOWN 0x0C
+#define DISPLAY_TEST 0x0F
+typedef unsigned char UCHAR;
+typedef unsigned int UINT;
+typedef unsigned short USHORT;
+// Delay for milliseconds
+void delay_ms(UINT ms) { vTaskDelay(pdMS_TO_TICKS(ms)); }
+/*********************************************************
+7-segment data buffer with all HEX characters from 0 to F.
+bit no. 7 6 5 4 3 2 1 0
+seg. no. dp a b c d e f g
+*********************************************************/
+char codes[16] = {0x7E, 0x30, 0x6D, 0x79, 0x33, 0x5B, 0x5F, 0x70,
+				  0x7F, 0x7B, 0x77, 0x1F, 0x4E, 0x3D, 0x4F, 0x47};
+
+// function to transfer 16-bit packet to MAX7219 with MSB-first
+void MAX7219_packet_write(char reg, char val) {
+	UINT packet;
+	char i;
+
+	gpio_set_level(LOAD, 0); // LOAD line is low
+	packet = ((((unsigned int)reg) << 8) | (unsigned int)val);
+
+	for (i = 0; i < 16; i++) {
+		if (packet & (0x8000 >> i)) {
+			gpio_set_level(D_IN, 1);
+			gpio_set_level(CLK, 1);
+			gpio_set_level(CLK, 0);
+		} // end if
+		else {
+			gpio_set_level(D_IN, 0);
+			gpio_set_level(CLK, 1);
+			gpio_set_level(CLK, 0);
+		} // end else
+	} // end for
+	// LOAD line is high to latch data
+	gpio_set_level(LOAD, 1);
+	gpio_set_level(LOAD, 0);
+} // end MAX7219_packet_write
+
+// function configures MAX7219 for normal operation
+void MAX7219_Config() {
+	gpio_set_direction(D_IN, GPIO_MODE_OUTPUT);
+	gpio_set_direction(LOAD, GPIO_MODE_OUTPUT);
+	gpio_set_direction(CLK, GPIO_MODE_OUTPUT);
+
+	gpio_set_level(CLK, 0);
+	gpio_set_level(LOAD, 0);
+	// set normal operation
+	MAX7219_packet_write(SHUT_DOWN, 1);
+	// set normal operation
+	MAX7219_packet_write(DISPLAY_TEST, 0);
+	// set no decode
+	MAX7219_packet_write(DECODE, 0x00);
+
+	// set intensity value
+	MAX7219_packet_write(INTENS, INTENS_VAL);
+
+	// set number of digits scanned
+	MAX7219_packet_write(SCAN_LIMIT, SCAN_DIGITS - 1);
+} // end MAX7219_Config
+
+// function to send number to display
+void NumOut(USHORT num) {
+	USHORT temp, d0, d1, d2, d3;
+
+	temp = num;
+	d0 = temp % 10; // extract unit digit
+	temp = temp / 10;
+	d1 = temp % 10; // extract 10th digit
+	temp = temp / 10;
+
+	d2 = temp % 10; // extract 100th digit
+	d3 = temp / 10; // extract 1000th digit
+
+	MAX7219_packet_write(DIG0, codes[d0]);
+	MAX7219_packet_write(DIG1, codes[d1]);
+	MAX7219_packet_write(DIG2, codes[d2]);
+	MAX7219_packet_write(DIG3, codes[d3]);
+} // end NumOut
+/***************************************************************************/
+void app_main() {
+	UINT NUM = 0;
+	MAX7219_Config();
+	MAX7219_packet_write(DISPLAY_TEST, 1);
+	delay_ms(1000);
+	MAX7219_Config();
+	for (;;) {
+		NumOut(NUM++);
+		delay_ms(50);
+	}
+}
