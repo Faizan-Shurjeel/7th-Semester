@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Fri Oct 10 11:25:06 2025
+Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+Revision Name : ComplexCounter
+Top-level Entity Name : FSM
+Family : Cyclone IV E
+Total logic elements : 19
+    Total combinational functions : 18
+    Dedicated logic registers : 11
+Total registers : 11
+Total pins : 15
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

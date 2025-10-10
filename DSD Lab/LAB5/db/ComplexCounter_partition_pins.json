@@ -1,0 +1,65 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "num[0]",
+					"strict" : false
+				},
+				{
+					"name" : "num[1]",
+					"strict" : false
+				},
+				{
+					"name" : "num[2]",
+					"strict" : false
+				},
+				{
+					"name" : "Count_Index[0]",
+					"strict" : false
+				},
+				{
+					"name" : "Count_Index[1]",
+					"strict" : false
+				},
+				{
+					"name" : "Count_Index[2]",
+					"strict" : false
+				},
+				{
+					"name" : "Count_Index[3]",
+					"strict" : false
+				},
+				{
+					"name" : "Count_Index[4]",
+					"strict" : false
+				},
+				{
+					"name" : "Count_Index[5]",
+					"strict" : false
+				},
+				{
+					"name" : "Count_Index[6]",
+					"strict" : false
+				},
+				{
+					"name" : "CLK",
+					"strict" : false
+				},
+				{
+					"name" : "ENA",
+					"strict" : false
+				},
+				{
+					"name" : "CLEAR",
+					"strict" : false
+				},
+				{
+					"name" : "M",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
