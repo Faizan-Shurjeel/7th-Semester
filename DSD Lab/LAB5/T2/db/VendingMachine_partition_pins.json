@@ -1,0 +1,113 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "changeOut[0]",
+					"strict" : false
+				},
+				{
+					"name" : "changeOut[1]",
+					"strict" : false
+				},
+				{
+					"name" : "changeOut[2]",
+					"strict" : false
+				},
+				{
+					"name" : "changeOut[3]",
+					"strict" : false
+				},
+				{
+					"name" : "changeOut[4]",
+					"strict" : false
+				},
+				{
+					"name" : "changeOut[5]",
+					"strict" : false
+				},
+				{
+					"name" : "despense",
+					"strict" : false
+				},
+				{
+					"name" : "CashInsterted[0]",
+					"strict" : false
+				},
+				{
+					"name" : "CashInsterted[1]",
+					"strict" : false
+				},
+				{
+					"name" : "CashInsterted[2]",
+					"strict" : false
+				},
+				{
+					"name" : "CashInsterted[3]",
+					"strict" : false
+				},
+				{
+					"name" : "CashInsterted[4]",
+					"strict" : false
+				},
+				{
+					"name" : "CashInsterted[5]",
+					"strict" : false
+				},
+				{
+					"name" : "CashInsterted[6]",
+					"strict" : false
+				},
+				{
+					"name" : "sel[0]",
+					"strict" : false
+				},
+				{
+					"name" : "sel[1]",
+					"strict" : false
+				},
+				{
+					"name" : "sel[2]",
+					"strict" : false
+				},
+				{
+					"name" : "sel[3]",
+					"strict" : false
+				},
+				{
+					"name" : "coins[0]",
+					"strict" : false
+				},
+				{
+					"name" : "coins[1]",
+					"strict" : false
+				},
+				{
+					"name" : "coins[2]",
+					"strict" : false
+				},
+				{
+					"name" : "coins[3]",
+					"strict" : false
+				},
+				{
+					"name" : "CLK",
+					"strict" : false
+				},
+				{
+					"name" : "CLEAR",
+					"strict" : false
+				},
+				{
+					"name" : "ENA",
+					"strict" : false
+				},
+				{
+					"name" : "bottle",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

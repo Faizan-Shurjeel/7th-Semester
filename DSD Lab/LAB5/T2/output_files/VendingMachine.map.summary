@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Fri Oct 10 12:59:43 2025
+Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+Revision Name : VendingMachine
+Top-level Entity Name : VendingMachine
+Family : Cyclone IV E
+Total logic elements : 60
+    Total combinational functions : 60
+    Dedicated logic registers : 10
+Total registers : 10
+Total pins : 26
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
