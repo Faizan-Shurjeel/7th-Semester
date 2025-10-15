@@ -1,0 +1,170 @@
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "driver/ledc.h"
+#include "driver/gpio.h"
+#include "driver/adc.h"
+#include "esp_adc_cal.h"
+
+// PWM Configuration for Motor Control
+#define LEDC_TIMER              LEDC_TIMER_0
+#define LEDC_MODE               LEDC_HIGH_SPEED_MODE
+#define LEDC_FREQUENCY          5000  // 5 kHz PWM frequency
+
+// Motor Driver Pins (L298N compatible)
+#define MOTOR_IN1_GPIO          25    // Motor direction pin 1
+#define MOTOR_IN2_GPIO          26    // Motor direction pin 2
+#define MOTOR_PWM_GPIO          27    // Motor PWM (Enable pin)
+#define LEDC_CHANNEL            LEDC_CHANNEL_0
+
+// Direction Selection Pin
+#define DIRECTION_GPIO          18    // Input to select rotation direction
+
+// Potentiometer ADC Configuration
+#define POT_ADC_CHANNEL         ADC1_CHANNEL_6  // GPIO34
+#define ADC_WIDTH               ADC_WIDTH_BIT_12
+#define ADC_ATTEN               ADC_ATTEN_DB_11
+#define ADC_MAX_VALUE           4095
+
+// Direction definitions
+#define CLOCKWISE               1
+#define COUNTER_CLOCKWISE       0
+
+// Global variables
+static esp_adc_cal_characteristics_t adc_chars;
+
+// Delay for milliseconds
+void delay_ms(unsigned int ms) {
+    vTaskDelay(pdMS_TO_TICKS(ms));
+}
+
+// Configure GPIO for direction input
+void GPIO_Config() {
+    // Configure direction input pin (GPIO18)
+    gpio_config_t io_conf = {
+        .pin_bit_mask = (1ULL << DIRECTION_GPIO),
+        .mode = GPIO_MODE_INPUT,
+        .pull_up_en = GPIO_PULLUP_ENABLE,
+        .pull_down_en = GPIO_PULLDOWN_DISABLE,
+        .intr_type = GPIO_INTR_DISABLE
+    };
+    gpio_config(&io_conf);
+    
+    // Configure motor direction pins (GPIO25, GPIO26)
+    io_conf.pin_bit_mask = (1ULL << MOTOR_IN1_GPIO) | (1ULL << MOTOR_IN2_GPIO);
+    io_conf.mode = GPIO_MODE_OUTPUT;
+    io_conf.pull_up_en = GPIO_PULLUP_DISABLE;
+    gpio_config(&io_conf);
+}
+
+// Configure LEDC timer and channel for PWM
+void LEDC_Timer_Config() {
+    // Configure the timer for the LEDC
+    ledc_timer_config_t ledc_timer = {
+        .speed_mode       = LEDC_MODE,
+        .timer_num        = LEDC_TIMER,
+        .duty_resolution  = LEDC_TIMER_10_BIT,  // 10-bit resolution (0-1023)
+        .freq_hz          = LEDC_FREQUENCY,
+        .clk_cfg          = LEDC_AUTO_CLK
+    };
+    ledc_timer_config(&ledc_timer);
+    
+    // Configure the LEDC channel
+    ledc_channel_config_t ledc_channel = {
+        .speed_mode     = LEDC_MODE,
+        .channel        = LEDC_CHANNEL,
+        .timer_sel      = LEDC_TIMER,
+        .intr_type      = LEDC_INTR_DISABLE,
+        .gpio_num       = MOTOR_PWM_GPIO,
+        .duty           = 0,    // Start with motor stopped
+        .hpoint         = 0
+    };
+    ledc_channel_config(&ledc_channel);
+}
+
+// Configure ADC for potentiometer reading
+void ADC_Config() {
+    // Configure ADC width
+    adc1_config_width(ADC_WIDTH);
+    
+    // Configure ADC attenuation for the channel
+    adc1_config_channel_atten(POT_ADC_CHANNEL, ADC_ATTEN);
+    
+    // Characterize ADC
+    esp_adc_cal_characterize(ADC_UNIT_1, ADC_ATTEN, ADC_WIDTH, 
+                            1100, &adc_chars);
+}
+
+// Read potentiometer value and return duty cycle (0-100%)
+unsigned char Read_Potentiometer() {
+    // Read ADC value
+    uint32_t adc_reading = adc1_get_raw(POT_ADC_CHANNEL);
+    
+    // Convert ADC reading (0-4095) to duty cycle percentage (0-100)
+    unsigned char duty_cycle = (adc_reading * 100) / ADC_MAX_VALUE;
+    
+    return duty_cycle;
+}
+
+// Set motor direction
+void Set_Motor_Direction(unsigned char direction) {
+    if (direction == CLOCKWISE) {
+        // Clockwise: IN1 = HIGH, IN2 = LOW
+        gpio_set_level(MOTOR_IN1_GPIO, 1);
+        gpio_set_level(MOTOR_IN2_GPIO, 0);
+    } else {
+        // Counter-clockwise: IN1 = LOW, IN2 = HIGH
+        gpio_set_level(MOTOR_IN1_GPIO, 0);
+        gpio_set_level(MOTOR_IN2_GPIO, 1);
+    }
+}
+
+// Set PWM duty cycle in percentage (0-100%)
+void Set_DutyCycle(unsigned char dc_percent) {
+    // Ensure duty cycle is within valid range
+    if (dc_percent > 100) {
+        dc_percent = 100;
+    }
+    
+    // Convert percentage to 10-bit value (0-1023)
+    uint32_t duty = (dc_percent * 1023) / 100;
+    
+    ledc_set_duty(LEDC_MODE, LEDC_CHANNEL, duty);
+    ledc_update_duty(LEDC_MODE, LEDC_CHANNEL);
+}
+
+// Main application
+void app_main() {
+    // Initialize all peripherals
+    GPIO_Config();
+    LEDC_Timer_Config();
+    ADC_Config();
+    
+    unsigned char duty_cycle;
+    unsigned char direction;
+    
+    printf("ESP32 DC Motor Control System Started\n");
+    printf("GPIO18: Direction Control (High=CW, Low=CCW)\n");
+    printf("GPIO34: Potentiometer for Speed Control\n");
+    
+    while(1) {
+        // Read direction from GPIO18
+        direction = gpio_get_level(DIRECTION_GPIO);
+        
+        // Set motor direction
+        Set_Motor_Direction(direction);
+        
+        // Read potentiometer and get duty cycle
+        duty_cycle = Read_Potentiometer();
+        
+        // Set motor speed
+        Set_DutyCycle(duty_cycle);
+        
+        // Print status (optional - can be removed for production)
+        printf("Direction: %s | Speed: %d%%\n", 
+               direction ? "Clockwise" : "Counter-Clockwise", 
+               duty_cycle);
+        
+        // Small delay to prevent excessive CPU usage
+        delay_ms(50);
+    }
+}

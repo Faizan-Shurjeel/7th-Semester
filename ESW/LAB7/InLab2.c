@@ -1,0 +1,64 @@
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "driver/ledc.h"
+
+#define LEDC_TIMER LEDC_TIMER_0
+#define LEDC_MODE LEDC_HIGH_SPEED_MODE
+#define LEDC_OUTPUT_IO 23         // Changed to GPIO23
+#define LEDC_CHANNEL LEDC_CHANNEL_0
+#define LEDC_FREQUENCY 5000       // Changed to 5 kHz
+
+// Delay for milliseconds 
+void delay_ms(unsigned int ms){
+    vTaskDelay(pdMS_TO_TICKS(ms));
+}
+
+// Delay for microseconds
+void delay_us(unsigned int i){
+    esp_rom_delay_us(i);
+}
+
+// Configure LEDC timer and its channel
+void LEDC_Timer_Config(){
+    // Configure the timer for the LEDC
+    ledc_timer_config_t ledc_timer = {
+        .speed_mode = LEDC_MODE,
+        .timer_num = LEDC_TIMER,
+        // Set duty resolution to 10 bits
+        .duty_resolution = LEDC_TIMER_10_BIT,
+        .freq_hz = LEDC_FREQUENCY,
+        .clk_cfg = LEDC_AUTO_CLK
+    };
+    ledc_timer_config(&ledc_timer);
+    
+    // Configure the LEDC channel
+    ledc_channel_config_t ledc_channel = {
+        .speed_mode = LEDC_MODE,
+        .channel = LEDC_CHANNEL,
+        .timer_sel = LEDC_TIMER,
+        .intr_type = LEDC_INTR_DISABLE,
+        .gpio_num = LEDC_OUTPUT_IO,
+        .duty = 512,  // 50% duty cycle (1024 max for 10-bit resolution)
+        .hpoint = 0
+    };
+    ledc_channel_config(&ledc_channel);
+}
+
+// Function sets dutycycle in percentage
+void Set_DutyCycle(unsigned char dc_percent){
+    ledc_set_duty(LEDC_MODE, LEDC_CHANNEL, dc_percent * 10.24);
+    ledc_update_duty(LEDC_MODE, LEDC_CHANNEL);
+}
+
+/*******************************************************************************/
+void app_main(){
+    LEDC_Timer_Config();
+    unsigned char DC;
+    
+    while(1){
+        for (DC = 0; DC <= 100; DC += 5) {
+            Set_DutyCycle(DC);
+            delay_ms(50);
+        }
+    }
+}
