@@ -1,0 +1,11 @@
+
+State Machine - |LCD_Printing|lcd_controller:LCD|state
+Name state.set_line2 state.set_line1 state.line2 state.line1 state.send state.ready state.initialize state.power_up 
+state.power_up 0 0 0 0 0 0 0 0 
+state.initialize 0 0 0 0 0 0 1 1 
+state.ready 0 0 0 0 0 1 0 1 
+state.send 0 0 0 0 1 0 0 1 
+state.line1 0 0 0 1 0 0 0 1 
+state.line2 0 0 1 0 0 0 0 1 
+state.set_line1 0 1 0 0 0 0 0 1 
+state.set_line2 1 0 0 0 0 0 0 1 

@@ -1,0 +1,1591 @@
+Analysis & Synthesis report for LCD_Printing
+Fri Oct 17 12:53:52 2025
+Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |LCD_Printing|lcd_controller:LCD|state
+  9. Registers Removed During Synthesis
+ 10. Removed Registers Triggering Further Register Optimizations
+ 11. General Register Statistics
+ 12. Inverted Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Post-Synthesis Netlist Statistics for Top Partition
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2025  Altera Corporation. All rights reserved.
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, the Altera Quartus Prime License Agreement,
+the Altera IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Altera and sold by Altera or its authorized distributors.  Please
+refer to the Altera Software License Subscription Agreements 
+on the Quartus Prime software download page.
+
+
+
++--------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                         ;
++------------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Fri Oct 17 12:53:52 2025           ;
+; Quartus Prime Version              ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
+; Revision Name                      ; LCD_Printing                                    ;
+; Top-level Entity Name              ; LCD_Printing                                    ;
+; Family                             ; Cyclone IV E                                    ;
+; Total logic elements               ; 255                                             ;
+;     Total combinational functions  ; 251                                             ;
+;     Dedicated logic registers      ; 64                                              ;
+; Total registers                    ; 64                                              ;
+; Total pins                         ; 14                                              ;
+; Total virtual pins                 ; 0                                               ;
+; Total memory bits                  ; 0                                               ;
+; Embedded Multiplier 9-bit elements ; 0                                               ;
+; Total PLLs                         ; 0                                               ;
++------------------------------------+-------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                            ; LCD_Printing       ; LCD_Printing       ;
+; Family name                                                      ; Cyclone IV E       ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 8           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 8           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-8         ;   0.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                              ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                       ; Library ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------+---------+
+; LCD_Printing.vhd                 ; yes             ; User VHDL File  ; D:/7th-Semester/DSD Lab/LAB6/T1/LCD_Printing.vhd   ;         ;
+; lcd_controller.vhd               ; yes             ; User VHDL File  ; D:/7th-Semester/DSD Lab/LAB6/T1/lcd_controller.vhd ;         ;
++----------------------------------+-----------------+-----------------+----------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 255       ;
+;                                             ;           ;
+; Total combinational functions               ; 251       ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 165       ;
+;     -- 3 input functions                    ; 29        ;
+;     -- <=2 input functions                  ; 57        ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 220       ;
+;     -- arithmetic mode                      ; 31        ;
+;                                             ;           ;
+; Total registers                             ; 64        ;
+;     -- Dedicated logic registers            ; 64        ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 14        ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 55        ;
+; Total fan-out                               ; 1149      ;
+; Average fan-out                             ; 3.35      ;
++---------------------------------------------+-----------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                      ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------+----------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name              ; Entity Name    ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------+----------------+--------------+
+; |LCD_Printing              ; 251 (6)             ; 64 (9)                    ; 0           ; 0            ; 0       ; 0         ; 14   ; 0            ; |LCD_Printing                    ; LCD_Printing   ; work         ;
+;    |lcd_controller:LCD|    ; 245 (245)           ; 55 (55)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |LCD_Printing|lcd_controller:LCD ; lcd_controller ; work         ;
++----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------+----------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |LCD_Printing|lcd_controller:LCD|state                                                                                          ;
++------------------+-----------------+-----------------+-------------+-------------+------------+-------------+------------------+----------------+
+; Name             ; state.set_line2 ; state.set_line1 ; state.line2 ; state.line1 ; state.send ; state.ready ; state.initialize ; state.power_up ;
++------------------+-----------------+-----------------+-------------+-------------+------------+-------------+------------------+----------------+
+; state.power_up   ; 0               ; 0               ; 0           ; 0           ; 0          ; 0           ; 0                ; 0              ;
+; state.initialize ; 0               ; 0               ; 0           ; 0           ; 0          ; 0           ; 1                ; 1              ;
+; state.ready      ; 0               ; 0               ; 0           ; 0           ; 0          ; 1           ; 0                ; 1              ;
+; state.send       ; 0               ; 0               ; 0           ; 0           ; 1          ; 0           ; 0                ; 1              ;
+; state.line1      ; 0               ; 0               ; 0           ; 1           ; 0          ; 0           ; 0                ; 1              ;
+; state.line2      ; 0               ; 0               ; 1           ; 0           ; 0          ; 0           ; 0                ; 1              ;
+; state.set_line1  ; 0               ; 1               ; 0           ; 0           ; 0          ; 0           ; 0                ; 1              ;
+; state.set_line2  ; 1               ; 0               ; 0           ; 0           ; 0          ; 0           ; 0                ; 1              ;
++------------------+-----------------+-----------------+-------------+-------------+------------+-------------+------------------+----------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                               ;
++-----------------------------------------------------------------+------------------------------------------------+
+; Register name                                                   ; Reason for Removal                             ;
++-----------------------------------------------------------------+------------------------------------------------+
+; LEDmem~0                                                        ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1                                                        ; Stuck at GND due to stuck port clock           ;
+; LEDmem~2                                                        ; Stuck at GND due to stuck port clock           ;
+; LEDmem~3                                                        ; Stuck at GND due to stuck port clock           ;
+; LEDmem~4                                                        ; Stuck at GND due to stuck port clock           ;
+; LEDmem~5                                                        ; Stuck at GND due to stuck port clock           ;
+; LEDmem~6                                                        ; Stuck at GND due to stuck port clock           ;
+; LEDmem~7                                                        ; Stuck at GND due to stuck port clock           ;
+; LEDmem~8                                                        ; Stuck at GND due to stuck port clock           ;
+; LEDmem~9                                                        ; Stuck at GND due to stuck port clock           ;
+; LEDmem~10                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~11                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~12                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~13                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~14                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~15                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~16                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~17                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~18                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~19                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~20                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~21                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~22                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~23                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~24                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~25                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~26                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~27                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~28                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~29                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~30                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~31                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~32                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~33                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~34                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~35                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~36                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~37                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~38                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~39                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~40                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~41                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~42                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~43                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~44                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~45                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~46                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~47                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~48                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~49                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~50                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~51                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~52                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~53                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~54                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~55                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~56                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~57                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~58                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~59                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~60                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~61                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~62                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~63                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~64                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~65                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~66                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~67                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~68                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~69                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~70                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~71                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~72                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~73                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~74                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~75                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~76                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~77                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~78                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~79                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~80                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~81                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~82                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~83                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~84                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~85                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~86                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~87                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~88                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~89                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~90                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~91                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~92                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~93                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~94                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~95                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~96                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~97                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~98                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~99                                                       ; Stuck at GND due to stuck port clock           ;
+; LEDmem~100                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~101                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~102                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~103                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~104                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~105                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~106                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~107                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~108                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~109                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~110                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~111                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~112                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~113                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~114                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~115                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~116                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~117                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~118                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~119                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~120                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~121                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~122                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~123                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~124                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~125                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~126                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~127                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~128                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~129                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~130                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~131                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~132                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~133                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~134                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~135                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~136                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~137                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~138                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~139                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~140                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~141                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~142                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~143                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~144                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~145                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~146                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~147                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~148                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~149                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~150                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~151                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~152                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~153                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~154                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~155                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~156                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~157                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~158                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~159                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~160                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~161                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~162                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~163                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~164                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~165                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~166                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~167                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~168                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~169                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~170                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~171                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~172                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~173                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~174                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~175                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~176                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~177                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~178                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~179                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~180                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~181                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~182                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~183                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~184                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~185                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~186                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~187                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~188                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~189                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~190                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~191                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~192                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~193                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~194                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~195                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~196                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~197                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~198                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~199                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~200                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~201                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~202                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~203                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~204                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~205                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~206                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~207                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~208                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~209                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~210                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~211                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~212                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~213                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~214                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~215                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~216                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~217                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~218                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~219                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~220                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~221                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~222                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~223                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~224                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~225                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~226                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~227                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~228                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~229                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~230                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~231                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~232                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~233                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~234                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~235                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~236                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~237                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~238                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~239                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~240                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~241                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~242                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~243                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~244                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~245                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~246                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~247                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~248                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~249                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~250                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~251                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~252                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~253                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~254                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~255                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~256                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~257                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~258                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~259                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~260                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~261                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~262                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~263                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~264                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~265                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~266                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~267                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~268                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~269                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~270                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~271                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~272                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~273                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~274                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~275                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~276                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~277                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~278                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~279                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~280                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~281                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~282                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~283                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~284                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~285                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~286                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~287                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~288                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~289                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~290                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~291                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~292                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~293                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~294                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~295                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~296                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~297                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~298                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~299                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~300                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~301                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~302                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~303                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~304                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~305                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~306                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~307                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~308                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~309                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~310                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~311                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~312                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~313                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~314                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~315                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~316                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~317                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~318                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~319                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~320                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~321                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~322                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~323                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~324                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~325                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~326                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~327                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~328                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~329                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~330                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~331                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~332                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~333                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~334                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~335                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~336                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~337                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~338                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~339                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~340                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~341                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~342                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~343                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~344                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~345                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~346                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~347                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~348                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~349                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~350                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~351                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~352                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~353                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~354                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~355                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~356                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~357                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~358                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~359                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~360                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~361                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~362                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~363                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~364                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~365                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~366                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~367                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~368                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~369                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~370                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~371                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~372                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~373                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~374                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~375                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~376                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~377                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~378                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~379                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~380                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~381                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~382                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~383                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~384                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~385                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~386                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~387                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~388                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~389                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~390                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~391                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~392                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~393                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~394                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~395                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~396                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~397                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~398                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~399                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~400                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~401                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~402                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~403                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~404                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~405                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~406                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~407                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~408                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~409                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~410                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~411                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~412                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~413                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~414                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~415                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~416                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~417                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~418                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~419                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~420                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~421                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~422                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~423                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~424                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~425                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~426                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~427                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~428                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~429                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~430                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~431                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~432                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~433                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~434                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~435                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~436                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~437                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~438                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~439                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~440                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~441                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~442                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~443                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~444                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~445                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~446                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~447                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~448                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~449                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~450                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~451                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~452                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~453                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~454                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~455                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~456                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~457                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~458                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~459                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~460                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~461                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~462                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~463                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~464                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~465                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~466                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~467                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~468                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~469                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~470                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~471                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~472                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~473                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~474                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~475                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~476                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~477                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~478                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~479                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~480                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~481                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~482                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~483                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~484                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~485                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~486                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~487                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~488                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~489                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~490                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~491                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~492                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~493                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~494                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~495                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~496                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~497                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~498                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~499                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~500                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~501                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~502                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~503                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~504                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~505                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~506                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~507                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~508                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~509                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~510                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~511                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~512                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~513                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~514                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~515                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~516                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~517                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~518                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~519                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~520                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~521                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~522                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~523                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~524                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~525                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~526                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~527                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~528                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~529                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~530                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~531                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~532                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~533                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~534                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~535                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~536                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~537                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~538                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~539                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~540                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~541                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~542                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~543                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~544                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~545                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~546                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~547                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~548                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~549                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~550                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~551                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~552                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~553                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~554                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~555                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~556                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~557                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~558                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~559                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~560                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~561                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~562                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~563                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~564                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~565                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~566                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~567                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~568                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~569                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~570                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~571                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~572                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~573                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~574                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~575                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~576                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~577                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~578                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~579                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~580                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~581                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~582                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~583                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~584                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~585                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~586                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~587                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~588                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~589                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~590                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~591                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~592                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~593                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~594                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~595                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~596                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~597                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~598                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~599                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~600                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~601                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~602                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~603                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~604                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~605                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~606                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~607                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~608                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~609                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~610                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~611                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~612                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~613                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~614                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~615                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~616                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~617                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~618                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~619                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~620                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~621                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~622                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~623                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~624                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~625                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~626                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~627                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~628                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~629                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~630                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~631                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~632                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~633                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~634                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~635                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~636                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~637                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~638                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~639                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~640                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~641                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~642                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~643                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~644                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~645                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~646                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~647                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~648                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~649                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~650                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~651                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~652                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~653                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~654                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~655                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~656                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~657                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~658                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~659                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~660                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~661                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~662                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~663                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~664                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~665                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~666                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~667                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~668                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~669                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~670                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~671                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~672                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~673                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~674                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~675                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~676                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~677                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~678                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~679                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~680                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~681                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~682                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~683                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~684                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~685                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~686                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~687                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~688                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~689                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~690                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~691                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~692                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~693                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~694                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~695                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~696                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~697                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~698                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~699                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~700                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~701                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~702                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~703                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~704                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~705                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~706                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~707                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~708                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~709                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~710                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~711                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~712                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~713                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~714                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~715                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~716                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~717                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~718                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~719                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~720                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~721                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~722                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~723                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~724                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~725                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~726                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~727                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~728                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~729                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~730                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~731                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~732                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~733                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~734                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~735                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~736                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~737                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~738                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~739                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~740                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~741                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~742                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~743                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~744                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~745                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~746                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~747                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~748                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~749                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~750                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~751                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~752                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~753                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~754                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~755                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~756                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~757                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~758                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~759                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~760                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~761                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~762                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~763                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~764                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~765                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~766                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~767                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~768                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~769                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~770                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~771                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~772                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~773                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~774                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~775                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~776                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~777                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~778                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~779                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~780                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~781                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~782                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~783                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~784                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~785                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~786                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~787                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~788                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~789                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~790                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~791                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~792                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~793                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~794                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~795                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~796                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~797                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~798                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~799                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~800                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~801                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~802                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~803                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~804                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~805                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~806                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~807                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~808                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~809                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~810                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~811                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~812                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~813                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~814                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~815                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~816                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~817                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~818                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~819                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~820                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~821                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~822                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~823                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~824                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~825                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~826                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~827                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~828                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~829                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~830                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~831                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~832                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~833                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~834                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~835                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~836                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~837                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~838                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~839                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~840                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~841                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~842                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~843                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~844                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~845                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~846                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~847                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~848                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~849                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~850                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~851                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~852                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~853                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~854                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~855                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~856                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~857                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~858                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~859                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~860                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~861                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~862                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~863                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~864                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~865                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~866                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~867                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~868                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~869                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~870                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~871                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~872                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~873                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~874                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~875                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~876                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~877                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~878                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~879                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~880                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~881                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~882                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~883                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~884                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~885                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~886                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~887                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~888                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~889                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~890                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~891                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~892                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~893                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~894                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~895                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~896                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~897                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~898                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~899                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~900                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~901                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~902                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~903                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~904                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~905                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~906                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~907                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~908                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~909                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~910                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~911                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~912                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~913                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~914                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~915                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~916                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~917                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~918                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~919                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~920                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~921                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~922                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~923                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~924                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~925                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~926                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~927                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~928                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~929                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~930                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~931                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~932                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~933                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~934                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~935                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~936                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~937                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~938                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~939                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~940                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~941                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~942                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~943                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~944                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~945                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~946                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~947                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~948                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~949                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~950                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~951                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~952                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~953                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~954                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~955                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~956                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~957                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~958                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~959                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~960                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~961                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~962                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~963                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~964                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~965                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~966                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~967                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~968                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~969                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~970                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~971                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~972                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~973                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~974                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~975                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~976                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~977                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~978                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~979                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~980                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~981                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~982                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~983                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~984                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~985                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~986                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~987                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~988                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~989                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~990                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~991                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~992                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~993                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~994                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~995                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~996                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~997                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~998                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~999                                                      ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1000                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1001                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1002                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1003                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1004                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1005                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1006                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1007                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1008                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1009                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1010                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1011                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1012                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1013                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1014                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1015                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1016                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1017                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1018                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1019                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1020                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1021                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1022                                                     ; Stuck at GND due to stuck port clock           ;
+; LEDmem~1023                                                     ; Stuck at GND due to stuck port clock           ;
+; bottom_line[96]                                                 ; Stuck at GND due to stuck port data_in         ;
+; top_line[0,8,16,24,32,40,56,72,88]                              ; Stuck at GND due to stuck port data_in         ;
+; bottom_line[1,17,41,65,97,105,121]                              ; Stuck at GND due to stuck port data_in         ;
+; top_line[1,9,17,25,33,41,49,73,89,97,113]                       ; Stuck at GND due to stuck port data_in         ;
+; bottom_line[10,74,98]                                           ; Stuck at GND due to stuck port data_in         ;
+; top_line[2,10,18,26,34,42,58,74]                                ; Stuck at GND due to stuck port data_in         ;
+; bottom_line[3,11,35,75,99,107]                                  ; Stuck at GND due to stuck port data_in         ;
+; top_line[3,11,19,27,35,43,51,59,83,99]                          ; Stuck at GND due to stuck port data_in         ;
+; bottom_line[4,84,92,100,108,116,124]                            ; Stuck at GND due to stuck port data_in         ;
+; top_line[4,12,20,28,36,44,52,68,76,92,100,108,124]              ; Stuck at GND due to stuck port data_in         ;
+; bottom_line[45,53,61,85,93,109,117,125]                         ; Stuck at GND due to stuck port data_in         ;
+; top_line[109,117,125]                                           ; Stuck at GND due to stuck port data_in         ;
+; bottom_line[102]                                                ; Stuck at GND due to stuck port data_in         ;
+; top_line[6,14,22,30,38,46]                                      ; Stuck at GND due to stuck port data_in         ;
+; bottom_line[7,15,23,31,39,47,55,63,71,79,87,95,103,111,119,127] ; Stuck at GND due to stuck port data_in         ;
+; top_line[7,15,23,31,39,47,55,63,71,79,87,95,103,111,119,127]    ; Stuck at GND due to stuck port data_in         ;
+; top_line[112]                                                   ; Stuck at VCC due to stuck port data_in         ;
+; bottom_line[90,106,122]                                         ; Stuck at VCC due to stuck port data_in         ;
+; top_line[107]                                                   ; Stuck at VCC due to stuck port data_in         ;
+; bottom_line[101]                                                ; Stuck at VCC due to stuck port data_in         ;
+; top_line[5,13,21,29,37,45]                                      ; Stuck at VCC due to stuck port data_in         ;
+; bottom_line[46,54,62,86,94,110,118,126]                         ; Stuck at VCC due to stuck port data_in         ;
+; top_line[110,118,126]                                           ; Stuck at VCC due to stuck port data_in         ;
+; top_line[54]                                                    ; Merged with top_line[62]                       ;
+; top_line[62]                                                    ; Merged with top_line[70]                       ;
+; top_line[70]                                                    ; Merged with top_line[78]                       ;
+; top_line[78]                                                    ; Merged with top_line[86]                       ;
+; top_line[86]                                                    ; Merged with top_line[94]                       ;
+; top_line[94]                                                    ; Merged with top_line[114]                      ;
+; top_line[114]                                                   ; Merged with top_line[57]                       ;
+; top_line[57]                                                    ; Merged with top_line[65]                       ;
+; top_line[65]                                                    ; Merged with top_line[121]                      ;
+; top_line[121]                                                   ; Merged with top_line[48]                       ;
+; top_line[48]                                                    ; Merged with top_line[64]                       ;
+; top_line[64]                                                    ; Merged with top_line[104]                      ;
+; top_line[104]                                                   ; Merged with top_line[101]                      ;
+; top_line[101]                                                   ; Merged with top_line[60]                       ;
+; top_line[60]                                                    ; Merged with top_line[120]                      ;
+; top_line[120]                                                   ; Merged with top_line[116]                      ;
+; top_line[116]                                                   ; Merged with top_line[67]                       ;
+; top_line[67]                                                    ; Merged with top_line[75]                       ;
+; top_line[75]                                                    ; Merged with top_line[91]                       ;
+; top_line[91]                                                    ; Merged with top_line[50]                       ;
+; top_line[50]                                                    ; Merged with top_line[66]                       ;
+; top_line[66]                                                    ; Merged with top_line[90]                       ;
+; top_line[102]                                                   ; Merged with top_line[53]                       ;
+; top_line[53]                                                    ; Merged with top_line[61]                       ;
+; top_line[61]                                                    ; Merged with top_line[69]                       ;
+; top_line[69]                                                    ; Merged with top_line[77]                       ;
+; top_line[77]                                                    ; Merged with top_line[85]                       ;
+; top_line[85]                                                    ; Merged with top_line[93]                       ;
+; top_line[93]                                                    ; Merged with top_line[84]                       ;
+; top_line[84]                                                    ; Merged with top_line[105]                      ;
+; top_line[105]                                                   ; Merged with top_line[106]                      ;
+; top_line[106]                                                   ; Merged with top_line[123]                      ;
+; top_line[123]                                                   ; Merged with top_line[122]                      ;
+; top_line[122]                                                   ; Merged with top_line[96]                       ;
+; top_line[96]                                                    ; Merged with top_line[115]                      ;
+; top_line[115]                                                   ; Merged with top_line[98]                       ;
+; bottom_line[24,50,57,82]                                        ; Merged with bottom_line[120]                   ;
+; top_line[81]                                                    ; Merged with bottom_line[120]                   ;
+; bottom_line[73]                                                 ; Merged with bottom_line[120]                   ;
+; bottom_line[30,38,42,52,78,80,88]                               ; Merged with bottom_line[112]                   ;
+; top_line[82]                                                    ; Merged with bottom_line[112]                   ;
+; bottom_line[29,37,44,49,59,66,67,77,81,89,114]                  ; Merged with bottom_line[112]                   ;
+; bottom_line[18,20,26,34,51,56,60,64]                            ; Merged with bottom_line[104]                   ;
+; bottom_line[28,68,83,123]                                       ; Merged with bottom_line[72]                    ;
+; bottom_line[21,22,25,40]                                        ; Merged with bottom_line[48]                    ;
+; top_line[80]                                                    ; Merged with bottom_line[32]                    ;
+; bottom_line[27,43,58,76,91,115]                                 ; Merged with bottom_line[32]                    ;
+; bottom_line[0,2,5,6,8,9,12..14,19,33,36,69,70,113]              ; Merged with bottom_line[16]                    ;
+; top_line[90]                                                    ; Merged with top_line[98]                       ;
+; ind[2]                                                          ; Merged with bottom_line[120]                   ;
+; lcd_controller:LCD|current_line[0]                              ; Merged with lcd_controller:LCD|current_line[1] ;
+; lcd_controller:LCD|rw_i                                         ; Stuck at GND due to stuck port data_in         ;
+; Total Number of Removed Registers = 1275                        ;                                                ;
++-----------------------------------------------------------------+------------------------------------------------+
+
+
++----------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                      ;
++---------------+-------------------------+----------------------------------------+
+; Register name ; Reason for Removal      ; Registers Removed due to This Register ;
++---------------+-------------------------+----------------------------------------+
+; LEDmem~129    ; Stuck at GND            ; bottom_line[1]                         ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~131    ; Stuck at GND            ; bottom_line[3]                         ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~132    ; Stuck at GND            ; bottom_line[4]                         ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~135    ; Stuck at GND            ; bottom_line[7]                         ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~138    ; Stuck at GND            ; bottom_line[10]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~139    ; Stuck at GND            ; bottom_line[11]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~143    ; Stuck at GND            ; bottom_line[15]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~145    ; Stuck at GND            ; bottom_line[17]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~151    ; Stuck at GND            ; bottom_line[23]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~159    ; Stuck at GND            ; bottom_line[31]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~163    ; Stuck at GND            ; bottom_line[35]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~167    ; Stuck at GND            ; bottom_line[39]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~169    ; Stuck at GND            ; bottom_line[41]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~173    ; Stuck at GND            ; bottom_line[45]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~174    ; Stuck at GND            ; bottom_line[46]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~175    ; Stuck at GND            ; bottom_line[47]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~181    ; Stuck at GND            ; bottom_line[53]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~182    ; Stuck at GND            ; bottom_line[54]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~183    ; Stuck at GND            ; bottom_line[55]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~189    ; Stuck at GND            ; bottom_line[61]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~190    ; Stuck at GND            ; bottom_line[62]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~191    ; Stuck at GND            ; bottom_line[63]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~193    ; Stuck at GND            ; bottom_line[65]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~199    ; Stuck at GND            ; bottom_line[71]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~202    ; Stuck at GND            ; bottom_line[74]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~203    ; Stuck at GND            ; bottom_line[75]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~207    ; Stuck at GND            ; bottom_line[79]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~212    ; Stuck at GND            ; bottom_line[84]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~213    ; Stuck at GND            ; bottom_line[85]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~214    ; Stuck at GND            ; bottom_line[86]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~215    ; Stuck at GND            ; bottom_line[87]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~218    ; Stuck at GND            ; bottom_line[90]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~220    ; Stuck at GND            ; bottom_line[92]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~221    ; Stuck at GND            ; bottom_line[93]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~222    ; Stuck at GND            ; bottom_line[94]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~223    ; Stuck at GND            ; bottom_line[95]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~224    ; Stuck at GND            ; bottom_line[96]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~225    ; Stuck at GND            ; bottom_line[97]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~226    ; Stuck at GND            ; bottom_line[98]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~227    ; Stuck at GND            ; bottom_line[99]                        ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~228    ; Stuck at GND            ; bottom_line[100]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~229    ; Stuck at GND            ; bottom_line[101]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~230    ; Stuck at GND            ; bottom_line[102]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~231    ; Stuck at GND            ; bottom_line[103]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~233    ; Stuck at GND            ; bottom_line[105]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~234    ; Stuck at GND            ; bottom_line[106]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~235    ; Stuck at GND            ; bottom_line[107]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~236    ; Stuck at GND            ; bottom_line[108]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~237    ; Stuck at GND            ; bottom_line[109]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~238    ; Stuck at GND            ; bottom_line[110]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~239    ; Stuck at GND            ; bottom_line[111]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~244    ; Stuck at GND            ; bottom_line[116]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~245    ; Stuck at GND            ; bottom_line[117]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~246    ; Stuck at GND            ; bottom_line[118]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~247    ; Stuck at GND            ; bottom_line[119]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~249    ; Stuck at GND            ; bottom_line[121]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~250    ; Stuck at GND            ; bottom_line[122]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~252    ; Stuck at GND            ; bottom_line[124]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~253    ; Stuck at GND            ; bottom_line[125]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~254    ; Stuck at GND            ; bottom_line[126]                       ;
+;               ; due to stuck port clock ;                                        ;
+; LEDmem~255    ; Stuck at GND            ; bottom_line[127]                       ;
+;               ; due to stuck port clock ;                                        ;
++---------------+-------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 64    ;
+; Number of registers using Synchronous Clear  ; 32    ;
+; Number of registers using Synchronous Load   ; 6     ;
+; Number of registers using Asynchronous Clear ; 55    ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 40    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; bottom_line[32]                        ; 5       ;
+; bottom_line[104]                       ; 9       ;
+; bottom_line[112]                       ; 17      ;
+; bottom_line[120]                       ; 13      ;
+; Total number of inverted registers = 4 ;         ;
++----------------------------------------+---------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+; 6:1                ; 4 bits    ; 16 LEs        ; 4 LEs                ; 12 LEs                 ; Yes        ; |LCD_Printing|lcd_controller:LCD|ptr[0]        ;
+; 11:1               ; 32 bits   ; 224 LEs       ; 32 LEs               ; 192 LEs                ; Yes        ; |LCD_Printing|lcd_controller:LCD|clk_count[11] ;
+; 46:1               ; 7 bits    ; 210 LEs       ; 175 LEs              ; 35 LEs                 ; Yes        ; |LCD_Printing|lcd_controller:LCD|lcd_data_i[3] ;
+; 11:1               ; 4 bits    ; 28 LEs        ; 12 LEs               ; 16 LEs                 ; No         ; |LCD_Printing|lcd_controller:LCD|Selector44    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 14                          ;
+; cycloneiii_ff         ; 64                          ;
+;     CLR               ; 15                          ;
+;     ENA CLR           ; 2                           ;
+;     ENA CLR SCLR      ; 32                          ;
+;     ENA CLR SLD       ; 6                           ;
+;     plain             ; 9                           ;
+; cycloneiii_lcell_comb ; 252                         ;
+;     arith             ; 31                          ;
+;         2 data inputs ; 31                          ;
+;     normal            ; 221                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 2                           ;
+;         2 data inputs ; 24                          ;
+;         3 data inputs ; 29                          ;
+;         4 data inputs ; 165                         ;
+;                       ;                             ;
+; Max LUT depth         ; 10.00                       ;
+; Average LUT depth     ; 5.70                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+    Info: Processing started: Fri Oct 17 12:53:42 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off LCD_Printing -c LCD_Printing
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file lcd_printing.vhd
+    Info (12022): Found design unit 1: LCD_Printing-Behavioral File: D:/7th-Semester/DSD Lab/LAB6/T1/LCD_Printing.vhd Line: 16
+    Info (12023): Found entity 1: LCD_Printing File: D:/7th-Semester/DSD Lab/LAB6/T1/LCD_Printing.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file lcd_controller.vhd
+    Info (12022): Found design unit 1: lcd_controller-controller File: D:/7th-Semester/DSD Lab/LAB6/T1/lcd_controller.vhd Line: 15
+    Info (12023): Found entity 1: lcd_controller File: D:/7th-Semester/DSD Lab/LAB6/T1/lcd_controller.vhd Line: 4
+Info (12127): Elaborating entity "LCD_Printing" for the top level hierarchy
+Info (12128): Elaborating entity "lcd_controller" for hierarchy "lcd_controller:LCD" File: D:/7th-Semester/DSD Lab/LAB6/T1/LCD_Printing.vhd Line: 66
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276004): RAM logic "LEDmem" is uninferred due to inappropriate RAM size File: D:/7th-Semester/DSD Lab/LAB6/T1/LCD_Printing.vhd Line: 43
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "lcd_rw" is stuck at GND File: D:/7th-Semester/DSD Lab/LAB6/T1/LCD_Printing.vhd Line: 10
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 270 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 3 input pins
+    Info (21059): Implemented 11 output pins
+    Info (21061): Implemented 256 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 4922 megabytes
+    Info: Processing ended: Fri Oct 17 12:53:52 2025
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:19
+
+

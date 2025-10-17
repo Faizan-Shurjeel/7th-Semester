@@ -1,0 +1,61 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "lcd_e",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_rs",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_db[0]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_db[1]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_db[2]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_db[3]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_db[4]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_db[5]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_db[6]",
+					"strict" : false
+				},
+				{
+					"name" : "lcd_db[7]",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "rst",
+					"strict" : false
+				},
+				{
+					"name" : "ext_inp",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
