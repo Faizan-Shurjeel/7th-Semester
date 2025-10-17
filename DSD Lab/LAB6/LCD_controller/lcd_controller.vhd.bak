@@ -1,0 +1,163 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY lcd_controller IS
+  PORT(
+    clk         : IN  STD_LOGIC;  --system clock
+    reset_n     : IN  STD_LOGIC;  --active low reinitializes lcd
+    rw, rs, e   : OUT STD_LOGIC;  --read/write, setup/data, and enable for lcd
+    lcd_data    : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)); --data signals for lcd
+END lcd_controller;
+
+ARCHITECTURE controller OF lcd_controller IS
+  TYPE CONTROL IS(power_up, initialize, ready, send);
+  SIGNAL state      : CONTROL;
+  SIGNAL clk_count  : INTEGER := 0; --event counter for timing
+  SIGNAL ptr        : natural range 0 to 15 := 0; --to keep track of what character we are up to
+  SIGNAL line_count : natural range 0 to 1;
+BEGIN
+
+PROCESS(clk)
+  VARIABLE clk_count : INTEGER := 0; --event counter for timing
+BEGIN
+  IF(clk'EVENT AND clk = '1') THEN
+  
+    CASE state IS
+    
+      --wait 50 ms to ensure VDD has risen and required LCD wait is met
+      WHEN power_up =>
+        IF(clk_count < (50000 * freq)) THEN  --wait 50 ms
+          clk_count := clk_count + 1;
+          state <= power_up;
+        ELSE
+          clk_count := 0;                    --power-up complete
+          rs <= '0';
+          rw <= '0';
+          lcd_data <= "00110000";
+          state <= initialize;
+        END IF;
+        
+      --cycle through initialization sequence
+      WHEN initialize =>
+        clk_count := clk_count + 1;
+        IF(clk_count < (10 * freq)) THEN      --function set
+          lcd_data <= "00111000";             --2-line mode, display on
+          e <= '1';                           --clock data in
+          state <= initialize;
+        ELSIF(clk_count < (60 * freq)) THEN   --wait 50 us
+          lcd_data <= "00010000";             --2-line mode, display off
+          e <= '0';                           --latch in data
+          state <= initialize;
+        ELSIF(clk_count < (70 * freq)) THEN   --display on/off control
+          lcd_data <= "00000000";             --display off, cursor off, blink off
+          e <= '1';                           --clock data in
+          state <= initialize;
+        ELSIF(clk_count < (6000 * freq)) THEN --wait 50 us
+          lcd_data <= "00001100";             --display on, cursor off, blink off
+          e <= '0';                           --latch in data
+          state <= initialize;
+        ELSIF(clk_count < (6010 * freq)) THEN --display on/off control
+          lcd_data <= "00000000";             --display on, cursor off, blink on
+          e <= '1';                           --clock data in
+          state <= initialize;
+        ELSIF(clk_count < (6170 * freq)) THEN --wait 60 us
+          lcd_data <= "00001101";             --display on, cursor off, blink on
+          e <= '0';                           --latch in data
+          state <= initialize;
+        ELSIF(clk_count < (6180 * freq)) THEN --display clear
+          lcd_data <= "00000000";
+          e <= '1';
+          state <= initialize;
+        ELSIF(clk_count < (6200 * freq)) THEN --wait 2 ms
+          lcd_data <= "00000001";
+          e <= '0';
+          state <= initialize;
+        ELSIF(clk_count < (6210 * freq)) THEN --entry mode set
+          lcd_data <= "00000000";             --increment mode, entire shift off
+          e <= '1';                           --clock data in
+          state <= initialize;
+        ELSIF(clk_count < (6270 * freq)) THEN --wait 60 us
+          lcd_data <= "00000110";             --decrement mode, entire shift off
+          e <= '0';                           --latch in data
+          state <= initialize;
+        ELSIF(clk_count < (6280 * freq)) THEN --entry mode set
+          lcd_data <= "00000010";             --decrement mode, entire shift on
+          e <= '1';
+          state <= initialize;
+        ELSIF(clk_count < (7000 * freq)) THEN --wait 60 us
+          lcd_data <= "00000110";
+          e <= '0';
+          state <= initialize;
+        ELSE
+          state <= ready;                     --initialization complete
+          clk_count := 0;
+          e <= RESET(INE);
+        END IF;
+        
+      WHEN line0 =>
+        ptr <= 0;
+        lcd_data <= line2_buffer(ptr*8 + 7 downto ptr*8);
+        rs <= '1';
+        rw <= '0';
+        clk_count := 0;
+        state <= send;
+        
+      WHEN send =>
+        ptr <= 1;
+        IF ptr = 16 THEN
+          lcd_data <= "10000000";
+          rs <= '0';
+          rw <= '0';
+          clk_count := 0;
+          state <= send2;
+        else
+          lcd_data <= "11000000";
+          rs <= '1';
+          rw <= '0';
+          clk_count := 0;
+          state <= send2;
+        end if;
+        
+      WHEN line1 =>
+        ptr <= 0;
+        lcd_data <= line1_buffer(ptr*8 + 7 downto ptr*8);
+        rs <= '1';
+        rw <= '0';
+        clk_count := 0;
+        state <= send;
+        
+      WHEN send2 =>
+        IF(clk_count < (50 * freq)) THEN  --do not wait for busy
+          clk_count := clk_count + 1;     --negative enable
+          state <= send2;
+        ELSIF(clk_count < (14 * freq)) THEN  --positive enable half-cycle
+          e <= '1';
+          state <= send2;
+        ELSIF(clk_count < (27 * freq)) THEN  --negative enable half-cycle
+          e <= '0';
+        END IF;
+        clk_count := clk_count + 1;
+        state <= send;
+      END IF;
+      clk_count := 0;
+      IF line = 0 THEN
+        state <= line0;
+      else
+        IF ptr = 16 THEN
+          state <= resetting;
+        else
+          ptr := ptr + 1;
+          IF line = 0 THEN
+            state <= line0;
+          end if;
+        end if;
+      end if;
+      
+      --reset
+      IF(reset_n = '0') THEN
+        state <= power_up;
+      END IF;
+    END CASE;
+  END IF;
+END PROCESS;
+END CONTROLLER;
