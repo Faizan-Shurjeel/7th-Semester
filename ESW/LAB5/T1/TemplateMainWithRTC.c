@@ -1,13 +1,3 @@
-/*
- * DS1307.c
- *
- *  Created on: Oct 21, 2025
- *      Author: Abdullah
- */
-
-
-
-
 /*******************************************************************************
 This file interfaces DS1307 RTC with ESP32 using software I2C.
 Created By: Usman Rafique

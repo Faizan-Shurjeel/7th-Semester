@@ -1,122 +1,144 @@
+/*******************************************************************************
+This main.c interfaces DS1307 RTC with ESP32 and displays time/date on LCD
+Line 1: Time (HH:MM:SS)
+Line 2: Day name
+Line 3: Date and Month name
+Line 4: Year
+Created By: Usman Rafique & Abdullah
+Dated: Oct. 21, 2025
+*******************************************************************************/
+
+#include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "driver/gpio.h"
-#include "PCF8574_LCD.h"
-#include "DS1307.h"
-#include <stdio.h>
+#include "esp_rom_sys.h"
 
-typedef unsigned char UCHAR;
-typedef unsigned int UINT;
+// Include your LCD and DS1307 header files or paste their functions here
+// For this example, I'm assuming the functions are available
 
-//RTC time and date variables
-UCHAR hrs, min, sec, day, date, month, year;
+// Function prototypes (from your provided files)
+extern void PCF8574_LCD_init(void);
+extern void lcd_print(char *dat);
+extern void cursor_position(char r, char c);
+extern void lcd_command(uint8_t command);
+extern void DS1307_i2c_init(void);
+extern uint8_t RD_DS1307(uint8_t add);
+extern void WR_DS1307(uint8_t add, uint8_t byte);
 
-// Day and month name arrays
-const char* day_names[] = {"", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-const char* month_names[] = {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+// DS1307 Register addresses
+#define SEC_REG 0x00
+#define MIN_REG 0x01
+#define HOUR_REG 0x02
+#define DAY_REG 0x03
+#define DATE_REG 0x04
+#define MONTH_REG 0x05
+#define YEAR_REG 0x06
 
-// Delay for milliseconds
-void delay_ms(unsigned int ms){
-    vTaskDelay(pdMS_TO_TICKS(ms));
+// Day names array
+const char* days[] = {"Sunday", "Monday", "Tuesday", "Wednesday", 
+                      "Thursday", "Friday", "Saturday"};
+
+// Month names array
+const char* months[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+
+// Function to convert BCD to Decimal
+uint8_t bcd_to_dec(uint8_t bcd) {
+    return ((bcd >> 4) * 10) + (bcd & 0x0F);
 }
 
-//function to convert decimal number to BCD format
-UCHAR dec2bcd(UCHAR num){
-    return(((num/10)*16)+(num%10));
+// Function to convert Decimal to BCD
+uint8_t dec_to_bcd(uint8_t dec) {
+    return ((dec / 10) << 4) | (dec % 10);
 }
 
-//function to convert BCD to decimal (not strictly needed, but for completeness)
-UCHAR bcd2dec(UCHAR num){
-    return(((num>>4)*10)+(num&0x0F));
+// Function to initialize RTC with default values (optional - call once to set time)
+void set_initial_time(void) {
+    // Set initial time: 12:00:00
+    WR_DS1307(SEC_REG, dec_to_bcd(0));
+    WR_DS1307(MIN_REG, dec_to_bcd(0));
+    WR_DS1307(HOUR_REG, dec_to_bcd(12)); // 12-hour format
+    
+    // Set initial date: Monday, 21 Oct 2025
+    WR_DS1307(DAY_REG, 2); // 1=Sunday, 2=Monday, etc.
+    WR_DS1307(DATE_REG, dec_to_bcd(21));
+    WR_DS1307(MONTH_REG, dec_to_bcd(10)); // October
+    WR_DS1307(YEAR_REG, dec_to_bcd(25)); // 2025
 }
 
-//function to set new time, day and date in DS1307
-void Set_Time(UCHAR h, UCHAR m, UCHAR s) {
-    WR_DS1307(0, dec2bcd(s) & 0x7F); // seconds with CH=0
-    WR_DS1307(1, dec2bcd(m));         // minutes
-    WR_DS1307(2, dec2bcd(h));         // hours
-}
-
-void Set_Date(UCHAR d, UCHAR dt, UCHAR mt, UCHAR yr) {
-    WR_DS1307(3, dec2bcd(d));   // day of week (1-7)
-    WR_DS1307(4, dec2bcd(dt));  // date (1-31)
-    WR_DS1307(5, dec2bcd(mt));  // month (1-12)
-    WR_DS1307(6, dec2bcd(yr));  // year (0-99)
-}
-
-//function to get updated time from DS1307
-void Get_Time() {
-    sec = RD_DS1307(0);
-    min = RD_DS1307(1);
-    hrs = RD_DS1307(2);
-    day = RD_DS1307(3);
-    date = RD_DS1307(4);
-    month = RD_DS1307(5);
-    year = RD_DS1307(6);
-}
-
-//function displays time on line 1
-void Display_Time() {
+// Function to read and display time on LCD
+void display_rtc_data(void) {
+    uint8_t sec, min, hour, day, date, month, year;
+    char buffer[25];
+    
+    // Read time from DS1307
+    sec = bcd_to_dec(RD_DS1307(SEC_REG) & 0x7F);
+    min = bcd_to_dec(RD_DS1307(MIN_REG));
+    hour = bcd_to_dec(RD_DS1307(HOUR_REG) & 0x3F);
+    
+    // Read date from DS1307
+    day = RD_DS1307(DAY_REG);
+    date = bcd_to_dec(RD_DS1307(DATE_REG));
+    month = bcd_to_dec(RD_DS1307(MONTH_REG));
+    year = bcd_to_dec(RD_DS1307(YEAR_REG));
+    
+    // Line 1: Display Time (HH:MM:SS)
     cursor_position(0, 0);
-    lcd_print("Time: ");
-    lcd_data((hrs >> 4) + 48);
-    lcd_data((hrs & 0x0F) + 48);
-    lcd_data(':');
-    lcd_data((min >> 4) + 48);
-    lcd_data((min & 0x0F) + 48);
-    lcd_data(':');
-    lcd_data((sec >> 4) + 48);
-    lcd_data((sec & 0x0F) + 48);
-}
-
-//function displays day name on line 2
-void Display_Day() {
+    sprintf(buffer, "Time: %02d:%02d:%02d   ", hour, min, sec);
+    lcd_print(buffer);
+    
+    // Line 2: Display Day Name
     cursor_position(1, 0);
-    lcd_print("Day: ");
     if (day >= 1 && day <= 7) {
-        lcd_print(day_names[day]);
+        sprintf(buffer, "%-20s", days[day - 1]);
+    } else {
+        sprintf(buffer, "Invalid Day     ");
     }
-}
-
-//function displays date and month on line 3
-void Display_Date() {
+    lcd_print(buffer);
+    
+    // Line 3: Display Date and Month
     cursor_position(2, 0);
-    lcd_print("Date: ");
-    lcd_data((date >> 4) + 48);
-    lcd_data((date & 0x0F) + 48);
-    lcd_data(' ');
-    if ((month & 0x0F) + ((month >> 4) * 10) >= 1 && (month & 0x0F) + ((month >> 4) * 10) <= 12) {
-        lcd_print(month_names[(month & 0x0F) + ((month >> 4) * 10)]);
+    if (month >= 1 && month <= 12) {
+        sprintf(buffer, "%02d %s 20%02d      ", date, months[month - 1], year);
+    } else {
+        sprintf(buffer, "%02d ??? 20%02d      ", date, year);
     }
-}
-
-//function displays year on line 4
-void Display_Year() {
+    lcd_print(buffer);
+    
+    // Line 4: Display Year
     cursor_position(3, 0);
-    lcd_print("Year: 20");
-    lcd_data((year >> 4) + 48);
-    lcd_data((year & 0x0F) + 48);
+    sprintf(buffer, "Year: 20%02d        ", year);
+    lcd_print(buffer);
 }
 
-void app_main() {
-    PCF8574_LCD_init();
+void app_main(void) {
+    // Initialize DS1307 I2C
     DS1307_i2c_init();
     
-    lcd_clear();
-    lcd_print("ESP32 DS1307 RTC");
-    delay_ms(2000);
-    lcd_clear();
-
-    // Set initial time and date (adjust as needed)
-    Set_Time(23, 59, 47);        // 23:59:47
-    Set_Date(1, 25, 12, 24);     // Sunday, 25 Dec 2024
+    // Initialize LCD (PCF8574 I2C)
+    PCF8574_LCD_init();
     
-    for(;;) {
-        Get_Time();
-        Display_Time();
-        Display_Day();
-        Display_Date();
-        Display_Year();
-        delay_ms(1000);
+    // Clear LCD
+    lcd_command(0x01);
+    vTaskDelay(pdMS_TO_TICKS(100));
+    
+    // Display initialization message
+    cursor_position(0, 0);
+    lcd_print("RTC Initializing...");
+    vTaskDelay(pdMS_TO_TICKS(2000));
+    
+    // Uncomment the line below ONLY ONCE to set initial time
+    // After setting time once, comment it out and reflash
+    // set_initial_time();
+    
+    // Clear LCD
+    lcd_command(0x01);
+    vTaskDelay(pdMS_TO_TICKS(100));
+    
+    // Main loop - continuously update display
+    while (1) {
+        display_rtc_data();
+        vTaskDelay(pdMS_TO_TICKS(1000)); // Update every 1 second
     }
 }
