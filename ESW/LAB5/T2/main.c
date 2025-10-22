@@ -5,7 +5,7 @@
 #include "PCF8574_LCD.c" 
 #include "DS1307.c" 
 #include <stdio.h> 
-
+#define LCD_CMD_CLEAR_DISPLAY 0x01
 typedef unsigned char UCHAR; 
 typedef unsigned int UINT; 
 //RTC time and date variables 
@@ -13,12 +13,11 @@ typedef unsigned int UINT;
 UCHAR hrs, min, sec, day, date, month, year;
 
 // Delay for milliseconds   
-/*
+
 void delay_ms(unsigned int ms){ 
 vTaskDelay(pdMS_TO_TICKS(ms));   
 } 
 
-*/
 //function to convert decimal number to BCD format 
 UCHAR dec2bcd(UCHAR num){ 
 return(((num/10)*6)+num); 
