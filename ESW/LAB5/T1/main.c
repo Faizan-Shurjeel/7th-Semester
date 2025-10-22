@@ -1,30 +1,26 @@
-/*******************************************************************************
-This main.c interfaces DS1307 RTC with ESP32 and displays time/date on LCD
-Line 1: Time (HH:MM:SS)
-Line 2: Day name
-Line 3: Date and Month name
-Line 4: Year
-Created By: Usman Rafique & Abdullah
-Dated: Oct. 21, 2025
-*******************************************************************************/
-
-#include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "driver/gpio.h"
 #include "esp_rom_sys.h"
+#include "PCF8574_LCD.c"
+#include "DS1307.c"
+#include <stdio.h>
+typedef unsigned char UCHAR;
+typedef unsigned int UINT;
+//RTC time and date variables
+UCHAR hrs,min,sec;
+/******************************************************************************/
 
 // Include your LCD and DS1307 header files or paste their functions here
 // For this example, I'm assuming the functions are available
 
 // Function prototypes (from your provided files)
-extern void PCF8574_LCD_init(void);
-extern void lcd_print(char *dat);
-extern void cursor_position(char r, char c);
-extern void lcd_command(uint8_t command);
-extern void DS1307_i2c_init(void);
-extern uint8_t RD_DS1307(uint8_t add);
-extern void WR_DS1307(uint8_t add, uint8_t byte);
+//extern void PCF8574_LCD_init(void);
+//extern void lcd_print(char *dat);//extern void cursor_position(char r, char c);
+//extern void lcd_command(uint8_t command);
+//extern void DS1307_i2c_init(void);
+//extern uint8_t RD_DS1307(uint8_t add);
+//extern void WR_DS1307(uint8_t add, uint8_t byte);
 
 // DS1307 Register addresses
 #define SEC_REG 0x00
