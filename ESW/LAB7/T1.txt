@@ -37,6 +37,7 @@ void delay_ms(unsigned int ms) {
     vTaskDelay(pdMS_TO_TICKS(ms));
 }
 
+// Habeel loru
 // Configure GPIO for direction input
 void GPIO_Config() {
     // Configure direction input pin (GPIO18)
