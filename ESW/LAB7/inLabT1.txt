@@ -1,0 +1,62 @@
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "driver/gpio.h"
+
+// Define GPIO pin numbers
+#define INTERRUPT_PIN_18 GPIO_NUM_18 // GPIO18 for falling edge interrupt
+#define INTERRUPT_PIN_19 GPIO_NUM_19 // GPIO19 for rising edge interrupt
+#define LED_PIN GPIO_NUM_2 // On-board LED GPIO pin
+
+// Delay for milliseconds
+void delay_ms(unsigned int ms){
+    vTaskDelay(pdMS_TO_TICKS(ms));
+}
+
+// Delay for microseconds
+void delay_us(unsigned int i){
+    esp_rom_delay_us(i);
+}
+
+// ISR for GPIO18 (falling edge) - Turn on LED for 200ms
+static void IRAM_ATTR GPIO18_INT_ISR(void *arg) {
+    gpio_set_level(LED_PIN, 1); // Turn on LED
+    delay_us(200000); // 200ms delay
+    gpio_set_level(LED_PIN, 0); // Turn off LED
+}
+
+// ISR for GPIO19 (rising edge) - Turn on LED for 500ms
+static void IRAM_ATTR GPIO19_INT_ISR(void *arg) {
+    gpio_set_level(LED_PIN, 1); // Turn on LED
+    delay_us(500000); // 500ms delay
+    gpio_set_level(LED_PIN, 0); // Turn off LED
+}
+
+/*********************************************************************/
+void app_main() {
+    // Configure LED pin as output
+    esp_rom_gpio_pad_select_gpio(LED_PIN);
+    gpio_set_direction(LED_PIN, GPIO_MODE_OUTPUT);
+    gpio_set_level(LED_PIN, 1); // Turn on LED
+    delay_ms(200);
+    gpio_set_level(LED_PIN, 0); // Turn off LED
+    
+    // Configure GPIO18 as input for falling edge interrupt
+    esp_rom_gpio_pad_select_gpio(INTERRUPT_PIN_18);
+    gpio_set_direction(INTERRUPT_PIN_18, GPIO_MODE_INPUT);
+    gpio_set_intr_type(INTERRUPT_PIN_18, GPIO_INTR_NEGEDGE); // Falling edge
+    
+    // Configure GPIO19 as input for rising edge interrupt
+    esp_rom_gpio_pad_select_gpio(INTERRUPT_PIN_19);
+    gpio_set_direction(INTERRUPT_PIN_19, GPIO_MODE_INPUT);
+    gpio_set_intr_type(INTERRUPT_PIN_19, GPIO_INTR_POSEDGE); // Rising edge
+    
+    // Install GPIO ISR service
+    gpio_install_isr_service(0);
+    
+    // Add ISR handlers for both GPIOs
+    gpio_isr_handler_add(INTERRUPT_PIN_18, GPIO18_INT_ISR, NULL);
+    gpio_isr_handler_add(INTERRUPT_PIN_19, GPIO19_INT_ISR, NULL);
+    
+    // Infinite loop
+    for(;;);
+}

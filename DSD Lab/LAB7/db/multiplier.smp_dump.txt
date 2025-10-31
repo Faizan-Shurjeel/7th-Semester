@@ -1,0 +1,10 @@
+
+State Machine - |multiplier|next_state
+Name next_state.DONE next_state.DECR next_state.SUBT next_state.ADDI next_state.WORKi next_state.IDLE next_state.START 
+next_state.START 0 0 0 0 0 0 0 
+next_state.IDLE 0 0 0 0 0 1 1 
+next_state.WORKi 0 0 0 0 1 0 1 
+next_state.ADDI 0 0 0 1 0 0 1 
+next_state.SUBT 0 0 1 0 0 0 1 
+next_state.DECR 0 1 0 0 0 0 1 
+next_state.DONE 1 0 0 0 0 0 1 

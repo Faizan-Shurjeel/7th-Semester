@@ -1,0 +1,9 @@
+library IEEE;
+use Ieee.std_logic_1164.all;
+
+entity multiplier is 
+port (
+	input : in std_logic;
+	output: out std_logic	
+);
+end multiplier;
