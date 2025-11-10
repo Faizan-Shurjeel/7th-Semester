@@ -1,0 +1,125 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "total_money[0]",
+					"strict" : false
+				},
+				{
+					"name" : "total_money[1]",
+					"strict" : false
+				},
+				{
+					"name" : "total_money[2]",
+					"strict" : false
+				},
+				{
+					"name" : "total_money[3]",
+					"strict" : false
+				},
+				{
+					"name" : "total_money[4]",
+					"strict" : false
+				},
+				{
+					"name" : "total_money[5]",
+					"strict" : false
+				},
+				{
+					"name" : "total_money[6]",
+					"strict" : false
+				},
+				{
+					"name" : "total_money[7]",
+					"strict" : false
+				},
+				{
+					"name" : "change[0]",
+					"strict" : false
+				},
+				{
+					"name" : "change[1]",
+					"strict" : false
+				},
+				{
+					"name" : "change[2]",
+					"strict" : false
+				},
+				{
+					"name" : "change[3]",
+					"strict" : false
+				},
+				{
+					"name" : "change[4]",
+					"strict" : false
+				},
+				{
+					"name" : "change[5]",
+					"strict" : false
+				},
+				{
+					"name" : "change[6]",
+					"strict" : false
+				},
+				{
+					"name" : "change[7]",
+					"strict" : false
+				},
+				{
+					"name" : "dispense[0]",
+					"strict" : false
+				},
+				{
+					"name" : "dispense[1]",
+					"strict" : false
+				},
+				{
+					"name" : "dispense[2]",
+					"strict" : false
+				},
+				{
+					"name" : "rs1",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "rs2",
+					"strict" : false
+				},
+				{
+					"name" : "rs4",
+					"strict" : false
+				},
+				{
+					"name" : "rs8",
+					"strict" : false
+				},
+				{
+					"name" : "fanta",
+					"strict" : false
+				},
+				{
+					"name" : "cola",
+					"strict" : false
+				},
+				{
+					"name" : "sprite",
+					"strict" : false
+				},
+				{
+					"name" : "enter",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

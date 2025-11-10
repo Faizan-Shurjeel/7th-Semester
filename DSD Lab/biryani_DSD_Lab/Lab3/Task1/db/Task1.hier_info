@@ -1,0 +1,19 @@
+|Code_Converter_Moore
+clk => pr_state~8.DATAIN
+rst => pr_state~10.DATAIN
+enable => pr_state.OUTPUTSELECT
+enable => pr_state.OUTPUTSELECT
+enable => pr_state.OUTPUTSELECT
+enable => pr_state.OUTPUTSELECT
+enable => pr_state.OUTPUTSELECT
+enable => pr_state.OUTPUTSELECT
+enable => pr_state.OUTPUTSELECT
+X => Selector0.IN5
+X => Selector2.IN4
+X => Selector4.IN0
+X => Selector6.IN0
+X => Selector8.IN0
+X => Selector10.IN0
+Z << WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+
+

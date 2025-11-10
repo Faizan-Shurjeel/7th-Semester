@@ -1,0 +1,14 @@
+|Code_Converter
+enable => State~3.DATAIN
+X => Nextstate.S2.DATAB
+X => Selector1.IN3
+X => Nextstate.S6.DATAB
+X => Nextstate.S1.DATAB
+X => Nextstate.S3.DATAB
+X => Selector2.IN2
+X => Selector0.IN1
+X => Selector0.IN0
+CLK => State~1.DATAIN
+Z <= Selector0.DB_MAX_OUTPUT_PORT_TYPE
+
+

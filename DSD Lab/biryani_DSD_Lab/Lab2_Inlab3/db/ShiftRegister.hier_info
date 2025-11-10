@@ -1,0 +1,13 @@
+|shift_reg
+Serial_In => S[3].DATAIN
+clock => S[0].CLK
+clock => S[1].CLK
+clock => S[2].CLK
+clock => S[3].CLK
+shift => S[0].ENA
+shift => S[1].ENA
+shift => S[2].ENA
+shift => S[3].ENA
+Q <= S[0].DB_MAX_OUTPUT_PORT_TYPE
+
+

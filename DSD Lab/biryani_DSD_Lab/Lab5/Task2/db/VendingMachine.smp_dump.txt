@@ -1,0 +1,8 @@
+
+State Machine - |vending_machine|current_state
+Name current_state.RETURN_CHANGE current_state.DISPENSER current_state.WAIT_SELECTION current_state.WAIT_MONEY current_state.IDLE 
+current_state.IDLE 0 0 0 0 0 
+current_state.WAIT_MONEY 0 0 0 1 1 
+current_state.WAIT_SELECTION 0 0 1 0 1 
+current_state.DISPENSER 0 1 0 0 1 
+current_state.RETURN_CHANGE 1 0 0 0 1 

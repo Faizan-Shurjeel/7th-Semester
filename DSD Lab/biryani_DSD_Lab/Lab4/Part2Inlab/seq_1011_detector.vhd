@@ -1,0 +1,73 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity seq_1011_detector is
+    Port (
+        clk    : in  std_logic;
+        resetn : in  std_logic; -- active low reset
+        X      : in  std_logic;
+        Z      : out std_logic
+    );
+end seq_1011_detector;
+
+architecture FSM of seq_1011_detector is
+
+    -- Define states
+    type state_type is (S0, S1, S2, S3);
+    signal state, next_state : state_type;
+
+begin
+
+    -----------------------------------------------------
+    -- State Register (sequential)
+    -----------------------------------------------------
+    process(clk, resetn)
+    begin
+        if resetn = '0' then
+            state <= S0;
+        elsif rising_edge(clk) then
+            state <= next_state;
+        end if;
+    end process;
+
+    -----------------------------------------------------
+    -- Next State & Output Logic (Mealy)
+    -----------------------------------------------------
+    process(state, X)
+    begin
+        Z <= '0';  -- default
+        case state is
+
+            when S0 =>
+                if X = '1' then
+                    next_state <= S1;
+                else
+                    next_state <= S0;
+                end if;
+
+            when S1 =>
+                if X = '0' then
+                    next_state <= S2;
+                else
+                    next_state <= S1; -- another 1, stay
+                end if;
+
+            when S2 =>
+                if X = '1' then
+                    next_state <= S3;
+                else
+                    next_state <= S0;
+                end if;
+
+            when S3 =>
+                if X = '1' then
+                    next_state <= S1; 
+                    Z <= '1';         -- sequence 1011 detected!
+                else
+                    next_state <= S2;
+                end if;
+
+        end case;
+    end process;
+
+end FSM;

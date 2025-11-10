@@ -1,0 +1,36 @@
+|Alarm
+DOOR => NOT1a:U0.in1a
+SBELT => NOT1a:U1.in1a
+IGNITION => AND2a:U2.in1a
+IGNITION => AND2a:U3.in1a
+WARNING << OR2a:U4.out1a
+
+
+|Alarm|NOT1a:U0
+in1a => out1a.DATAIN
+out1a <= in1a.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Alarm|NOT1a:U1
+in1a => out1a.DATAIN
+out1a <= in1a.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Alarm|AND2a:U2
+in1a => out1a.IN0
+in2b => out1a.IN1
+out1a <= out1a.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Alarm|AND2a:U3
+in1a => out1a.IN0
+in2b => out1a.IN1
+out1a <= out1a.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Alarm|OR2a:U4
+ina1 => out1a.IN0
+in2b => out1a.IN1
+out1a <= out1a.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,110 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY Code_Converter_Moore IS
+    PORT(
+        clk    : IN  STD_LOGIC;
+        rst    : IN  STD_LOGIC;
+        enable : IN  STD_LOGIC;
+        X      : IN  STD_LOGIC;
+        Z      : OUT STD_LOGIC
+    );
+END Code_Converter_Moore;
+
+ARCHITECTURE Behavioral OF Code_Converter_Moore IS
+
+    TYPE state_type IS (
+        S0, S1, S2, S3, S4, S5, S6
+    );
+    SIGNAL pr_state, nx_state : state_type;
+
+BEGIN
+
+    --------------------------------------------------------------------
+    -- Sequential process: state register
+    --------------------------------------------------------------------
+    PROCESS (clk, rst)
+    BEGIN
+        IF (rst = '1') THEN
+            pr_state <= S0;
+        ELSIF rising_edge(clk) THEN
+            IF (enable = '1') THEN
+                pr_state <= nx_state;
+            END IF;
+        END IF;
+    END PROCESS;
+
+    --------------------------------------------------------------------
+    -- Combinational process: next state logic
+    --------------------------------------------------------------------
+    PROCESS (pr_state, X)
+    BEGIN
+        CASE pr_state IS
+            WHEN S0 =>
+                IF X = '0' THEN
+                    nx_state <= S1;
+                ELSE
+                    nx_state <= S2;
+                END IF;
+
+            WHEN S1 =>
+                IF X = '0' THEN
+                    nx_state <= S3;
+                ELSE
+                    nx_state <= S4;
+                END IF;
+
+            WHEN S2 =>
+                IF X = '0' THEN
+                    nx_state <= S4;
+                ELSE
+                    nx_state <= S4; 
+                END IF;
+
+            WHEN S3 =>
+                IF X = '0' THEN
+                    nx_state <= S5;
+                ELSE
+                    nx_state <= S5;
+                END IF;
+
+            WHEN S4 =>
+                IF X = '0' THEN
+                    nx_state <= S5;
+                ELSE
+                    nx_state <= S6;
+                END IF;
+
+            WHEN S5 =>
+                IF X = '0' OR X = '1' THEN
+                    nx_state <= S0;
+                END IF;
+
+            WHEN S6 =>
+                IF X = '0' OR X = '1' THEN
+                    nx_state <= S0;
+                END IF;
+
+            WHEN OTHERS =>
+                nx_state <= S0;
+        END CASE;
+    END PROCESS;
+
+    --------------------------------------------------------------------
+    -- Output process
+    --------------------------------------------------------------------
+    PROCESS (pr_state)
+    BEGIN
+        CASE pr_state IS
+            WHEN S0 => Z <= '1';
+            WHEN S1 => Z <= '1';
+            WHEN S2 => Z <= '0';
+            WHEN S3 => Z <= '0';
+            WHEN S4 => Z <= '1';
+            WHEN S5 => Z <= '0';
+            WHEN S6 => Z <= '1';
+            WHEN OTHERS => Z <= '0';
+        END CASE;
+    END PROCESS;
+
+END Behavioral;

@@ -1,0 +1,86 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity even_odd_updown_counter is
+    Port (
+        clk   : in  std_logic;
+        rst   : in  std_logic;
+        cen   : in  std_logic;
+        dir   : in  std_logic;  -- 1 = up, 0 = down
+        count : out std_logic_vector(3 downto 0)
+    );
+end even_odd_updown_counter;
+
+architecture Behavioral of even_odd_updown_counter is
+    signal state, next_state : unsigned(3 downto 0);
+    signal even_mode : std_logic := '1';  -- '1' = counting evens, '0' = counting odds
+    signal next_even_mode : std_logic;
+begin
+
+    ------------------------------------------------------------------------
+    -- State register (sequential)
+    ------------------------------------------------------------------------
+    process(clk, rst)
+    begin
+        if rst = '1' then
+            state <= (others => '0');
+            even_mode <= '1';
+        elsif rising_edge(clk) then
+            if cen = '1' then
+                state <= next_state;
+                even_mode <= next_even_mode;
+            end if;
+        end if;
+    end process;
+
+    ------------------------------------------------------------------------
+    -- Next-state logic (combinational)
+    ------------------------------------------------------------------------
+    process(state, dir, even_mode)
+    begin
+        next_state <= state;
+        next_even_mode <= even_mode;
+
+        if dir = '1' then  -- counting up
+            if even_mode = '1' then  -- even counting
+                if state = "1110" then  -- reached 14
+                    next_state <= "0001";  -- switch to odd counting (start at 1)
+                    next_even_mode <= '0';
+                else
+                    next_state <= state + 2;
+                end if;
+            else  -- odd counting
+                if state = "1111" then  -- reached 15
+                    next_state <= "0000";  -- wrap back to even
+                    next_even_mode <= '1';
+                else
+                    next_state <= state + 2;
+                end if;
+            end if;
+
+        else  -- dir = '0', counting down
+            if even_mode = '1' then  -- even counting
+                if state = "0000" then
+                    next_state <= "1111";  -- switch to odd counting (start at 15)
+                    next_even_mode <= '0';
+                else
+                    next_state <= state - 2;
+                end if;
+            else  -- odd counting
+                if state = "0001" then
+                    next_state <= "1110";  -- switch to even counting (start at 14)
+                    next_even_mode <= '1';
+                else
+                    next_state <= state - 2;
+                end if;
+            end if;
+        end if;
+    end process;
+
+    ------------------------------------------------------------------------
+    -- Output assignment
+    ------------------------------------------------------------------------
+    count <= std_logic_vector(state);
+
+end Behavioral;

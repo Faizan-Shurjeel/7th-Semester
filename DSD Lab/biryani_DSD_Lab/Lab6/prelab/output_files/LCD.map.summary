@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Fri Oct 17 11:40:14 2025
+Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+Revision Name : LCD
+Top-level Entity Name : ControllerTest_TOP
+Family : Cyclone IV E
+Total logic elements : 199
+    Total combinational functions : 198
+    Dedicated logic registers : 55
+Total registers : 55
+Total pins : 13
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

@@ -1,0 +1,10 @@
+
+State Machine - |Code_Converter_Moore|pr_state
+Name pr_state.S6 pr_state.S5 pr_state.S4 pr_state.S3 pr_state.S2 pr_state.S1 pr_state.S0 
+pr_state.S0 0 0 0 0 0 0 0 
+pr_state.S1 0 0 0 0 0 1 1 
+pr_state.S2 0 0 0 0 1 0 1 
+pr_state.S3 0 0 0 1 0 0 1 
+pr_state.S4 0 0 1 0 0 0 1 
+pr_state.S5 0 1 0 0 0 0 1 
+pr_state.S6 1 0 0 0 0 0 1 

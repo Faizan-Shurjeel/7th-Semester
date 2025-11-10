@@ -1,0 +1,319 @@
+$comment
+	File created using the following command:
+		vcd file Task1.msim.vcd -direction
+$end
+$date
+	Fri Sep 26 11:27:52 2025
+$end
+$version
+	ModelSim Version 2020.1
+$end
+$timescale
+	1ps
+$end
+
+$scope module code_converter_moore_vhd_vec_tst $end
+$var wire 1 ! clk $end
+$var wire 1 " enable $end
+$var wire 1 # rst $end
+$var wire 1 $ X $end
+$var wire 1 % Z $end
+
+$scope module i1 $end
+$var wire 1 & gnd $end
+$var wire 1 ' vcc $end
+$var wire 1 ( unknown $end
+$var wire 1 ) devoe $end
+$var wire 1 * devclrn $end
+$var wire 1 + devpor $end
+$var wire 1 , ww_devoe $end
+$var wire 1 - ww_devclrn $end
+$var wire 1 . ww_devpor $end
+$var wire 1 / ww_clk $end
+$var wire 1 0 ww_rst $end
+$var wire 1 1 ww_enable $end
+$var wire 1 2 ww_X $end
+$var wire 1 3 ww_Z $end
+$var wire 1 4 \rst~inputclkctrl_INCLK_bus\ [3] $end
+$var wire 1 5 \rst~inputclkctrl_INCLK_bus\ [2] $end
+$var wire 1 6 \rst~inputclkctrl_INCLK_bus\ [1] $end
+$var wire 1 7 \rst~inputclkctrl_INCLK_bus\ [0] $end
+$var wire 1 8 \clk~inputclkctrl_INCLK_bus\ [3] $end
+$var wire 1 9 \clk~inputclkctrl_INCLK_bus\ [2] $end
+$var wire 1 : \clk~inputclkctrl_INCLK_bus\ [1] $end
+$var wire 1 ; \clk~inputclkctrl_INCLK_bus\ [0] $end
+$var wire 1 < \Z~output_o\ $end
+$var wire 1 = \clk~input_o\ $end
+$var wire 1 > \clk~inputclkctrl_outclk\ $end
+$var wire 1 ? \X~input_o\ $end
+$var wire 1 @ \Selector8~0_combout\ $end
+$var wire 1 A \rst~input_o\ $end
+$var wire 1 B \rst~inputclkctrl_outclk\ $end
+$var wire 1 C \enable~input_o\ $end
+$var wire 1 D \pr_state.S2~q\ $end
+$var wire 1 E \Selector0~0_combout\ $end
+$var wire 1 F \pr_state.S4~q\ $end
+$var wire 1 G \Selector2~0_combout\ $end
+$var wire 1 H \pr_state.S5~q\ $end
+$var wire 1 I \Selector4~0_combout\ $end
+$var wire 1 J \pr_state.S6~q\ $end
+$var wire 1 K \WideOr0~0_combout\ $end
+$var wire 1 L \pr_state.S0~q\ $end
+$var wire 1 M \Selector10~0_combout\ $end
+$var wire 1 N \pr_state.S1~q\ $end
+$var wire 1 O \Selector6~0_combout\ $end
+$var wire 1 P \pr_state.S3~q\ $end
+$var wire 1 Q \WideOr6~0_combout\ $end
+$var wire 1 R \ALT_INV_WideOr6~0_combout\ $end
+$var wire 1 S \ALT_INV_rst~inputclkctrl_outclk\ $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+0"
+0#
+0$
+1%
+0&
+1'
+x(
+1)
+1*
+1+
+1,
+1-
+1.
+0/
+00
+01
+02
+13
+1<
+0=
+0>
+0?
+0@
+0A
+0B
+0C
+0D
+0E
+0F
+0G
+0H
+0I
+0J
+1K
+0L
+1M
+0N
+0O
+0P
+0Q
+1R
+1S
+18
+19
+1:
+0;
+14
+15
+16
+07
+$end
+#120000
+1"
+11
+1C
+#130000
+1!
+1/
+1=
+1;
+1>
+1L
+1N
+1O
+0M
+#140000
+0!
+0/
+0=
+0;
+0>
+#160000
+1!
+1/
+1=
+1;
+1>
+0N
+1P
+1G
+1Q
+0O
+0R
+0<
+03
+0%
+#170000
+0!
+0/
+0=
+0;
+0>
+#190000
+1!
+1/
+1=
+1;
+1>
+1H
+0P
+0G
+0K
+#200000
+0!
+0/
+0=
+0;
+0>
+#220000
+1!
+1/
+1=
+1;
+1>
+0H
+0L
+1M
+1K
+0Q
+1R
+1<
+13
+1%
+#230000
+0!
+0/
+0=
+0;
+0>
+#340000
+1#
+10
+1A
+17
+1B
+0S
+#350000
+1!
+1/
+1=
+1;
+1>
+#360000
+0!
+0/
+0=
+0;
+0>
+#420000
+0#
+00
+0A
+07
+0B
+1S
+#430000
+1$
+12
+1?
+1@
+0M
+#450000
+1!
+1/
+1=
+1;
+1>
+1D
+1L
+0@
+1E
+1Q
+0R
+0<
+03
+0%
+#460000
+0!
+0/
+0=
+0;
+0>
+#480000
+1!
+1/
+1=
+1;
+1>
+0D
+1F
+1I
+0E
+0Q
+1R
+1<
+13
+1%
+#500000
+0!
+0/
+0=
+0;
+0>
+#540000
+1!
+1/
+1=
+1;
+1>
+0F
+1J
+0K
+0I
+#550000
+0!
+0/
+0=
+0;
+0>
+#580000
+1!
+1/
+1=
+1;
+1>
+0J
+0L
+1@
+1K
+#590000
+0!
+0/
+0=
+0;
+0>
+#630000
+0$
+0"
+02
+01
+0C
+0?
+0@
+1M
+#1000000

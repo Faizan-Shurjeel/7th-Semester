@@ -1,0 +1,38 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity Adder4 is
+    port (
+        A   : in  std_logic_vector(3 downto 0);
+        B   : in  std_logic_vector(3 downto 0);
+        Sum : out std_logic_vector(3 downto 0);
+        Cout: out std_logic
+    );
+end Adder4;
+
+architecture Structural of Adder4 is
+
+    component FA
+        port (
+            a     : in  std_logic;
+            b     : in  std_logic;
+            c     : in  std_logic;
+            sum   : out std_logic;
+            carry : out std_logic
+        );
+    end component;
+
+    signal Bx : std_logic_vector(3 downto 0); -- XORed B
+    signal C  : std_logic_vector(3 downto 0); -- carry chain
+
+begin
+
+    -- Instantiate Full Adders
+    FA0: FA port map(a => A(0), b => Bx(0), c => Sel,   sum => Sum(0), carry => C(0));
+    FA1: FA port map(a => A(1), b => Bx(1), c => C(0),  sum => Sum(1), carry => C(1));
+    FA2: FA port map(a => A(2), b => Bx(2), c => C(1),  sum => Sum(2), carry => C(2));
+    FA3: FA port map(a => A(3), b => Bx(3), c => C(2),  sum => Sum(3), carry => C(3));
+
+    Cout <= C(3);
+
+end Structural;

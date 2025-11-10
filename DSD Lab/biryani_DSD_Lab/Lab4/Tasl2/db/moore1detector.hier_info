@@ -1,0 +1,9 @@
+|two_consecutive_ones
+clk => state~1.DATAIN
+Resetn => state~3.DATAIN
+W => next_state.S1.DATAB
+W => next_state.S2.DATAA
+W => state.S0.DATAIN
+Z << Z.DB_MAX_OUTPUT_PORT_TYPE
+
+

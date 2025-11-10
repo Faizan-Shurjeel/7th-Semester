@@ -1,0 +1,178 @@
+$comment
+	File created using the following command:
+		vcd file Task1.msim.vcd -direction
+$end
+$date
+	Fri Sep 19 10:29:11 2025
+$end
+$version
+	ModelSim Version 2020.1
+$end
+$timescale
+	1ps
+$end
+
+$scope module alarm_vhd_vec_tst $end
+$var wire 1 ! DOOR $end
+$var wire 1 " IGNITION $end
+$var wire 1 # SBELT $end
+$var wire 1 $ WARNING $end
+
+$scope module i1 $end
+$var wire 1 % gnd $end
+$var wire 1 & vcc $end
+$var wire 1 ' unknown $end
+$var wire 1 ( devoe $end
+$var wire 1 ) devclrn $end
+$var wire 1 * devpor $end
+$var wire 1 + ww_devoe $end
+$var wire 1 , ww_devclrn $end
+$var wire 1 - ww_devpor $end
+$var wire 1 . ww_DOOR $end
+$var wire 1 / ww_SBELT $end
+$var wire 1 0 ww_IGNITION $end
+$var wire 1 1 ww_WARNING $end
+$var wire 1 2 \WARNING~output_o\ $end
+$var wire 1 3 \DOOR~input_o\ $end
+$var wire 1 4 \SBELT~input_o\ $end
+$var wire 1 5 \IGNITION~input_o\ $end
+$var wire 1 6 \U4|out1a~0_combout\ $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+0"
+0#
+0$
+0%
+1&
+x'
+1(
+1)
+1*
+1+
+1,
+1-
+0.
+0/
+00
+01
+02
+03
+04
+05
+06
+$end
+#40000
+1!
+1.
+13
+#80000
+0!
+0.
+03
+#90000
+1"
+10
+15
+16
+12
+11
+1$
+#130000
+0"
+00
+05
+06
+02
+01
+0$
+#160000
+1#
+1/
+14
+#190000
+0#
+0/
+04
+#230000
+1"
+1!
+10
+1.
+13
+15
+16
+12
+11
+1$
+#270000
+0"
+0!
+00
+0.
+03
+05
+06
+02
+01
+0$
+#310000
+1"
+1#
+10
+1/
+14
+15
+16
+12
+11
+1$
+#360000
+0"
+0#
+00
+0/
+04
+05
+06
+02
+01
+0$
+#410000
+1#
+1!
+1/
+1.
+13
+14
+#450000
+0#
+0!
+0/
+0.
+03
+04
+#500000
+1#
+1!
+1"
+1/
+1.
+10
+15
+13
+14
+#540000
+0#
+0!
+0"
+0/
+0.
+00
+05
+03
+04
+#1000000

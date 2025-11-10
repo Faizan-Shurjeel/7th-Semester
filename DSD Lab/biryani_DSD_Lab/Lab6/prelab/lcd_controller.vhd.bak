@@ -1,0 +1,126 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY lcd_controller IS
+    PORT(
+        clk     : IN STD_LOGIC;     --system clock
+        reset_n : IN STD_LOGIC;     --active low reinitializes lcd
+        rs, e   : OUT STD_LOGIC;    --read/write, setup/data, and enable for lcd
+        rw      : OUT STD_LOGIC;    --active low reinitializes lcd
+        lcd_data: OUT STD_LOGIC_VECTOR(7 DOWNTO 0); --data for the top line of the lcd
+        line1_buffer : IN STD_LOGIC_VECTOR(127 DOWNTO 0); --Data for the top line of the LCD
+        line2_buffer : IN STD_LOGIC_VECTOR(127 DOWNTO 0)  --Data for the bottom line of the LCD
+    );
+END lcd_controller;
+
+ARCHITECTURE controller OF lcd_controller IS
+    TYPE CONTROL IS (power_up, initialize, resetline, line1, line2, send);
+    SIGNAL state : CONTROL;
+    CONSTANT freq : NATURAL RANGE 0 TO 16#1_C9C3_80# := 50E6; --system clock frequency in MHz
+    SIGNAL ptr : natural range 0 to 16 := 1; -- To keep track of what character we are up to
+    SIGNAL line : natural range 1 to 2;
+    SIGNAL clk_count : INTEGER;
+    PROCESS(clk)
+        VARIABLE clk_count : INTEGER := 0; --event counter for timing
+    BEGIN
+        IF(clk'EVENT AND clk = '1') THEN
+            CASE state IS
+                WHEN power_up =>
+                    --wait 50 ms to ensure VDD has risen and required LCD wait is met
+                    IF(clk_count < (50000 * (freq))) THEN --wait 50 ms
+                        clk_count := clk_count + 1;
+                    ELSE
+                        clk_count := 0;
+                        state <= initialize;    --power-up complete
+                        --initialize data on "00110000";
+                        lcd_data <= "00110000";
+                    END IF;
+                WHEN initialize =>
+                    --cycle through initialization sequence
+                    IF(clk_count < (freq)) THEN --function set
+                        lcd_data <= "00111000";
+                        --2-line mode, display on
+                    ELSIF(clk_count < (2 * freq)) THEN
+                        lcd_data <= "00001111";
+                        --display on, cursor on, blink on
+                    ELSIF(clk_count < (3 * freq)) THEN
+                        lcd_data <= "00000001";
+                        --display off
+                    ELSIF(clk_count < (4 * freq)) THEN
+                        lcd_data <= "00001111";
+                        --display on, cursor on, blink on
+                    ELSIF(clk_count < (5 * freq)) THEN
+                        lcd_data <= "00000110";
+                        --2-line mode, display on
+                        --exit 50 us
+                    ELSIF(clk_count < (6 * freq)) THEN
+                        lcd_data <= "00001111";
+                        --display on, cursor off, blink off
+                    ELSIF(clk_count < (7 * freq)) THEN --display clear
+                        lcd_data <= "00000001";
+                        --wait 2 ms
+                    ELSIF(clk_count < (8 * freq)) THEN --entry mode set
+                        lcd_data <= "00000110";
+                        --increment mode, entire shift off
+                    ELSIF(clk_count < (9 * freq)) THEN --entry mode set
+                        lcd_data <= "00000110";
+                        --increment mode, entire shift on
+                        --wait 40 us
+                    ELSE
+                        state <= initialize;
+                        --initialization complete
+                    END IF;
+                    state <= resetline;
+                WHEN resetline =>
+                    line <= 1;
+                    ptr <= 1;
+                    lcd_data <= "10000000";
+                    state <= line1;
+                WHEN line1 =>
+                    IF(ptr > 16) THEN
+                        line <= 2;
+                        ptr <= 1;
+                        state <= line2;
+                    ELSE
+                        lcd_data <= line1_buffer(ptr*8 + 7 downto ptr*8);
+                        ptr <= ptr + 1;
+                        state <= send;
+                    END IF;
+                WHEN line2 =>
+                    IF(ptr > 16) THEN
+                        state <= resetline;
+                    ELSE
+                        lcd_data <= line2_buffer(ptr*8 + 7 downto ptr*8);
+                        ptr <= ptr + 1;
+                        state <= send;
+                    END IF;
+                WHEN send =>
+                    --40us wait for data to exit
+                    IF(clk_count < (40 * (freq))) THEN --do not exit for 40us
+                        e <= '1'; --positive enable half-cycle
+                    ELSIF(clk_count < (80 * freq)) THEN
+                        e <= '0'; --negative enable half-cycle
+                    ELSE
+                        clk_count := 0;
+                        IF ptr > 16 THEN
+                            IF line = 1 THEN
+                                state <= line2;
+                            ELSE
+                                state <= resetline;
+                            END IF;
+                        ELSIF ptr <= 16 THEN
+                            IF line = 1 THEN
+                                state <= line1;
+                            ELSE
+                                state <= line2;
+                            END IF;
+                        END IF;
+                    END IF;
+            END CASE;
+            --reset
+            IF (reset_n = '1') THEN
+                state <= power_up;
+            END IF;
+        END IF;
+    END PROCESS;
+END controller;
