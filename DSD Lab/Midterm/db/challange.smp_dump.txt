@@ -1,0 +1,12 @@
+
+State Machine - |challange|nextstate
+Name nextstate.s2 nextstate.s1 nextstate.s0 
+nextstate.s0 0 0 0 
+nextstate.s1 0 1 1 
+nextstate.s2 1 0 1 
+
+State Machine - |challange|state
+Name state.s2 state.s1 state.s0 
+state.s0 0 0 0 
+state.s1 0 1 1 
+state.s2 1 0 1 

@@ -1,0 +1,28 @@
+|challange
+CLEAR => nextstate.s2.OUTPUTSELECT
+CLEAR => nextstate.s1.OUTPUTSELECT
+CLEAR => nextstate.s0.OUTPUTSELECT
+CLEAR => j[0].ACLR
+CLEAR => j[1].ACLR
+CLEAR => j[2].ACLR
+CLEAR => j[3].ACLR
+CLEAR => i[0].ACLR
+CLEAR => i[1].ACLR
+CLEAR => state~3.DATAIN
+btn => Selector1.IN2
+btn => Selector0.IN0
+clk => j[0].CLK
+clk => j[1].CLK
+clk => j[2].CLK
+clk => j[3].CLK
+clk => i[0].CLK
+clk => i[1].CLK
+clk => nextstate~4.DATAIN
+clk => state~1.DATAIN
+vehicle_red <= vehicle_red.DB_MAX_OUTPUT_PORT_TYPE
+vehicle_yellow <= vehicle_yellow.DB_MAX_OUTPUT_PORT_TYPE
+vehicle_green <= vehicle_green.DB_MAX_OUTPUT_PORT_TYPE
+pedestrian_red <= pedestrian_red.DB_MAX_OUTPUT_PORT_TYPE
+pedestrian_green <= pedestrian_green.DB_MAX_OUTPUT_PORT_TYPE
+
+
