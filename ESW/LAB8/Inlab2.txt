@@ -1,0 +1,30 @@
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "driver/dac.h"
+
+typedef unsigned char UCHAR;
+typedef unsigned int UINT;
+
+// Delay for milliseconds
+void delay_ms(unsigned int ms){
+    vTaskDelay(pdMS_TO_TICKS(ms));
+}
+
+// Delay for microseconds
+void delay_us(unsigned int i){
+    esp_rom_delay_us(i);
+}
+
+void app_main(){
+    dac_output_enable(DAC_CHANNEL_1); // GPIO 25 (DAC1)
+
+    while(1){
+        // HIGH state - output maximum voltage
+        dac_output_voltage(DAC_CHANNEL_1, 255);
+        delay_us(500);
+        
+        // LOW state - output minimum voltage
+        dac_output_voltage(DAC_CHANNEL_1, 0);
+        delay_us(500);
+    } // end while
+}

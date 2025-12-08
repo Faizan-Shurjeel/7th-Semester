@@ -1,0 +1,44 @@
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "driver/dac_oneshot.h"
+#include "hal/dac_types.h"
+#include <math.h>
+
+typedef unsigned char UCHAR;
+typedef unsigned int UINT;
+
+// Delay for microseconds
+void delay_us(unsigned int i){
+    esp_rom_delay_us(i);
+}
+
+void app_main(){
+    float voltage;
+    UCHAR dac_value;
+    
+    // Configure DAC channel (GPIO 26)
+    dac_oneshot_handle_t dac_handle;
+    dac_oneshot_config_t dac_cfg = {
+        .chan_id = DAC_CHAN_1  // DAC_CHAN_1 corresponds to GPIO26
+    };
+    
+    // Initialize DAC channel
+    dac_oneshot_new_channel(&dac_cfg, &dac_handle);
+    
+    while(1){
+        // Generate decaying exponential waveform
+        for(int i = 0; i < 255; i++){
+            // Exponential decay formula: V(t) = V_max * e^(-t/tau)
+            // Using decay constant to create visible decay
+            voltage = 255.0 * expf(-i / 25.0);
+            dac_value = (UCHAR)voltage;
+            
+            dac_oneshot_output_voltage(dac_handle, dac_value);
+            delay_us(100);  // Adjust for desired decay rate
+        }
+        
+        // Hold at zero briefly before repeating
+        dac_oneshot_output_voltage(dac_handle, 0);
+        vTaskDelay(pdMS_TO_TICKS(10));
+    }
+}

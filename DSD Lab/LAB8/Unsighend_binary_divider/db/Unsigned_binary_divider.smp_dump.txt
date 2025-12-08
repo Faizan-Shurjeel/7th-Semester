@@ -1,0 +1,9 @@
+
+State Machine - |Unsigned_binary_divider|current_state
+Name current_state.DONE_STATE current_state.SHIFT current_state.SUBTRACT current_state.CHECK current_state.LOAD current_state.IDLE 
+current_state.IDLE 0 0 0 0 0 0 
+current_state.LOAD 0 0 0 0 1 1 
+current_state.CHECK 0 0 0 1 0 1 
+current_state.SUBTRACT 0 0 1 0 0 1 
+current_state.SHIFT 0 1 0 0 0 1 
+current_state.DONE_STATE 1 0 0 0 0 1 

@@ -1,0 +1,41 @@
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "driver/dac_oneshot.h"
+#include "hal/dac_types.h"
+
+typedef unsigned char UCHAR;
+typedef unsigned int UINT;
+
+// Delay for microseconds
+void delay_us(unsigned int i){
+    esp_rom_delay_us(i);
+}
+
+void app_main(){
+    UCHAR i;
+    
+    // Configure DAC channel (GPIO 25)
+    dac_oneshot_handle_t dac_handle;
+    dac_oneshot_config_t dac_cfg = {
+        .chan_id = DAC_CHAN_0  // DAC_CHAN_0 corresponds to GPIO25
+    };
+    
+    // Initialize DAC channel
+    dac_oneshot_new_channel(&dac_cfg, &dac_handle);
+    
+    while(1){
+        // Rising edge: 0 to 255
+        i = 0;
+        while(i < 255){
+            dac_oneshot_output_voltage(dac_handle, i++);
+            delay_us(1);
+        }
+        
+        // Falling edge: 255 to 0
+        i = 255;
+        while(i > 0){
+            dac_oneshot_output_voltage(dac_handle, i--);
+            delay_us(1);
+        }
+    }
+}
