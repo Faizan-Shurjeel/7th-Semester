@@ -1,0 +1,2250 @@
+// Copyright (C) 2025  Altera Corporation. All rights reserved.
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and any partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, the Altera Quartus Prime License Agreement,
+// the Altera IP License Agreement, or other applicable license
+// agreement, including, without limitation, that your use is for
+// the sole purpose of programming logic devices manufactured by
+// Altera and sold by Altera or its authorized distributors.  Please
+// refer to the Altera Software License Subscription Agreements 
+// on the Quartus Prime software download page.
+
+// VENDOR "Altera"
+// PROGRAM "Quartus Prime"
+// VERSION "Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition"
+
+// DATE "12/12/2025 12:54:02"
+
+// 
+// Device: Altera EP4CE115F29C7 Package FBGA780
+// 
+
+// 
+// This Verilog file should be used for Questa Intel FPGA (Verilog) only
+// 
+
+`timescale 1 ps/ 1 ps
+
+module lab (
+	CLK,
+	mem,
+	addr,
+	datain,
+	WR,
+	dataout);
+input 	CLK;
+input 	mem;
+input 	[1:0] addr;
+input 	[7:0] datain;
+input 	WR;
+output 	[7:0] dataout;
+
+// Design Ports Information
+// dataout[0]	=>  Location: PIN_C12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// dataout[1]	=>  Location: PIN_J14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// dataout[2]	=>  Location: PIN_D12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// dataout[3]	=>  Location: PIN_D13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// dataout[4]	=>  Location: PIN_H14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// dataout[5]	=>  Location: PIN_C13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// dataout[6]	=>  Location: PIN_D14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// dataout[7]	=>  Location: PIN_C14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// addr[1]	=>  Location: PIN_H15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// addr[0]	=>  Location: PIN_B17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// CLK	=>  Location: PIN_J1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// mem	=>  Location: PIN_J15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// WR	=>  Location: PIN_F14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// datain[0]	=>  Location: PIN_E15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// datain[1]	=>  Location: PIN_D15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// datain[2]	=>  Location: PIN_F15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// datain[3]	=>  Location: PIN_C15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// datain[4]	=>  Location: PIN_D16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// datain[5]	=>  Location: PIN_A12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// datain[6]	=>  Location: PIN_G14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// datain[7]	=>  Location: PIN_A17,	 I/O Standard: 2.5 V,	 Current Strength: Default
+
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+tri1 devclrn;
+tri1 devpor;
+tri1 devoe;
+wire \dataout[0]~output_o ;
+wire \dataout[1]~output_o ;
+wire \dataout[2]~output_o ;
+wire \dataout[3]~output_o ;
+wire \dataout[4]~output_o ;
+wire \dataout[5]~output_o ;
+wire \dataout[6]~output_o ;
+wire \dataout[7]~output_o ;
+wire \CLK~input_o ;
+wire \CLK~inputclkctrl_outclk ;
+wire \addr[1]~input_o ;
+wire \datain[0]~input_o ;
+wire \SRAM_inst|tmp_ram~27feeder_combout ;
+wire \addr[0]~input_o ;
+wire \WR~input_o ;
+wire \mem~input_o ;
+wire \SRAM_inst|tmp_ram~59_combout ;
+wire \SRAM_inst|tmp_ram~27_q ;
+wire \SRAM_inst|tmp_ram~62_combout ;
+wire \SRAM_inst|tmp_ram~35_q ;
+wire \SRAM_inst|tmp_ram~61_combout ;
+wire \SRAM_inst|tmp_ram~11_q ;
+wire \SRAM_inst|tmp_ram~19feeder_combout ;
+wire \SRAM_inst|tmp_ram~60_combout ;
+wire \SRAM_inst|tmp_ram~19_q ;
+wire \SRAM_inst|tmp_ram~43_combout ;
+wire \SRAM_inst|tmp_ram~44_combout ;
+wire \SRAM_inst|Data_out[0]~reg0_q ;
+wire \SRAM_inst|Data_out[0]~0_combout ;
+wire \SRAM_inst|Data_out[0]~en_q ;
+wire \datain[1]~input_o ;
+wire \SRAM_inst|tmp_ram~36feeder_combout ;
+wire \SRAM_inst|tmp_ram~36_q ;
+wire \SRAM_inst|tmp_ram~20feeder_combout ;
+wire \SRAM_inst|tmp_ram~20_q ;
+wire \SRAM_inst|tmp_ram~12_q ;
+wire \SRAM_inst|tmp_ram~28feeder_combout ;
+wire \SRAM_inst|tmp_ram~28_q ;
+wire \SRAM_inst|tmp_ram~45_combout ;
+wire \SRAM_inst|tmp_ram~46_combout ;
+wire \SRAM_inst|Data_out[1]~reg0_q ;
+wire \SRAM_inst|Data_out[1]~1_combout ;
+wire \SRAM_inst|Data_out[1]~en_q ;
+wire \datain[2]~input_o ;
+wire \SRAM_inst|tmp_ram~29feeder_combout ;
+wire \SRAM_inst|tmp_ram~29_q ;
+wire \SRAM_inst|tmp_ram~37_q ;
+wire \SRAM_inst|tmp_ram~13_q ;
+wire \SRAM_inst|tmp_ram~21feeder_combout ;
+wire \SRAM_inst|tmp_ram~21_q ;
+wire \SRAM_inst|tmp_ram~47_combout ;
+wire \SRAM_inst|tmp_ram~48_combout ;
+wire \SRAM_inst|Data_out[2]~reg0_q ;
+wire \SRAM_inst|Data_out[2]~2_combout ;
+wire \SRAM_inst|Data_out[2]~en_q ;
+wire \datain[3]~input_o ;
+wire \SRAM_inst|tmp_ram~22feeder_combout ;
+wire \SRAM_inst|tmp_ram~22_q ;
+wire \SRAM_inst|tmp_ram~38_q ;
+wire \SRAM_inst|tmp_ram~14_q ;
+wire \SRAM_inst|tmp_ram~30feeder_combout ;
+wire \SRAM_inst|tmp_ram~30_q ;
+wire \SRAM_inst|tmp_ram~49_combout ;
+wire \SRAM_inst|tmp_ram~50_combout ;
+wire \SRAM_inst|Data_out[3]~reg0_q ;
+wire \SRAM_inst|Data_out[3]~3_combout ;
+wire \SRAM_inst|Data_out[3]~en_q ;
+wire \datain[4]~input_o ;
+wire \SRAM_inst|tmp_ram~31feeder_combout ;
+wire \SRAM_inst|tmp_ram~31_q ;
+wire \SRAM_inst|tmp_ram~39feeder_combout ;
+wire \SRAM_inst|tmp_ram~39_q ;
+wire \SRAM_inst|tmp_ram~15_q ;
+wire \SRAM_inst|tmp_ram~23feeder_combout ;
+wire \SRAM_inst|tmp_ram~23_q ;
+wire \SRAM_inst|tmp_ram~51_combout ;
+wire \SRAM_inst|tmp_ram~52_combout ;
+wire \SRAM_inst|Data_out[4]~reg0_q ;
+wire \SRAM_inst|Data_out[4]~4_combout ;
+wire \SRAM_inst|Data_out[4]~en_q ;
+wire \datain[5]~input_o ;
+wire \SRAM_inst|tmp_ram~24feeder_combout ;
+wire \SRAM_inst|tmp_ram~24_q ;
+wire \SRAM_inst|tmp_ram~40feeder_combout ;
+wire \SRAM_inst|tmp_ram~40_q ;
+wire \SRAM_inst|tmp_ram~16_q ;
+wire \SRAM_inst|tmp_ram~32feeder_combout ;
+wire \SRAM_inst|tmp_ram~32_q ;
+wire \SRAM_inst|tmp_ram~53_combout ;
+wire \SRAM_inst|tmp_ram~54_combout ;
+wire \SRAM_inst|Data_out[5]~reg0_q ;
+wire \SRAM_inst|Data_out[5]~5_combout ;
+wire \SRAM_inst|Data_out[5]~en_q ;
+wire \datain[6]~input_o ;
+wire \SRAM_inst|tmp_ram~33feeder_combout ;
+wire \SRAM_inst|tmp_ram~33_q ;
+wire \SRAM_inst|tmp_ram~41feeder_combout ;
+wire \SRAM_inst|tmp_ram~41_q ;
+wire \SRAM_inst|tmp_ram~17_q ;
+wire \SRAM_inst|tmp_ram~25feeder_combout ;
+wire \SRAM_inst|tmp_ram~25_q ;
+wire \SRAM_inst|tmp_ram~55_combout ;
+wire \SRAM_inst|tmp_ram~56_combout ;
+wire \SRAM_inst|Data_out[6]~reg0_q ;
+wire \SRAM_inst|Data_out[6]~6_combout ;
+wire \SRAM_inst|Data_out[6]~en_q ;
+wire \datain[7]~input_o ;
+wire \SRAM_inst|tmp_ram~42feeder_combout ;
+wire \SRAM_inst|tmp_ram~42_q ;
+wire \SRAM_inst|tmp_ram~26feeder_combout ;
+wire \SRAM_inst|tmp_ram~26_q ;
+wire \SRAM_inst|tmp_ram~18_q ;
+wire \SRAM_inst|tmp_ram~34feeder_combout ;
+wire \SRAM_inst|tmp_ram~34_q ;
+wire \SRAM_inst|tmp_ram~57_combout ;
+wire \SRAM_inst|tmp_ram~58_combout ;
+wire \SRAM_inst|Data_out[7]~reg0_q ;
+wire \SRAM_inst|Data_out[7]~7_combout ;
+wire \SRAM_inst|Data_out[7]~en_q ;
+
+
+hard_block auto_generated_inst(
+	.devpor(devpor),
+	.devclrn(devclrn),
+	.devoe(devoe));
+
+// Location: IOOBUF_X52_Y73_N16
+cycloneive_io_obuf \dataout[0]~output (
+	.i(\SRAM_inst|Data_out[0]~reg0_q ),
+	.oe(\SRAM_inst|Data_out[0]~en_q ),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dataout[0]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dataout[0]~output .bus_hold = "false";
+defparam \dataout[0]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X49_Y73_N23
+cycloneive_io_obuf \dataout[1]~output (
+	.i(\SRAM_inst|Data_out[1]~reg0_q ),
+	.oe(\SRAM_inst|Data_out[1]~en_q ),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dataout[1]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dataout[1]~output .bus_hold = "false";
+defparam \dataout[1]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X52_Y73_N23
+cycloneive_io_obuf \dataout[2]~output (
+	.i(\SRAM_inst|Data_out[2]~reg0_q ),
+	.oe(\SRAM_inst|Data_out[2]~en_q ),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dataout[2]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dataout[2]~output .bus_hold = "false";
+defparam \dataout[2]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X54_Y73_N9
+cycloneive_io_obuf \dataout[3]~output (
+	.i(\SRAM_inst|Data_out[3]~reg0_q ),
+	.oe(\SRAM_inst|Data_out[3]~en_q ),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dataout[3]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dataout[3]~output .bus_hold = "false";
+defparam \dataout[3]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X49_Y73_N16
+cycloneive_io_obuf \dataout[4]~output (
+	.i(\SRAM_inst|Data_out[4]~reg0_q ),
+	.oe(\SRAM_inst|Data_out[4]~en_q ),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dataout[4]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dataout[4]~output .bus_hold = "false";
+defparam \dataout[4]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X54_Y73_N2
+cycloneive_io_obuf \dataout[5]~output (
+	.i(\SRAM_inst|Data_out[5]~reg0_q ),
+	.oe(\SRAM_inst|Data_out[5]~en_q ),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dataout[5]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dataout[5]~output .bus_hold = "false";
+defparam \dataout[5]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X52_Y73_N9
+cycloneive_io_obuf \dataout[6]~output (
+	.i(\SRAM_inst|Data_out[6]~reg0_q ),
+	.oe(\SRAM_inst|Data_out[6]~en_q ),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dataout[6]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dataout[6]~output .bus_hold = "false";
+defparam \dataout[6]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOOBUF_X52_Y73_N2
+cycloneive_io_obuf \dataout[7]~output (
+	.i(\SRAM_inst|Data_out[7]~reg0_q ),
+	.oe(\SRAM_inst|Data_out[7]~en_q ),
+	.seriesterminationcontrol(16'b0000000000000000),
+	.devoe(devoe),
+	.o(\dataout[7]~output_o ),
+	.obar());
+// synopsys translate_off
+defparam \dataout[7]~output .bus_hold = "false";
+defparam \dataout[7]~output .open_drain_output = "false";
+// synopsys translate_on
+
+// Location: IOIBUF_X0_Y36_N8
+cycloneive_io_ibuf \CLK~input (
+	.i(CLK),
+	.ibar(gnd),
+	.o(\CLK~input_o ));
+// synopsys translate_off
+defparam \CLK~input .bus_hold = "false";
+defparam \CLK~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: CLKCTRL_G2
+cycloneive_clkctrl \CLK~inputclkctrl (
+	.ena(vcc),
+	.inclk({vcc,vcc,vcc,\CLK~input_o }),
+	.clkselect(2'b00),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.outclk(\CLK~inputclkctrl_outclk ));
+// synopsys translate_off
+defparam \CLK~inputclkctrl .clock_type = "global clock";
+defparam \CLK~inputclkctrl .ena_register_mode = "none";
+// synopsys translate_on
+
+// Location: IOIBUF_X60_Y73_N15
+cycloneive_io_ibuf \addr[1]~input (
+	.i(addr[1]),
+	.ibar(gnd),
+	.o(\addr[1]~input_o ));
+// synopsys translate_off
+defparam \addr[1]~input .bus_hold = "false";
+defparam \addr[1]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X58_Y73_N8
+cycloneive_io_ibuf \datain[0]~input (
+	.i(datain[0]),
+	.ibar(gnd),
+	.o(\datain[0]~input_o ));
+// synopsys translate_off
+defparam \datain[0]~input .bus_hold = "false";
+defparam \datain[0]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N24
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~27feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~27feeder_combout  = \datain[0]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[0]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~27feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~27feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~27feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: IOIBUF_X60_Y73_N8
+cycloneive_io_ibuf \addr[0]~input (
+	.i(addr[0]),
+	.ibar(gnd),
+	.o(\addr[0]~input_o ));
+// synopsys translate_off
+defparam \addr[0]~input .bus_hold = "false";
+defparam \addr[0]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X45_Y73_N1
+cycloneive_io_ibuf \WR~input (
+	.i(WR),
+	.ibar(gnd),
+	.o(\WR~input_o ));
+// synopsys translate_off
+defparam \WR~input .bus_hold = "false";
+defparam \WR~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: IOIBUF_X60_Y73_N22
+cycloneive_io_ibuf \mem~input (
+	.i(mem),
+	.ibar(gnd),
+	.o(\mem~input_o ));
+// synopsys translate_off
+defparam \mem~input .bus_hold = "false";
+defparam \mem~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N16
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~59 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~59_combout  = (!\addr[0]~input_o  & (\WR~input_o  & (\mem~input_o  & \addr[1]~input_o )))
+
+	.dataa(\addr[0]~input_o ),
+	.datab(\WR~input_o ),
+	.datac(\mem~input_o ),
+	.datad(\addr[1]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~59_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~59 .lut_mask = 16'h4000;
+defparam \SRAM_inst|tmp_ram~59 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X54_Y72_N25
+dffeas \SRAM_inst|tmp_ram~27 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~27feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~59_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~27_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~27 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~27 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N26
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~62 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~62_combout  = (\addr[0]~input_o  & (\WR~input_o  & (\mem~input_o  & \addr[1]~input_o )))
+
+	.dataa(\addr[0]~input_o ),
+	.datab(\WR~input_o ),
+	.datac(\mem~input_o ),
+	.datad(\addr[1]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~62_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~62 .lut_mask = 16'h8000;
+defparam \SRAM_inst|tmp_ram~62 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X56_Y72_N13
+dffeas \SRAM_inst|tmp_ram~35 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(gnd),
+	.asdata(\datain[0]~input_o ),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(\SRAM_inst|tmp_ram~62_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~35_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~35 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~35 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N0
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~61 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~61_combout  = (!\addr[0]~input_o  & (\WR~input_o  & (\mem~input_o  & !\addr[1]~input_o )))
+
+	.dataa(\addr[0]~input_o ),
+	.datab(\WR~input_o ),
+	.datac(\mem~input_o ),
+	.datad(\addr[1]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~61_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~61 .lut_mask = 16'h0040;
+defparam \SRAM_inst|tmp_ram~61 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X55_Y72_N29
+dffeas \SRAM_inst|tmp_ram~11 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(gnd),
+	.asdata(\datain[0]~input_o ),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(\SRAM_inst|tmp_ram~61_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~11_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~11 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~11 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N2
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~19feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~19feeder_combout  = \datain[0]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[0]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~19feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~19feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~19feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N10
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~60 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~60_combout  = (\addr[0]~input_o  & (\WR~input_o  & (\mem~input_o  & !\addr[1]~input_o )))
+
+	.dataa(\addr[0]~input_o ),
+	.datab(\WR~input_o ),
+	.datac(\mem~input_o ),
+	.datad(\addr[1]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~60_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~60 .lut_mask = 16'h0080;
+defparam \SRAM_inst|tmp_ram~60 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X54_Y72_N3
+dffeas \SRAM_inst|tmp_ram~19 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~19feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~60_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~19_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~19 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~19 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X55_Y72_N28
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~43 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~43_combout  = (\addr[1]~input_o  & (\addr[0]~input_o )) # (!\addr[1]~input_o  & ((\addr[0]~input_o  & ((\SRAM_inst|tmp_ram~19_q ))) # (!\addr[0]~input_o  & (\SRAM_inst|tmp_ram~11_q ))))
+
+	.dataa(\addr[1]~input_o ),
+	.datab(\addr[0]~input_o ),
+	.datac(\SRAM_inst|tmp_ram~11_q ),
+	.datad(\SRAM_inst|tmp_ram~19_q ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~43_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~43 .lut_mask = 16'hDC98;
+defparam \SRAM_inst|tmp_ram~43 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X55_Y72_N0
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~44 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~44_combout  = (\addr[1]~input_o  & ((\SRAM_inst|tmp_ram~43_combout  & ((\SRAM_inst|tmp_ram~35_q ))) # (!\SRAM_inst|tmp_ram~43_combout  & (\SRAM_inst|tmp_ram~27_q )))) # (!\addr[1]~input_o  & (((\SRAM_inst|tmp_ram~43_combout ))))
+
+	.dataa(\addr[1]~input_o ),
+	.datab(\SRAM_inst|tmp_ram~27_q ),
+	.datac(\SRAM_inst|tmp_ram~35_q ),
+	.datad(\SRAM_inst|tmp_ram~43_combout ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~44_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~44 .lut_mask = 16'hF588;
+defparam \SRAM_inst|tmp_ram~44 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X55_Y72_N1
+dffeas \SRAM_inst|Data_out[0]~reg0 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~44_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\mem~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|Data_out[0]~reg0_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[0]~reg0 .is_wysiwyg = "true";
+defparam \SRAM_inst|Data_out[0]~reg0 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N4
+cycloneive_lcell_comb \SRAM_inst|Data_out[0]~0 (
+// Equation(s):
+// \SRAM_inst|Data_out[0]~0_combout  = !\WR~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\WR~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|Data_out[0]~0_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[0]~0 .lut_mask = 16'h00FF;
+defparam \SRAM_inst|Data_out[0]~0 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N5
+dffeas \SRAM_inst|Data_out[0]~en (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|Data_out[0]~0_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\mem~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|Data_out[0]~en_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[0]~en .is_wysiwyg = "true";
+defparam \SRAM_inst|Data_out[0]~en .power_up = "low";
+// synopsys translate_on
+
+// Location: IOIBUF_X58_Y73_N22
+cycloneive_io_ibuf \datain[1]~input (
+	.i(datain[1]),
+	.ibar(gnd),
+	.o(\datain[1]~input_o ));
+// synopsys translate_off
+defparam \datain[1]~input .bus_hold = "false";
+defparam \datain[1]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X56_Y72_N26
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~36feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~36feeder_combout  = \datain[1]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[1]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~36feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~36feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~36feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X56_Y72_N27
+dffeas \SRAM_inst|tmp_ram~36 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~36feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~62_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~36_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~36 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~36 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N16
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~20feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~20feeder_combout  = \datain[1]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[1]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~20feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~20feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~20feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X54_Y72_N17
+dffeas \SRAM_inst|tmp_ram~20 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~20feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~60_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~20_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~20 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~20 .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X55_Y72_N7
+dffeas \SRAM_inst|tmp_ram~12 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(gnd),
+	.asdata(\datain[1]~input_o ),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(\SRAM_inst|tmp_ram~61_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~12_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~12 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~12 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N14
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~28feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~28feeder_combout  = \datain[1]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[1]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~28feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~28feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~28feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X54_Y72_N15
+dffeas \SRAM_inst|tmp_ram~28 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~28feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~59_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~28_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~28 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~28 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X55_Y72_N6
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~45 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~45_combout  = (\addr[1]~input_o  & ((\addr[0]~input_o ) # ((\SRAM_inst|tmp_ram~28_q )))) # (!\addr[1]~input_o  & (!\addr[0]~input_o  & (\SRAM_inst|tmp_ram~12_q )))
+
+	.dataa(\addr[1]~input_o ),
+	.datab(\addr[0]~input_o ),
+	.datac(\SRAM_inst|tmp_ram~12_q ),
+	.datad(\SRAM_inst|tmp_ram~28_q ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~45_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~45 .lut_mask = 16'hBA98;
+defparam \SRAM_inst|tmp_ram~45 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X55_Y72_N2
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~46 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~46_combout  = (\addr[0]~input_o  & ((\SRAM_inst|tmp_ram~45_combout  & (\SRAM_inst|tmp_ram~36_q )) # (!\SRAM_inst|tmp_ram~45_combout  & ((\SRAM_inst|tmp_ram~20_q ))))) # (!\addr[0]~input_o  & (((\SRAM_inst|tmp_ram~45_combout ))))
+
+	.dataa(\addr[0]~input_o ),
+	.datab(\SRAM_inst|tmp_ram~36_q ),
+	.datac(\SRAM_inst|tmp_ram~20_q ),
+	.datad(\SRAM_inst|tmp_ram~45_combout ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~46_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~46 .lut_mask = 16'hDDA0;
+defparam \SRAM_inst|tmp_ram~46 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X55_Y72_N3
+dffeas \SRAM_inst|Data_out[1]~reg0 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~46_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\mem~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|Data_out[1]~reg0_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[1]~reg0 .is_wysiwyg = "true";
+defparam \SRAM_inst|Data_out[1]~reg0 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N30
+cycloneive_lcell_comb \SRAM_inst|Data_out[1]~1 (
+// Equation(s):
+// \SRAM_inst|Data_out[1]~1_combout  = !\WR~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\WR~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|Data_out[1]~1_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[1]~1 .lut_mask = 16'h00FF;
+defparam \SRAM_inst|Data_out[1]~1 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N31
+dffeas \SRAM_inst|Data_out[1]~en (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|Data_out[1]~1_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\mem~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|Data_out[1]~en_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[1]~en .is_wysiwyg = "true";
+defparam \SRAM_inst|Data_out[1]~en .power_up = "low";
+// synopsys translate_on
+
+// Location: IOIBUF_X58_Y73_N1
+cycloneive_io_ibuf \datain[2]~input (
+	.i(datain[2]),
+	.ibar(gnd),
+	.o(\datain[2]~input_o ));
+// synopsys translate_off
+defparam \datain[2]~input .bus_hold = "false";
+defparam \datain[2]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N20
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~29feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~29feeder_combout  = \datain[2]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[2]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~29feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~29feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~29feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X54_Y72_N21
+dffeas \SRAM_inst|tmp_ram~29 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~29feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~59_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~29_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~29 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~29 .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X56_Y72_N21
+dffeas \SRAM_inst|tmp_ram~37 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(gnd),
+	.asdata(\datain[2]~input_o ),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(\SRAM_inst|tmp_ram~62_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~37_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~37 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~37 .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X55_Y72_N17
+dffeas \SRAM_inst|tmp_ram~13 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(gnd),
+	.asdata(\datain[2]~input_o ),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(\SRAM_inst|tmp_ram~61_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~13_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~13 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~13 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N30
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~21feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~21feeder_combout  = \datain[2]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[2]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~21feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~21feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~21feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X54_Y72_N31
+dffeas \SRAM_inst|tmp_ram~21 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~21feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~60_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~21_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~21 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~21 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X55_Y72_N16
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~47 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~47_combout  = (\addr[1]~input_o  & (\addr[0]~input_o )) # (!\addr[1]~input_o  & ((\addr[0]~input_o  & ((\SRAM_inst|tmp_ram~21_q ))) # (!\addr[0]~input_o  & (\SRAM_inst|tmp_ram~13_q ))))
+
+	.dataa(\addr[1]~input_o ),
+	.datab(\addr[0]~input_o ),
+	.datac(\SRAM_inst|tmp_ram~13_q ),
+	.datad(\SRAM_inst|tmp_ram~21_q ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~47_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~47 .lut_mask = 16'hDC98;
+defparam \SRAM_inst|tmp_ram~47 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X55_Y72_N12
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~48 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~48_combout  = (\addr[1]~input_o  & ((\SRAM_inst|tmp_ram~47_combout  & ((\SRAM_inst|tmp_ram~37_q ))) # (!\SRAM_inst|tmp_ram~47_combout  & (\SRAM_inst|tmp_ram~29_q )))) # (!\addr[1]~input_o  & (((\SRAM_inst|tmp_ram~47_combout ))))
+
+	.dataa(\addr[1]~input_o ),
+	.datab(\SRAM_inst|tmp_ram~29_q ),
+	.datac(\SRAM_inst|tmp_ram~37_q ),
+	.datad(\SRAM_inst|tmp_ram~47_combout ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~48_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~48 .lut_mask = 16'hF588;
+defparam \SRAM_inst|tmp_ram~48 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X55_Y72_N13
+dffeas \SRAM_inst|Data_out[2]~reg0 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~48_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\mem~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|Data_out[2]~reg0_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[2]~reg0 .is_wysiwyg = "true";
+defparam \SRAM_inst|Data_out[2]~reg0 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N8
+cycloneive_lcell_comb \SRAM_inst|Data_out[2]~2 (
+// Equation(s):
+// \SRAM_inst|Data_out[2]~2_combout  = !\WR~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\WR~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|Data_out[2]~2_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[2]~2 .lut_mask = 16'h00FF;
+defparam \SRAM_inst|Data_out[2]~2 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N9
+dffeas \SRAM_inst|Data_out[2]~en (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|Data_out[2]~2_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\mem~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|Data_out[2]~en_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[2]~en .is_wysiwyg = "true";
+defparam \SRAM_inst|Data_out[2]~en .power_up = "low";
+// synopsys translate_on
+
+// Location: IOIBUF_X58_Y73_N15
+cycloneive_io_ibuf \datain[3]~input (
+	.i(datain[3]),
+	.ibar(gnd),
+	.o(\datain[3]~input_o ));
+// synopsys translate_off
+defparam \datain[3]~input .bus_hold = "false";
+defparam \datain[3]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N12
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~22feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~22feeder_combout  = \datain[3]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[3]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~22feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~22feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~22feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X54_Y72_N13
+dffeas \SRAM_inst|tmp_ram~22 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~22feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~60_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~22_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~22 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~22 .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X56_Y72_N11
+dffeas \SRAM_inst|tmp_ram~38 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(gnd),
+	.asdata(\datain[3]~input_o ),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(\SRAM_inst|tmp_ram~62_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~38_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~38 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~38 .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X55_Y72_N19
+dffeas \SRAM_inst|tmp_ram~14 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(gnd),
+	.asdata(\datain[3]~input_o ),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(\SRAM_inst|tmp_ram~61_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~14_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~14 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~14 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N22
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~30feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~30feeder_combout  = \datain[3]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[3]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~30feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~30feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~30feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X54_Y72_N23
+dffeas \SRAM_inst|tmp_ram~30 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~30feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~59_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~30_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~30 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~30 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X55_Y72_N18
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~49 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~49_combout  = (\addr[1]~input_o  & ((\addr[0]~input_o ) # ((\SRAM_inst|tmp_ram~30_q )))) # (!\addr[1]~input_o  & (!\addr[0]~input_o  & (\SRAM_inst|tmp_ram~14_q )))
+
+	.dataa(\addr[1]~input_o ),
+	.datab(\addr[0]~input_o ),
+	.datac(\SRAM_inst|tmp_ram~14_q ),
+	.datad(\SRAM_inst|tmp_ram~30_q ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~49_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~49 .lut_mask = 16'hBA98;
+defparam \SRAM_inst|tmp_ram~49 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X55_Y72_N22
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~50 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~50_combout  = (\addr[0]~input_o  & ((\SRAM_inst|tmp_ram~49_combout  & ((\SRAM_inst|tmp_ram~38_q ))) # (!\SRAM_inst|tmp_ram~49_combout  & (\SRAM_inst|tmp_ram~22_q )))) # (!\addr[0]~input_o  & (((\SRAM_inst|tmp_ram~49_combout ))))
+
+	.dataa(\SRAM_inst|tmp_ram~22_q ),
+	.datab(\addr[0]~input_o ),
+	.datac(\SRAM_inst|tmp_ram~38_q ),
+	.datad(\SRAM_inst|tmp_ram~49_combout ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~50_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~50 .lut_mask = 16'hF388;
+defparam \SRAM_inst|tmp_ram~50 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X55_Y72_N23
+dffeas \SRAM_inst|Data_out[3]~reg0 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~50_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\mem~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|Data_out[3]~reg0_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[3]~reg0 .is_wysiwyg = "true";
+defparam \SRAM_inst|Data_out[3]~reg0 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N22
+cycloneive_lcell_comb \SRAM_inst|Data_out[3]~3 (
+// Equation(s):
+// \SRAM_inst|Data_out[3]~3_combout  = !\WR~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\WR~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|Data_out[3]~3_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[3]~3 .lut_mask = 16'h00FF;
+defparam \SRAM_inst|Data_out[3]~3 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N23
+dffeas \SRAM_inst|Data_out[3]~en (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|Data_out[3]~3_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\mem~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|Data_out[3]~en_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[3]~en .is_wysiwyg = "true";
+defparam \SRAM_inst|Data_out[3]~en .power_up = "low";
+// synopsys translate_on
+
+// Location: IOIBUF_X62_Y73_N22
+cycloneive_io_ibuf \datain[4]~input (
+	.i(datain[4]),
+	.ibar(gnd),
+	.o(\datain[4]~input_o ));
+// synopsys translate_off
+defparam \datain[4]~input .bus_hold = "false";
+defparam \datain[4]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N28
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~31feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~31feeder_combout  = \datain[4]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[4]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~31feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~31feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~31feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X54_Y72_N29
+dffeas \SRAM_inst|tmp_ram~31 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~31feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~59_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~31_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~31 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~31 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X56_Y72_N8
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~39feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~39feeder_combout  = \datain[4]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[4]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~39feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~39feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~39feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X56_Y72_N9
+dffeas \SRAM_inst|tmp_ram~39 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~39feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~62_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~39_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~39 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~39 .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X55_Y72_N21
+dffeas \SRAM_inst|tmp_ram~15 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(gnd),
+	.asdata(\datain[4]~input_o ),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(\SRAM_inst|tmp_ram~61_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~15_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~15 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~15 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N10
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~23feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~23feeder_combout  = \datain[4]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[4]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~23feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~23feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~23feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X54_Y72_N11
+dffeas \SRAM_inst|tmp_ram~23 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~23feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~60_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~23_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~23 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~23 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X55_Y72_N20
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~51 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~51_combout  = (\addr[1]~input_o  & (\addr[0]~input_o )) # (!\addr[1]~input_o  & ((\addr[0]~input_o  & ((\SRAM_inst|tmp_ram~23_q ))) # (!\addr[0]~input_o  & (\SRAM_inst|tmp_ram~15_q ))))
+
+	.dataa(\addr[1]~input_o ),
+	.datab(\addr[0]~input_o ),
+	.datac(\SRAM_inst|tmp_ram~15_q ),
+	.datad(\SRAM_inst|tmp_ram~23_q ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~51_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~51 .lut_mask = 16'hDC98;
+defparam \SRAM_inst|tmp_ram~51 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X55_Y72_N8
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~52 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~52_combout  = (\addr[1]~input_o  & ((\SRAM_inst|tmp_ram~51_combout  & ((\SRAM_inst|tmp_ram~39_q ))) # (!\SRAM_inst|tmp_ram~51_combout  & (\SRAM_inst|tmp_ram~31_q )))) # (!\addr[1]~input_o  & (((\SRAM_inst|tmp_ram~51_combout ))))
+
+	.dataa(\addr[1]~input_o ),
+	.datab(\SRAM_inst|tmp_ram~31_q ),
+	.datac(\SRAM_inst|tmp_ram~39_q ),
+	.datad(\SRAM_inst|tmp_ram~51_combout ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~52_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~52 .lut_mask = 16'hF588;
+defparam \SRAM_inst|tmp_ram~52 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X55_Y72_N9
+dffeas \SRAM_inst|Data_out[4]~reg0 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~52_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\mem~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|Data_out[4]~reg0_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[4]~reg0 .is_wysiwyg = "true";
+defparam \SRAM_inst|Data_out[4]~reg0 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N12
+cycloneive_lcell_comb \SRAM_inst|Data_out[4]~4 (
+// Equation(s):
+// \SRAM_inst|Data_out[4]~4_combout  = !\WR~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\WR~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|Data_out[4]~4_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[4]~4 .lut_mask = 16'h00FF;
+defparam \SRAM_inst|Data_out[4]~4 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N13
+dffeas \SRAM_inst|Data_out[4]~en (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|Data_out[4]~4_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\mem~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|Data_out[4]~en_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[4]~en .is_wysiwyg = "true";
+defparam \SRAM_inst|Data_out[4]~en .power_up = "low";
+// synopsys translate_on
+
+// Location: IOIBUF_X47_Y73_N1
+cycloneive_io_ibuf \datain[5]~input (
+	.i(datain[5]),
+	.ibar(gnd),
+	.o(\datain[5]~input_o ));
+// synopsys translate_off
+defparam \datain[5]~input .bus_hold = "false";
+defparam \datain[5]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N0
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~24feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~24feeder_combout  = \datain[5]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[5]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~24feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~24feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~24feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X54_Y72_N1
+dffeas \SRAM_inst|tmp_ram~24 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~24feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~60_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~24_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~24 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~24 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X56_Y72_N30
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~40feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~40feeder_combout  = \datain[5]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[5]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~40feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~40feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~40feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X56_Y72_N31
+dffeas \SRAM_inst|tmp_ram~40 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~40feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~62_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~40_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~40 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~40 .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X55_Y72_N11
+dffeas \SRAM_inst|tmp_ram~16 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(gnd),
+	.asdata(\datain[5]~input_o ),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(\SRAM_inst|tmp_ram~61_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~16_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~16 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~16 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N18
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~32feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~32feeder_combout  = \datain[5]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[5]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~32feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~32feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~32feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X54_Y72_N19
+dffeas \SRAM_inst|tmp_ram~32 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~32feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~59_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~32_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~32 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~32 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X55_Y72_N10
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~53 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~53_combout  = (\addr[1]~input_o  & ((\addr[0]~input_o ) # ((\SRAM_inst|tmp_ram~32_q )))) # (!\addr[1]~input_o  & (!\addr[0]~input_o  & (\SRAM_inst|tmp_ram~16_q )))
+
+	.dataa(\addr[1]~input_o ),
+	.datab(\addr[0]~input_o ),
+	.datac(\SRAM_inst|tmp_ram~16_q ),
+	.datad(\SRAM_inst|tmp_ram~32_q ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~53_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~53 .lut_mask = 16'hBA98;
+defparam \SRAM_inst|tmp_ram~53 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X55_Y72_N26
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~54 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~54_combout  = (\addr[0]~input_o  & ((\SRAM_inst|tmp_ram~53_combout  & ((\SRAM_inst|tmp_ram~40_q ))) # (!\SRAM_inst|tmp_ram~53_combout  & (\SRAM_inst|tmp_ram~24_q )))) # (!\addr[0]~input_o  & (((\SRAM_inst|tmp_ram~53_combout ))))
+
+	.dataa(\SRAM_inst|tmp_ram~24_q ),
+	.datab(\addr[0]~input_o ),
+	.datac(\SRAM_inst|tmp_ram~40_q ),
+	.datad(\SRAM_inst|tmp_ram~53_combout ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~54_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~54 .lut_mask = 16'hF388;
+defparam \SRAM_inst|tmp_ram~54 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X55_Y72_N27
+dffeas \SRAM_inst|Data_out[5]~reg0 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~54_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\mem~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|Data_out[5]~reg0_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[5]~reg0 .is_wysiwyg = "true";
+defparam \SRAM_inst|Data_out[5]~reg0 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N14
+cycloneive_lcell_comb \SRAM_inst|Data_out[5]~5 (
+// Equation(s):
+// \SRAM_inst|Data_out[5]~5_combout  = !\WR~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\WR~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|Data_out[5]~5_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[5]~5 .lut_mask = 16'h00FF;
+defparam \SRAM_inst|Data_out[5]~5 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N15
+dffeas \SRAM_inst|Data_out[5]~en (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|Data_out[5]~5_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\mem~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|Data_out[5]~en_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[5]~en .is_wysiwyg = "true";
+defparam \SRAM_inst|Data_out[5]~en .power_up = "low";
+// synopsys translate_on
+
+// Location: IOIBUF_X47_Y73_N15
+cycloneive_io_ibuf \datain[6]~input (
+	.i(datain[6]),
+	.ibar(gnd),
+	.o(\datain[6]~input_o ));
+// synopsys translate_off
+defparam \datain[6]~input .bus_hold = "false";
+defparam \datain[6]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N4
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~33feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~33feeder_combout  = \datain[6]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[6]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~33feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~33feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~33feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X54_Y72_N5
+dffeas \SRAM_inst|tmp_ram~33 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~33feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~59_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~33_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~33 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~33 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X52_Y72_N16
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~41feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~41feeder_combout  = \datain[6]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[6]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~41feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~41feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~41feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X52_Y72_N17
+dffeas \SRAM_inst|tmp_ram~41 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~41feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~62_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~41_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~41 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~41 .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N29
+dffeas \SRAM_inst|tmp_ram~17 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(gnd),
+	.asdata(\datain[6]~input_o ),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(\SRAM_inst|tmp_ram~61_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~17_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~17 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~17 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N6
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~25feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~25feeder_combout  = \datain[6]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[6]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~25feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~25feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~25feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X54_Y72_N7
+dffeas \SRAM_inst|tmp_ram~25 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~25feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~60_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~25_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~25 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~25 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N28
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~55 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~55_combout  = (\addr[0]~input_o  & ((\addr[1]~input_o ) # ((\SRAM_inst|tmp_ram~25_q )))) # (!\addr[0]~input_o  & (!\addr[1]~input_o  & (\SRAM_inst|tmp_ram~17_q )))
+
+	.dataa(\addr[0]~input_o ),
+	.datab(\addr[1]~input_o ),
+	.datac(\SRAM_inst|tmp_ram~17_q ),
+	.datad(\SRAM_inst|tmp_ram~25_q ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~55_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~55 .lut_mask = 16'hBA98;
+defparam \SRAM_inst|tmp_ram~55 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N24
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~56 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~56_combout  = (\addr[1]~input_o  & ((\SRAM_inst|tmp_ram~55_combout  & ((\SRAM_inst|tmp_ram~41_q ))) # (!\SRAM_inst|tmp_ram~55_combout  & (\SRAM_inst|tmp_ram~33_q )))) # (!\addr[1]~input_o  & (((\SRAM_inst|tmp_ram~55_combout ))))
+
+	.dataa(\SRAM_inst|tmp_ram~33_q ),
+	.datab(\addr[1]~input_o ),
+	.datac(\SRAM_inst|tmp_ram~41_q ),
+	.datad(\SRAM_inst|tmp_ram~55_combout ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~56_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~56 .lut_mask = 16'hF388;
+defparam \SRAM_inst|tmp_ram~56 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N25
+dffeas \SRAM_inst|Data_out[6]~reg0 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~56_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\mem~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|Data_out[6]~reg0_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[6]~reg0 .is_wysiwyg = "true";
+defparam \SRAM_inst|Data_out[6]~reg0 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N2
+cycloneive_lcell_comb \SRAM_inst|Data_out[6]~6 (
+// Equation(s):
+// \SRAM_inst|Data_out[6]~6_combout  = !\WR~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\WR~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|Data_out[6]~6_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[6]~6 .lut_mask = 16'h00FF;
+defparam \SRAM_inst|Data_out[6]~6 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N3
+dffeas \SRAM_inst|Data_out[6]~en (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|Data_out[6]~6_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\mem~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|Data_out[6]~en_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[6]~en .is_wysiwyg = "true";
+defparam \SRAM_inst|Data_out[6]~en .power_up = "low";
+// synopsys translate_on
+
+// Location: IOIBUF_X60_Y73_N1
+cycloneive_io_ibuf \datain[7]~input (
+	.i(datain[7]),
+	.ibar(gnd),
+	.o(\datain[7]~input_o ));
+// synopsys translate_off
+defparam \datain[7]~input .bus_hold = "false";
+defparam \datain[7]~input .simulate_z_as = "z";
+// synopsys translate_on
+
+// Location: LCCOMB_X52_Y72_N6
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~42feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~42feeder_combout  = \datain[7]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[7]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~42feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~42feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~42feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X52_Y72_N7
+dffeas \SRAM_inst|tmp_ram~42 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~42feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~62_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~42_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~42 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~42 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N8
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~26feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~26feeder_combout  = \datain[7]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[7]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~26feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~26feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~26feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X54_Y72_N9
+dffeas \SRAM_inst|tmp_ram~26 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~26feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~60_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~26_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~26 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~26 .power_up = "low";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N19
+dffeas \SRAM_inst|tmp_ram~18 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(gnd),
+	.asdata(\datain[7]~input_o ),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(vcc),
+	.ena(\SRAM_inst|tmp_ram~61_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~18_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~18 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~18 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X54_Y72_N26
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~34feeder (
+// Equation(s):
+// \SRAM_inst|tmp_ram~34feeder_combout  = \datain[7]~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\datain[7]~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~34feeder_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~34feeder .lut_mask = 16'hFF00;
+defparam \SRAM_inst|tmp_ram~34feeder .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X54_Y72_N27
+dffeas \SRAM_inst|tmp_ram~34 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~34feeder_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\SRAM_inst|tmp_ram~59_combout ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|tmp_ram~34_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~34 .is_wysiwyg = "true";
+defparam \SRAM_inst|tmp_ram~34 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N18
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~57 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~57_combout  = (\addr[0]~input_o  & (\addr[1]~input_o )) # (!\addr[0]~input_o  & ((\addr[1]~input_o  & ((\SRAM_inst|tmp_ram~34_q ))) # (!\addr[1]~input_o  & (\SRAM_inst|tmp_ram~18_q ))))
+
+	.dataa(\addr[0]~input_o ),
+	.datab(\addr[1]~input_o ),
+	.datac(\SRAM_inst|tmp_ram~18_q ),
+	.datad(\SRAM_inst|tmp_ram~34_q ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~57_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~57 .lut_mask = 16'hDC98;
+defparam \SRAM_inst|tmp_ram~57 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N20
+cycloneive_lcell_comb \SRAM_inst|tmp_ram~58 (
+// Equation(s):
+// \SRAM_inst|tmp_ram~58_combout  = (\addr[0]~input_o  & ((\SRAM_inst|tmp_ram~57_combout  & (\SRAM_inst|tmp_ram~42_q )) # (!\SRAM_inst|tmp_ram~57_combout  & ((\SRAM_inst|tmp_ram~26_q ))))) # (!\addr[0]~input_o  & (((\SRAM_inst|tmp_ram~57_combout ))))
+
+	.dataa(\addr[0]~input_o ),
+	.datab(\SRAM_inst|tmp_ram~42_q ),
+	.datac(\SRAM_inst|tmp_ram~26_q ),
+	.datad(\SRAM_inst|tmp_ram~57_combout ),
+	.cin(gnd),
+	.combout(\SRAM_inst|tmp_ram~58_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|tmp_ram~58 .lut_mask = 16'hDDA0;
+defparam \SRAM_inst|tmp_ram~58 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N21
+dffeas \SRAM_inst|Data_out[7]~reg0 (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|tmp_ram~58_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\mem~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|Data_out[7]~reg0_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[7]~reg0 .is_wysiwyg = "true";
+defparam \SRAM_inst|Data_out[7]~reg0 .power_up = "low";
+// synopsys translate_on
+
+// Location: LCCOMB_X53_Y72_N6
+cycloneive_lcell_comb \SRAM_inst|Data_out[7]~7 (
+// Equation(s):
+// \SRAM_inst|Data_out[7]~7_combout  = !\WR~input_o 
+
+	.dataa(gnd),
+	.datab(gnd),
+	.datac(gnd),
+	.datad(\WR~input_o ),
+	.cin(gnd),
+	.combout(\SRAM_inst|Data_out[7]~7_combout ),
+	.cout());
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[7]~7 .lut_mask = 16'h00FF;
+defparam \SRAM_inst|Data_out[7]~7 .sum_lutc_input = "datac";
+// synopsys translate_on
+
+// Location: FF_X53_Y72_N7
+dffeas \SRAM_inst|Data_out[7]~en (
+	.clk(\CLK~inputclkctrl_outclk ),
+	.d(\SRAM_inst|Data_out[7]~7_combout ),
+	.asdata(vcc),
+	.clrn(vcc),
+	.aload(gnd),
+	.sclr(gnd),
+	.sload(gnd),
+	.ena(\mem~input_o ),
+	.devclrn(devclrn),
+	.devpor(devpor),
+	.q(\SRAM_inst|Data_out[7]~en_q ),
+	.prn(vcc));
+// synopsys translate_off
+defparam \SRAM_inst|Data_out[7]~en .is_wysiwyg = "true";
+defparam \SRAM_inst|Data_out[7]~en .power_up = "low";
+// synopsys translate_on
+
+assign dataout[0] = \dataout[0]~output_o ;
+
+assign dataout[1] = \dataout[1]~output_o ;
+
+assign dataout[2] = \dataout[2]~output_o ;
+
+assign dataout[3] = \dataout[3]~output_o ;
+
+assign dataout[4] = \dataout[4]~output_o ;
+
+assign dataout[5] = \dataout[5]~output_o ;
+
+assign dataout[6] = \dataout[6]~output_o ;
+
+assign dataout[7] = \dataout[7]~output_o ;
+
+endmodule
+
+module hard_block (
+
+	devpor,
+	devclrn,
+	devoe);
+
+// Design Ports Information
+// ~ALTERA_ASDO_DATA1~	=>  Location: PIN_F4,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// ~ALTERA_FLASH_nCE_nCSO~	=>  Location: PIN_E2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// ~ALTERA_DCLK~	=>  Location: PIN_P3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// ~ALTERA_DATA0~	=>  Location: PIN_N7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// ~ALTERA_nCEO~	=>  Location: PIN_P28,	 I/O Standard: 2.5 V,	 Current Strength: 8mA
+
+input 	devpor;
+input 	devclrn;
+input 	devoe;
+
+wire gnd;
+wire vcc;
+wire unknown;
+
+assign gnd = 1'b0;
+assign vcc = 1'b1;
+assign unknown = 1'bx;
+
+wire \~ALTERA_ASDO_DATA1~~padout ;
+wire \~ALTERA_FLASH_nCE_nCSO~~padout ;
+wire \~ALTERA_DATA0~~padout ;
+wire \~ALTERA_ASDO_DATA1~~ibuf_o ;
+wire \~ALTERA_FLASH_nCE_nCSO~~ibuf_o ;
+wire \~ALTERA_DATA0~~ibuf_o ;
+
+
+endmodule

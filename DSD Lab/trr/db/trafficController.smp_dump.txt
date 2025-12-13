@@ -1,0 +1,21 @@
+
+State Machine - |trafficController|state
+Name state.RG state.GR state.YR state.RR 
+state.RR 0 0 0 0 
+state.YR 0 0 1 1 
+state.GR 0 1 0 1 
+state.RG 1 0 0 1 
+
+State Machine - |trafficController|prevState
+Name prevState.RG prevState.GR prevState.YR prevState.RR 
+prevState.RR 0 0 0 0 
+prevState.YR 0 0 1 1 
+prevState.GR 0 1 0 1 
+prevState.RG 1 0 0 1 
+
+State Machine - |trafficController|next_state
+Name next_state.RG next_state.GR next_state.YR next_state.RR 
+next_state.RR 0 0 0 0 
+next_state.YR 0 0 1 1 
+next_state.GR 0 1 0 1 
+next_state.RG 1 0 0 1 

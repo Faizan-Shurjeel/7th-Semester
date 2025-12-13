@@ -1,5 +1,5 @@
 Analysis & Synthesis report for LCD_Printing
-Fri Oct 17 12:53:52 2025
+Tue Dec  9 13:25:07 2025
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -48,7 +48,7 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Oct 17 12:53:52 2025           ;
+; Analysis & Synthesis Status        ; Successful - Tue Dec  9 13:25:07 2025           ;
 ; Quartus Prime Version              ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
 ; Revision Name                      ; LCD_Printing                                    ;
 ; Top-level Entity Name              ; LCD_Printing                                    ;
@@ -1559,7 +1559,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Fri Oct 17 12:53:42 2025
+    Info: Processing started: Tue Dec  9 13:24:56 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off LCD_Printing -c LCD_Printing
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
@@ -1584,8 +1584,8 @@ Info (21057): Implemented 270 device resources after synthesis - the final resou
     Info (21061): Implemented 256 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
     Info: Peak virtual memory: 4922 megabytes
-    Info: Processing ended: Fri Oct 17 12:53:52 2025
-    Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:19
+    Info: Processing ended: Tue Dec  9 13:25:07 2025
+    Info: Elapsed time: 00:00:11
+    Info: Total CPU time (on all processors): 00:00:24
 
 

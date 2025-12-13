@@ -1,0 +1,73 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "red",
+					"strict" : false
+				},
+				{
+					"name" : "yellow",
+					"strict" : false
+				},
+				{
+					"name" : "green",
+					"strict" : false
+				},
+				{
+					"name" : "stateC[0]",
+					"strict" : false
+				},
+				{
+					"name" : "stateC[1]",
+					"strict" : false
+				},
+				{
+					"name" : "stateC[2]",
+					"strict" : false
+				},
+				{
+					"name" : "stateC[3]",
+					"strict" : false
+				},
+				{
+					"name" : "stateN[0]",
+					"strict" : false
+				},
+				{
+					"name" : "stateN[1]",
+					"strict" : false
+				},
+				{
+					"name" : "stateN[2]",
+					"strict" : false
+				},
+				{
+					"name" : "stateN[3]",
+					"strict" : false
+				},
+				{
+					"name" : "stateP[0]",
+					"strict" : false
+				},
+				{
+					"name" : "stateP[2]",
+					"strict" : false
+				},
+				{
+					"name" : "PDLED",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "btn",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

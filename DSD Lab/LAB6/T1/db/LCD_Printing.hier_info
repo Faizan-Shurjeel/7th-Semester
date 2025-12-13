@@ -1,9 +1,9 @@
 |LCD_Printing
 clk => lcd_controller:LCD.clk
 rst => lcd_controller:LCD.reset_n
-lcd_e <= lcd_controller:LCD.e
-lcd_rs <= lcd_controller:LCD.rs
-lcd_rw <= lcd_controller:LCD.rw
+lcd_e << lcd_controller:LCD.e
+lcd_rs << lcd_controller:LCD.rs
+lcd_rw << lcd_controller:LCD.rw
 ext_inp => ind[1].CLK
 ext_inp => ind[2].CLK
 ext_inp => bottom_line[0].CLK
@@ -262,14 +262,14 @@ ext_inp => top_line[124].CLK
 ext_inp => top_line[125].CLK
 ext_inp => top_line[126].CLK
 ext_inp => top_line[127].CLK
-lcd_db[0] <= lcd_controller:LCD.lcd_data[0]
-lcd_db[1] <= lcd_controller:LCD.lcd_data[1]
-lcd_db[2] <= lcd_controller:LCD.lcd_data[2]
-lcd_db[3] <= lcd_controller:LCD.lcd_data[3]
-lcd_db[4] <= lcd_controller:LCD.lcd_data[4]
-lcd_db[5] <= lcd_controller:LCD.lcd_data[5]
-lcd_db[6] <= lcd_controller:LCD.lcd_data[6]
-lcd_db[7] <= lcd_controller:LCD.lcd_data[7]
+lcd_db[0] << lcd_controller:LCD.lcd_data[0]
+lcd_db[1] << lcd_controller:LCD.lcd_data[1]
+lcd_db[2] << lcd_controller:LCD.lcd_data[2]
+lcd_db[3] << lcd_controller:LCD.lcd_data[3]
+lcd_db[4] << lcd_controller:LCD.lcd_data[4]
+lcd_db[5] << lcd_controller:LCD.lcd_data[5]
+lcd_db[6] << lcd_controller:LCD.lcd_data[6]
+lcd_db[7] << lcd_controller:LCD.lcd_data[7]
 
 
 |LCD_Printing|lcd_controller:LCD
