@@ -4,87 +4,59 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "dataout[0]",
+					"name" : "dout[0]",
 					"strict" : false
 				},
 				{
-					"name" : "dataout[1]",
+					"name" : "dout[1]",
 					"strict" : false
 				},
 				{
-					"name" : "dataout[2]",
+					"name" : "dout[2]",
 					"strict" : false
 				},
 				{
-					"name" : "dataout[3]",
+					"name" : "dout[3]",
 					"strict" : false
 				},
 				{
-					"name" : "dataout[4]",
+					"name" : "address[1]",
 					"strict" : false
 				},
 				{
-					"name" : "dataout[5]",
+					"name" : "address[0]",
 					"strict" : false
 				},
 				{
-					"name" : "dataout[6]",
+					"name" : "clk",
 					"strict" : false
 				},
 				{
-					"name" : "dataout[7]",
+					"name" : "din[0]",
 					"strict" : false
 				},
 				{
-					"name" : "addr[1]",
+					"name" : "rst",
 					"strict" : false
 				},
 				{
-					"name" : "addr[0]",
+					"name" : "burst",
 					"strict" : false
 				},
 				{
-					"name" : "CLK",
+					"name" : "we",
 					"strict" : false
 				},
 				{
-					"name" : "mem",
+					"name" : "din[1]",
 					"strict" : false
 				},
 				{
-					"name" : "WR",
+					"name" : "din[2]",
 					"strict" : false
 				},
 				{
-					"name" : "datain[0]",
-					"strict" : false
-				},
-				{
-					"name" : "datain[1]",
-					"strict" : false
-				},
-				{
-					"name" : "datain[2]",
-					"strict" : false
-				},
-				{
-					"name" : "datain[3]",
-					"strict" : false
-				},
-				{
-					"name" : "datain[4]",
-					"strict" : false
-				},
-				{
-					"name" : "datain[5]",
-					"strict" : false
-				},
-				{
-					"name" : "datain[6]",
-					"strict" : false
-				},
-				{
-					"name" : "datain[7]",
+					"name" : "din[3]",
 					"strict" : false
 				}
 			]

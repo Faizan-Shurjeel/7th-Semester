@@ -11,7 +11,7 @@ entity SRAM is --
 
 generic( width: integer:=4;
 			depth: integer:=4;
-			addr: integer:=2
+			addr_width: integer:=2 -- Renamed from 'addr' to avoid conflict with signal names
 			);
 
 port( 
@@ -19,8 +19,8 @@ port(
 		Enable: in std_logic;
 		Read: in std_logic;
 		Write: in std_logic;
-		Read_Addr: in std_logic_vector(addr-1 downto 0);
-		Write_Addr: in std_logic_vector(addr-1 downto 0);
+		Read_Addr: in std_logic_vector(addr_width-1 downto 0);
+		Write_Addr: in std_logic_vector(addr_width-1 downto 0);
 		Data_in: in std_logic_vector(width-1 downto 0);
 		Data_out: out std_logic_vector(width-1 downto 0)
 );
@@ -35,12 +35,12 @@ signal tmp_ram: ram_type;
 
 begin
  -- Read Functional Section
- process(Clock, Read)
+ process(Clock) -- Removed 'Read' from sensitivity list (synchronous logic only needs Clock)
  begin
 	if (Clock'event and Clock='1') then
 		if Enable='1' then
 			if Read='1' then
-				Data_out <= tmp_ram(conv_integer(Read_Addr));---what is purpose of this line??
+				Data_out <= tmp_ram(conv_integer(Read_Addr));
 			else
 				Data_out <= (Data_out'range => 'Z');
 			end if;
@@ -49,7 +49,7 @@ begin
  end process;
  
  -- Write Functional Section
- process(Clock, Write)
+ process(Clock) -- Removed 'Write' from sensitivity list
  begin
 	if (Clock'event and Clock='1') then
 		if Enable='1' then

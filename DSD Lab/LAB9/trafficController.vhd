@@ -1,38 +1,37 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+-- Use the modern, standard library for any future arithmetic needs
+use IEEE.NUMERIC_STD.ALL;
 use IEEE.STD_LOGIC_Unsigned.ALL;
 
 entity trafficController is
     Port ( 
         clk    : in  STD_LOGIC;
+        rst    : in  STD_LOGIC; -- Added a reset signal
         btn    : in  STD_LOGIC;
         red    : out STD_LOGIC;
         yellow : out STD_LOGIC;
         green  : out STD_LOGIC;
-		  stateC	: out STD_logic_vector(3 downto 0);
-		  stateN	: out STD_logic_vector(3 downto 0);
-		  stateP	: out STD_logic_vector(3 downto 0);
+		  state_out : out STD_LOGIC_VECTOR(2 downto 0); -- vector output for the state
         PDLED  : out STD_LOGIC
     );
 end trafficController;
 
 architecture Behavioral of trafficController is
-    signal counter  : std_logic_vector (31 downto 0) := x"00000000";
-    signal slk1, slk3, slk10 : std_logic := '0';
-    signal   stateCurrent, statePrvious, stateNext	: STD_logic_vector(3 downto 0);
 	 
-	 -- FSM States
-    type state_type is (RR, YR, GR, RG);
-    signal state, next_state, prevState : state_type;
+	 -- FSM States. More descriptive and added a state to remove `prevState`
+    type state_type is (RR, YR, GR, YYR,PD); 
+    signal state, next_state : state_type;
+	 
+	 
+	 signal counter  : std_logic_vector (31 downto 0) := x"00000000";
+    signal slk1, slk3, slk10 : std_logic := '0';
     
 begin
     slk1  <= counter(25);
     slk3  <= counter(27);
     slk10 <= counter(29);
-    stateC <= stateCurrent;
-	 stateP <= statePrvious;	
-	 stateN <= stateNext;
-	 
+	
     -----------slow clocks
     process(clk) 
     begin 
@@ -42,123 +41,81 @@ begin
     end process;
     
 	 
-	 process(clk, state)
+    process(clk, rst)
     begin
-        if rising_edge(clk) then
-            case state is
-                when RR => stateCurrent <= "0001";
-                when YR => stateCurrent <= "0010";
-                when GR => stateCurrent <= "0100";
-                when RG => stateCurrent <= "1000";
-            end case;
-        end if;
-    end process;
-	 
-	 process(clk, next_state)
-    begin
-        if rising_edge(clk) then
-            case next_state is
-                when RR => stateNext <= "0001";
-                when YR => stateNext <= "0010";
-                when GR => stateNext <= "0100";
-                when RG => stateNext <= "1000";
-            end case;
-        end if;
-    end process;
-	 
-	 
-	 process(clk, prevState)
-    begin
-        if rising_edge(clk) then
-            case prevState is
-                when RR => statePrvious <= "0001";
-                when YR => statePrvious <= "0010";
-                when GR => statePrvious <= "0100";
-                when RG => statePrvious <= "1000";
-            end case;
-        end if;
-    end process;	 
-	  
-    process(clk, state)
-    begin
-        if rising_edge(clk) then
-            case state is
-                when RR => 
-                    red    <= '1';
-                    yellow <= '0';
-                    green  <= '0';
-                    PDLED  <= '0';
-                    
-                when YR =>
-                    red    <= '0';
-                    yellow <= '1';
-                    green  <= '0';
-                    PDLED  <= '0';
-                    
-                when GR =>
-                    red    <= '0';
-                    yellow <= '0';
-                    green  <= '1';
-                    PDLED  <= '0';
-                    
-                when RG =>
-                    red    <= '1';
-                    yellow <= '0';
-                    green  <= '0';
-                    PDLED  <= '1';
-            end case;
-        end if;
-    end process;
-	 
---=================================================    
-    process(clk)
-    begin
-        if rising_edge(clk) then
-				prevState  <= state;
-            case next_state is
-                when RR =>
-                   -- if slk1 = '1' then
-                        if btn = '1' then
-                            next_state <= RG;
-                        else  
-                            next_state <= YR;
-                        end if;
-                    --end if;  
-                    
-                when YR =>  
-                    --if slk1 = '1' then
-                        if btn = '1' then
-                            next_state <= RG;
-                        elsif prevState = RR then
-                            next_state <= GR;
-                        else 
-                            next_state <= RR;
-                        end if;
-                   -- end if;
-                    
-                when GR => 
-                    --if slk3 = '1' then
-                        next_state <= YR;
-                    --end if;
-                    
-                when RG =>
-                   -- if slk3 = '1' then
-                        if btn = '1' then
-                            next_state <= RG;
-                        else  
-                            next_state <= RR;
-                        end if;
-                   -- end if;
-            end case;
+        if (rst = '1') then
+            state <= RR;
+        elsif rising_edge(clk) then
+				state <= next_state;
         end if;
     end process;
     
---=================================================
-    process(clk)
+    process(state, btn, slk1, slk3, slk10)
     begin
-        if rising_edge(clk) then
-            state <= next_state;
-        end if;
+        -- Default assignments for all outputs to avoid latches
+        red    <= '0';
+        yellow <= '0';
+        green  <= '0';
+        PDLED  <= '0';
+
+        -- Default next state is the current state (to handle unspecified transitions)
+        next_state <= state;
+        
+        case state is
+            when RR => 
+                red <= '1'; 
+					 
+					 if slk1 = '1'  then
+						if (btn = '1') then
+							next_state <= PD;
+						else  
+							next_state <= YR;
+						end if;
+					 end if;
+                   
+            when YR =>
+                yellow <= '1'; 
+					 
+					 if slk1 = '1'  then
+						if (btn = '1') then
+							next_state <= PD;
+						else
+							next_state <= GR;
+						end if;
+					 end if;
+              
+            when GR => 
+                green <= '1'; 
+					 
+					 if slk10 = '1'  then
+						next_state <= YYR;
+					 end if;
+                   
+            when YYR => -- returning yellow
+                yellow <= '1'; 
+					 
+					 if slk1 = '1'  then
+						next_state <= RR;
+					 end if;
+
+            when PD =>
+                red   <= '1'; --
+                PDLED <= '1'; 
+					 
+					 if slk3 = '1'  then
+						if (btn = '0') then
+							next_state <= RR;
+						end if;
+					 end if;
+        end case;
     end process;
     
+    with state select
+        state_out <= "000" when RR,
+                     "001" when YR,
+                     "010" when GR,
+                     "011" when YYR,
+                     "100" when PD,
+                     "111" when others;
+
 end Behavioral;
