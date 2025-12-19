@@ -1,0 +1,97 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity Stack_FSM_Controller is
+    Port (
+        Clk      : in  STD_LOGIC; -- System Clock [cite: 76]
+        Rst      : in  STD_LOGIC; -- Active High Reset [cite: 76]
+        Push     : in  STD_LOGIC; -- Control input [cite: 77]
+        Pop      : in  STD_LOGIC; -- Control input [cite: 77]
+        Data_In  : in  STD_LOGIC_VECTOR(7 downto 0); -- 8-bit input [cite: 73, 79]
+        Data_Out : out STD_LOGIC_VECTOR(7 downto 0); -- 8-bit output [cite: 81]
+        Full     : out STD_LOGIC; -- Status flag [cite: 82]
+        Empty    : out STD_LOGIC  -- Status flag [cite: 82]
+    );
+end Stack_FSM_Controller;
+
+architecture Behavioral of Stack_FSM_Controller is
+    -- RAM Array 16x8 as specified in block diagram [cite: 60, 74]
+    type RAM_ARRAY is array (0 to 15) of STD_LOGIC_VECTOR(7 downto 0);
+    signal stack_mem : RAM_ARRAY := (others => (others => '0'));
+    
+    -- Stack Pointer (SP) [cite: 17]
+    signal sp : integer range 0 to 16 := 0;
+    
+    -- State Definitions [cite: 65, 66, 67, 68]
+    type state_type is (s_Idle, s_Push, s_Pop);
+    signal current_state, next_state : state_type;
+
+begin
+
+    -- FSM State Transition [cite: 64]
+    process(Clk, Rst)
+    begin
+        if Rst = '1' then
+            current_state <= s_Idle;
+        elsif rising_edge(Clk) then
+            current_state <= next_state;
+        end if;
+    end process;
+
+    -- Next State Logic with Exception Handling [cite: 33, 67, 68]
+    process(current_state, Push, Pop, sp)
+    begin
+        next_state <= current_state;
+        case current_state is
+            when s_Idle =>
+                -- Push only if not full [cite: 25, 67]
+                if Push = '1' and sp < 16 then
+                    next_state <= s_Push;
+                -- Pop only if not empty [cite: 31, 68]
+                elsif Pop = '1' and sp > 0 then
+                    next_state <= s_Pop;
+                else
+                    next_state <= s_Idle;
+                end if;
+                
+            when s_Push =>
+                next_state <= s_Idle;
+                
+            when s_Pop =>
+                next_state <= s_Idle;
+                
+            when others =>
+                next_state <= s_Idle;
+        end case;
+    end process;
+
+    -- Datapath Logic: Memory Array & SP Management [cite: 42, 51]
+    process(Clk)
+    begin
+        if rising_edge(Clk) then
+            if Rst = '1' then
+                sp <= 0; -- SP resets to 0 
+                Data_Out <= (others => '0');
+            else
+                case current_state is
+                    when s_Push =>
+                        stack_mem(sp) <= Data_In; -- Write to SP [cite: 24]
+                        sp <= sp + 1;             -- Increment SP [cite: 24]
+                        
+                    when s_Pop =>
+                        Data_Out <= stack_mem(sp - 1); -- Read from top [cite: 30]
+                        sp <= sp - 1;                  -- Decrement SP [cite: 30]
+                        
+                    when others =>
+                        null;
+                end case;
+            end if;
+        end if;
+    end process;
+
+    -- Status Flags logic [cite: 36, 39]
+    Full  <= '1' when sp = 16 else '0';
+    Empty <= '1' when sp = 0 else '0';
+
+end Behavioral;

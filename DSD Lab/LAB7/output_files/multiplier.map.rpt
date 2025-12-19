@@ -1,5 +1,5 @@
 Analysis & Synthesis report for multiplier
-Fri Oct 31 12:55:17 2025
+Fri Dec 19 11:46:25 2025
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -13,14 +13,13 @@ Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |multiplier|next_state
-  9. Registers Removed During Synthesis
- 10. Removed Registers Triggering Further Register Optimizations
- 11. General Register Statistics
- 12. Multiplexer Restructuring Statistics (Restructuring Performed)
- 13. Post-Synthesis Netlist Statistics for Top Partition
- 14. Elapsed Time Per Partition
- 15. Analysis & Synthesis Messages
+  8. State Machine - |multiplier|state
+  9. General Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Parameter Settings for User Entity Instance: Top-level Entity: |multiplier
+ 12. Post-Synthesis Netlist Statistics for Top Partition
+ 13. Elapsed Time Per Partition
+ 14. Analysis & Synthesis Messages
 
 
 
@@ -47,16 +46,16 @@ on the Quartus Prime software download page.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Oct 31 12:55:17 2025           ;
+; Analysis & Synthesis Status        ; Successful - Fri Dec 19 11:46:25 2025           ;
 ; Quartus Prime Version              ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
 ; Revision Name                      ; multiplier                                      ;
 ; Top-level Entity Name              ; multiplier                                      ;
 ; Family                             ; Cyclone IV E                                    ;
-; Total logic elements               ; 81                                              ;
-;     Total combinational functions  ; 57                                              ;
-;     Dedicated logic registers      ; 50                                              ;
-; Total registers                    ; 50                                              ;
-; Total pins                         ; 20                                              ;
+; Total logic elements               ; 47                                              ;
+;     Total combinational functions  ; 47                                              ;
+;     Dedicated logic registers      ; 26                                              ;
+; Total registers                    ; 26                                              ;
+; Total pins                         ; 24                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -181,30 +180,30 @@ on the Quartus Prime software download page.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 81        ;
+; Estimated Total logic elements              ; 47        ;
 ;                                             ;           ;
-; Total combinational functions               ; 57        ;
+; Total combinational functions               ; 47        ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 23        ;
-;     -- 3 input functions                    ; 12        ;
-;     -- <=2 input functions                  ; 22        ;
+;     -- 4 input functions                    ; 15        ;
+;     -- 3 input functions                    ; 21        ;
+;     -- <=2 input functions                  ; 11        ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 49        ;
-;     -- arithmetic mode                      ; 8         ;
+;     -- normal mode                          ; 42        ;
+;     -- arithmetic mode                      ; 5         ;
 ;                                             ;           ;
-; Total registers                             ; 50        ;
-;     -- Dedicated logic registers            ; 50        ;
+; Total registers                             ; 26        ;
+;     -- Dedicated logic registers            ; 26        ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
-; I/O pins                                    ; 20        ;
+; I/O pins                                    ; 24        ;
 ;                                             ;           ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ;                                             ;           ;
-; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 50        ;
-; Total fan-out                               ; 337       ;
-; Average fan-out                             ; 2.29      ;
+; Maximum fan-out node                        ; rst~input ;
+; Maximum fan-out                             ; 27        ;
+; Total fan-out                               ; 258       ;
+; Average fan-out                             ; 2.13      ;
 +---------------------------------------------+-----------+
 
 
@@ -213,50 +212,24 @@ on the Quartus Prime software download page.
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
-; |multiplier                ; 57 (57)             ; 50 (50)                   ; 0           ; 0            ; 0       ; 0         ; 20   ; 0            ; |multiplier         ; multiplier  ; work         ;
+; |multiplier                ; 47 (47)             ; 26 (26)                   ; 0           ; 0            ; 0       ; 0         ; 24   ; 0            ; |multiplier         ; multiplier  ; work         ;
 +----------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
-+--------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |multiplier|next_state                                                                                                           ;
-+------------------+-----------------+-----------------+-----------------+-----------------+------------------+-----------------+------------------+
-; Name             ; next_state.DONE ; next_state.DECR ; next_state.SUBT ; next_state.ADDI ; next_state.WORKi ; next_state.IDLE ; next_state.START ;
-+------------------+-----------------+-----------------+-----------------+-----------------+------------------+-----------------+------------------+
-; next_state.START ; 0               ; 0               ; 0               ; 0               ; 0                ; 0               ; 0                ;
-; next_state.IDLE  ; 0               ; 0               ; 0               ; 0               ; 0                ; 1               ; 1                ;
-; next_state.WORKi ; 0               ; 0               ; 0               ; 0               ; 1                ; 0               ; 1                ;
-; next_state.ADDI  ; 0               ; 0               ; 0               ; 1               ; 0                ; 0               ; 1                ;
-; next_state.SUBT  ; 0               ; 0               ; 1               ; 0               ; 0                ; 0               ; 1                ;
-; next_state.DECR  ; 0               ; 1               ; 0               ; 0               ; 0                ; 0               ; 1                ;
-; next_state.DONE  ; 1               ; 0               ; 0               ; 0               ; 0                ; 0               ; 1                ;
-+------------------+-----------------+-----------------+-----------------+-----------------+------------------+-----------------+------------------+
-
-
-+---------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                              ;
-+----------------------------------------+----------------------------------------+
-; Register name                          ; Reason for Removal                     ;
-+----------------------------------------+----------------------------------------+
-; Bcomp[0]                               ; Stuck at GND due to stuck port data_in ;
-; Bcomp[1..5]                            ; Stuck at VCC due to stuck port data_in ;
-; B[0]                                   ; Stuck at GND due to stuck port data_in ;
-; B[1]                                   ; Stuck at VCC due to stuck port data_in ;
-; B[2..5]                                ; Stuck at GND due to stuck port data_in ;
-; A[5,6]                                 ; Stuck at VCC due to stuck port data_in ;
-; Total Number of Removed Registers = 14 ;                                        ;
-+----------------------------------------+----------------------------------------+
-
-
-+------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                        ;
-+---------------+---------------------------+----------------------------------------+
-; Register name ; Reason for Removal        ; Registers Removed due to This Register ;
-+---------------+---------------------------+----------------------------------------+
-; A[6]          ; Stuck at VCC              ; A[5]                                   ;
-;               ; due to stuck port data_in ;                                        ;
-+---------------+---------------------------+----------------------------------------+
++----------------------------------------------------------------------------------------------------------------+
+; State Machine - |multiplier|state                                                                              ;
++------------------+--------------+-----------------+---------------+------------------+------------+------------+
+; Name             ; state.FINISH ; state.SHIFT_REG ; state.ADD_SUB ; state.CHECK_BITS ; state.INIT ; state.IDLE ;
++------------------+--------------+-----------------+---------------+------------------+------------+------------+
+; state.IDLE       ; 0            ; 0               ; 0             ; 0                ; 0          ; 0          ;
+; state.INIT       ; 0            ; 0               ; 0             ; 0                ; 1          ; 1          ;
+; state.CHECK_BITS ; 0            ; 0               ; 0             ; 1                ; 0          ; 1          ;
+; state.ADD_SUB    ; 0            ; 0               ; 1             ; 0                ; 0          ; 1          ;
+; state.SHIFT_REG  ; 0            ; 1               ; 0             ; 0                ; 0          ; 1          ;
+; state.FINISH     ; 1            ; 0               ; 0             ; 0                ; 0          ; 1          ;
++------------------+--------------+-----------------+---------------+------------------+------------+------------+
 
 
 +------------------------------------------------------+
@@ -264,12 +237,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 50    ;
-; Number of registers using Synchronous Clear  ; 0     ;
+; Total registers                              ; 26    ;
+; Number of registers using Synchronous Clear  ; 12    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 7     ;
+; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 24    ;
+; Number of registers using Clock Enable       ; 14    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -279,9 +252,20 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |multiplier|A[2]           ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |multiplier|Prod[5]        ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |multiplier|M_reg[0]       ;
+; 4:1                ; 5 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; Yes        ; |multiplier|Q[0]           ;
+; 6:1                ; 4 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |multiplier|A[2]           ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |multiplier ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; N              ; 5     ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +-----------------------------------------------------+
@@ -289,22 +273,22 @@ Encoding Type:  One-Hot
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 20                          ;
-; cycloneiii_ff         ; 50                          ;
-;     CLR               ; 7                           ;
-;     ENA               ; 24                          ;
-;     plain             ; 19                          ;
-; cycloneiii_lcell_comb ; 57                          ;
-;     arith             ; 8                           ;
-;         2 data inputs ; 8                           ;
-;     normal            ; 49                          ;
-;         1 data inputs ; 2                           ;
-;         2 data inputs ; 12                          ;
-;         3 data inputs ; 12                          ;
-;         4 data inputs ; 23                          ;
+; boundary_port         ; 24                          ;
+; cycloneiii_ff         ; 26                          ;
+;     ENA               ; 9                           ;
+;     ENA SCLR          ; 5                           ;
+;     SCLR              ; 7                           ;
+;     plain             ; 5                           ;
+; cycloneiii_lcell_comb ; 47                          ;
+;     arith             ; 5                           ;
+;         3 data inputs ; 5                           ;
+;     normal            ; 42                          ;
+;         2 data inputs ; 11                          ;
+;         3 data inputs ; 16                          ;
+;         4 data inputs ; 15                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 4.00                        ;
-; Average LUT depth     ; 2.24                        ;
+; Max LUT depth         ; 3.40                        ;
+; Average LUT depth     ; 1.93                        ;
 +-----------------------+-----------------------------+
 
 
@@ -323,30 +307,25 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Fri Oct 31 12:55:09 2025
+    Info: Processing started: Fri Dec 19 11:46:17 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off multiplier -c multiplier
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file multiplier.vhd
-    Info (12022): Found design unit 1: multiplier-bhv File: D:/7th-Semester/DSD Lab/LAB7/multiplier.vhd Line: 13
-    Info (12023): Found entity 1: multiplier File: D:/7th-Semester/DSD Lab/LAB7/multiplier.vhd Line: 6
+    Info (12022): Found design unit 1: multiplier-Behavioral File: D:/7th-Semester/DSD Lab/LAB7/multiplier.vhd Line: 20
+    Info (12023): Found entity 1: multiplier File: D:/7th-Semester/DSD Lab/LAB7/multiplier.vhd Line: 5
 Info (12127): Elaborating entity "multiplier" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at multiplier.vhd(19): object "PL" assigned a value but never read File: D:/7th-Semester/DSD Lab/LAB7/multiplier.vhd Line: 19
-Info (10018): Can't recognize finite state machine "state" because it has a complex reset state
-Warning (13004): Presettable and clearable registers converted to equivalent circuits with latches. Registers power-up to an undefined state, and DEVCLRn places the registers in an undefined state.
-    Warning (13310): Register "state.START" is converted into an equivalent circuit using register "state.START~_emulated" and latch "state.START~1" File: D:/7th-Semester/DSD Lab/LAB7/multiplier.vhd Line: 22
-    Warning (13310): Register "state.IDLE" is converted into an equivalent circuit using register "state.IDLE~_emulated" and latch "state.IDLE~1" File: D:/7th-Semester/DSD Lab/LAB7/multiplier.vhd Line: 22
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 101 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 3 input pins
-    Info (21059): Implemented 17 output pins
-    Info (21061): Implemented 81 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
+Info (21057): Implemented 71 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 13 input pins
+    Info (21059): Implemented 11 output pins
+    Info (21061): Implemented 47 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 4905 megabytes
-    Info: Processing ended: Fri Oct 31 12:55:17 2025
+    Info: Processing ended: Fri Dec 19 11:46:25 2025
     Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:18
+    Info: Total CPU time (on all processors): 00:00:17
 
 

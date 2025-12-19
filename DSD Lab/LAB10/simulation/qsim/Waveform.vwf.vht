@@ -19,7 +19,7 @@
 -- the top level entity of the current Quartus project .The user can use this   
 -- testbench to simulate his design using a third-party simulation tool .       
 -- *****************************************************************************
--- Generated on "12/12/2025 11:50:55"
+-- Generated on "12/19/2025 07:22:31"
                                                              
 -- Vhdl Test Bench(with test vectors) for design  :          lab
 -- 
@@ -46,7 +46,7 @@ COMPONENT lab
 	PORT (
 	Clock : IN STD_LOGIC;
 	Data_in : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-	Data_out : BUFFER STD_LOGIC_VECTOR(3 DOWNTO 0);
+	Data_out : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
 	Enable : IN STD_LOGIC;
 	Read : IN STD_LOGIC;
 	Read_Addr : IN STD_LOGIC_VECTOR(1 DOWNTO 0);

@@ -1,0 +1,61 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "Led_Hit",
+					"strict" : false
+				},
+				{
+					"name" : "Led_Miss",
+					"strict" : false
+				},
+				{
+					"name" : "Switch_Addr[6]",
+					"strict" : false
+				},
+				{
+					"name" : "Switch_Addr[5]",
+					"strict" : false
+				},
+				{
+					"name" : "Switch_Addr[7]",
+					"strict" : false
+				},
+				{
+					"name" : "Switch_Addr[4]",
+					"strict" : false
+				},
+				{
+					"name" : "Switch_Addr[0]",
+					"strict" : false
+				},
+				{
+					"name" : "Switch_Addr[1]",
+					"strict" : false
+				},
+				{
+					"name" : "Switch_Addr[2]",
+					"strict" : false
+				},
+				{
+					"name" : "Switch_Addr[3]",
+					"strict" : false
+				},
+				{
+					"name" : "Start_Btn",
+					"strict" : false
+				},
+				{
+					"name" : "Clk",
+					"strict" : false
+				},
+				{
+					"name" : "Reset",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

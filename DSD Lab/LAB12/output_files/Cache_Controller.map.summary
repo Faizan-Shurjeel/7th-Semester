@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Fri Dec 19 11:35:40 2025
+Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
+Revision Name : Cache_Controller
+Top-level Entity Name : Cache_Controller
+Family : Cyclone IV E
+Total logic elements : 10
+    Total combinational functions : 9
+    Dedicated logic registers : 4
+Total registers : 4
+Total pins : 13
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

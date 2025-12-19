@@ -1,5 +1,5 @@
 Timing Analyzer report for lab
-Sun Dec 14 14:44:05 2025
+Fri Dec 19 09:17:15 2025
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -99,12 +99,12 @@ on the Quartus Prime software download page.
 ; Number detected on machine ; 12          ;
 ; Maximum allowed            ; 8           ;
 ;                            ;             ;
-; Average used               ; 1.03        ;
+; Average used               ; 1.04        ;
 ; Maximum used               ; 8           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-8         ;   0.4%      ;
+;     Processors 2-8         ;   0.6%      ;
 +----------------------------+-------------+
 
 
@@ -122,7 +122,7 @@ on the Quartus Prime software download page.
 +------------+-----------------+------------+---------------------------------------------------------------+
 ; Fmax       ; Restricted Fmax ; Clock Name ; Note                                                          ;
 +------------+-----------------+------------+---------------------------------------------------------------+
-; 280.82 MHz ; 250.0 MHz       ; clk        ; limit due to minimum period restriction (max I/O toggle rate) ;
+; 303.31 MHz ; 250.0 MHz       ; clk        ; limit due to minimum period restriction (max I/O toggle rate) ;
 +------------+-----------------+------------+---------------------------------------------------------------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -138,7 +138,7 @@ HTML report is unavailable in plain text report export.
 +-------+--------+--------------------+
 ; Clock ; Slack  ; End Point TNS      ;
 +-------+--------+--------------------+
-; clk   ; -2.561 ; -51.796            ;
+; clk   ; -2.297 ; -49.393            ;
 +-------+--------+--------------------+
 
 
@@ -147,7 +147,7 @@ HTML report is unavailable in plain text report export.
 +-------+-------+--------------------+
 ; Clock ; Slack ; End Point TNS      ;
 +-------+-------+--------------------+
-; clk   ; 0.558 ; 0.000              ;
+; clk   ; 0.600 ; 0.000              ;
 +-------+-------+--------------------+
 
 
@@ -168,116 +168,116 @@ No paths to report.
 +-------+--------+----------------------------------+
 ; Clock ; Slack  ; End Point TNS                    ;
 +-------+--------+----------------------------------+
-; clk   ; -3.000 ; -45.405                          ;
+; clk   ; -3.000 ; -44.120                          ;
 +-------+--------+----------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------+
-; Slow 1200mV 85C Model Setup: 'clk'                                                                                                   ;
-+--------+------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
-; Slack  ; From Node              ; To Node                      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+--------+------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
-; -2.561 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.477      ;
-; -2.559 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.475      ;
-; -2.559 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.475      ;
-; -2.558 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.474      ;
-; -2.499 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.415      ;
-; -2.497 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.413      ;
-; -2.497 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.413      ;
-; -2.496 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.412      ;
-; -2.293 ; current_state.BURST_1  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.209      ;
-; -2.292 ; current_state.BURST_1  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.208      ;
-; -2.292 ; current_state.BURST_1  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.208      ;
-; -2.291 ; current_state.BURST_1  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.207      ;
-; -2.263 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.296      ; 3.557      ;
-; -2.263 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.296      ; 3.557      ;
-; -2.263 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.296      ; 3.557      ;
-; -2.263 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.296      ; 3.557      ;
-; -2.217 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.133      ;
-; -2.216 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.132      ;
-; -2.201 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.296      ; 3.495      ;
-; -2.201 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.296      ; 3.495      ;
-; -2.201 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.296      ; 3.495      ;
-; -2.201 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.296      ; 3.495      ;
-; -2.190 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.106      ;
-; -2.185 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.101      ;
-; -2.184 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.515      ;
-; -2.184 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.515      ;
-; -2.184 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.515      ;
-; -2.184 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.515      ;
-; -2.167 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.498      ;
-; -2.167 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.498      ;
-; -2.167 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.498      ;
-; -2.167 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.498      ;
-; -2.156 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.483      ;
-; -2.156 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.483      ;
-; -2.156 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.483      ;
-; -2.156 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.483      ;
-; -2.122 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.453      ;
-; -2.122 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.453      ;
-; -2.122 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.453      ;
-; -2.122 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.453      ;
-; -2.094 ; current_state.BURST_4  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.010      ;
-; -2.092 ; current_state.BURST_4  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.008      ;
-; -2.092 ; current_state.BURST_4  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.008      ;
-; -2.091 ; current_state.BURST_4  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 3.007      ;
-; -2.073 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 2.989      ;
-; -2.072 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 2.988      ;
-; -2.046 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 2.962      ;
-; -2.041 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 2.957      ;
-; -2.030 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 2.946      ;
-; -2.029 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 2.945      ;
-; -2.023 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.354      ;
-; -2.023 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.354      ;
-; -2.023 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.354      ;
-; -2.023 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.354      ;
-; -2.012 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.343      ;
-; -2.012 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.343      ;
-; -2.012 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.343      ;
-; -2.012 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.343      ;
-; -2.012 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.339      ;
-; -2.012 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.339      ;
-; -2.012 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.339      ;
-; -2.012 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.339      ;
-; -2.003 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.296      ; 3.297      ;
-; -2.003 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.296      ; 3.297      ;
-; -2.003 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.296      ; 3.297      ;
-; -2.003 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.296      ; 3.297      ;
-; -2.003 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 2.919      ;
-; -2.001 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.328      ;
-; -2.001 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.328      ;
-; -2.001 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.328      ;
-; -2.001 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.328      ;
-; -1.998 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 2.914      ;
-; -1.980 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.311      ;
-; -1.980 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.311      ;
-; -1.980 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.311      ;
-; -1.980 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.333      ; 3.311      ;
-; -1.969 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.296      ;
-; -1.969 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.296      ;
-; -1.969 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.296      ;
-; -1.969 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.296      ;
-; -1.962 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.296      ; 3.256      ;
-; -1.962 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.296      ; 3.256      ;
-; -1.962 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.296      ; 3.256      ;
-; -1.962 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.296      ; 3.256      ;
-; -1.949 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.276      ;
-; -1.949 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.276      ;
-; -1.949 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.276      ;
-; -1.949 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.276      ;
-; -1.887 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.214      ;
-; -1.887 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.214      ;
-; -1.887 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.214      ;
-; -1.887 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.329      ; 3.214      ;
-; -1.886 ; current_state.IDLE     ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 2.802      ;
-; -1.882 ; current_state.IDLE     ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 2.798      ;
-; -1.876 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.358      ; 3.232      ;
-; -1.876 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 1.000        ; 0.358      ; 3.232      ;
-; -1.876 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 1.000        ; 0.358      ; 3.232      ;
-; -1.876 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 1.000        ; 0.358      ; 3.232      ;
-; -1.868 ; current_state.IDLE     ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 2.784      ;
-; -1.866 ; current_state.IDLE     ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.082     ; 2.782      ;
-+--------+------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 85C Model Setup: 'clk'                                                                                                  ;
++--------+-----------------------+------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node             ; To Node                      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------------------+------------------------------+--------------+-------------+--------------+------------+------------+
+; -2.297 ; burst_addr_reg[1]     ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 3.214      ;
+; -2.291 ; burst_addr_reg[1]     ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 3.208      ;
+; -2.280 ; burst_addr_reg[0]     ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 3.197      ;
+; -2.274 ; burst_addr_reg[0]     ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 3.191      ;
+; -2.220 ; current_state.S_WRITE ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 3.138      ;
+; -2.214 ; current_state.S_WRITE ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 3.132      ;
+; -2.175 ; current_state.S_READ1 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 3.093      ;
+; -2.169 ; current_state.S_READ1 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 3.087      ;
+; -2.148 ; burst_addr_reg[1]     ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 3.065      ;
+; -2.141 ; burst_addr_reg[1]     ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 3.058      ;
+; -2.131 ; burst_addr_reg[0]     ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 3.048      ;
+; -2.124 ; burst_addr_reg[0]     ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 3.041      ;
+; -2.119 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.338      ; 3.455      ;
+; -2.119 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 1.000        ; 0.338      ; 3.455      ;
+; -2.119 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 1.000        ; 0.338      ; 3.455      ;
+; -2.119 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 1.000        ; 0.338      ; 3.455      ;
+; -2.074 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.338      ; 3.410      ;
+; -2.074 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 1.000        ; 0.338      ; 3.410      ;
+; -2.074 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 1.000        ; 0.338      ; 3.410      ;
+; -2.074 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 1.000        ; 0.338      ; 3.410      ;
+; -2.071 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.383      ;
+; -2.071 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.383      ;
+; -2.071 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.383      ;
+; -2.071 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.383      ;
+; -2.071 ; current_state.S_WRITE ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 2.989      ;
+; -2.064 ; current_state.S_WRITE ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 2.982      ;
+; -2.026 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.338      ;
+; -2.026 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.338      ;
+; -2.026 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.338      ;
+; -2.026 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.338      ;
+; -2.026 ; current_state.S_READ1 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 2.944      ;
+; -2.019 ; current_state.S_READ1 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 2.937      ;
+; -2.011 ; SRAM:u_sram|tmp_ram~9 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.476     ; 2.533      ;
+; -1.977 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.337      ; 3.312      ;
+; -1.977 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 1.000        ; 0.337      ; 3.312      ;
+; -1.977 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 1.000        ; 0.337      ; 3.312      ;
+; -1.977 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 1.000        ; 0.337      ; 3.312      ;
+; -1.966 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.313      ; 3.277      ;
+; -1.966 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.313      ; 3.277      ;
+; -1.966 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.313      ; 3.277      ;
+; -1.966 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.313      ; 3.277      ;
+; -1.955 ; current_state.S_IDLE  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 2.873      ;
+; -1.949 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.313      ; 3.260      ;
+; -1.949 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.313      ; 3.260      ;
+; -1.949 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.313      ; 3.260      ;
+; -1.949 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.313      ; 3.260      ;
+; -1.948 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.337      ; 3.283      ;
+; -1.948 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 1.000        ; 0.337      ; 3.283      ;
+; -1.948 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 1.000        ; 0.337      ; 3.283      ;
+; -1.948 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 1.000        ; 0.337      ; 3.283      ;
+; -1.946 ; current_state.S_READ2 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 2.863      ;
+; -1.940 ; current_state.S_READ2 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 2.857      ;
+; -1.938 ; current_state.S_IDLE  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 2.856      ;
+; -1.913 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.300      ; 3.211      ;
+; -1.913 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.300      ; 3.211      ;
+; -1.913 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.300      ; 3.211      ;
+; -1.913 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.300      ; 3.211      ;
+; -1.897 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.346      ; 3.241      ;
+; -1.897 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.346      ; 3.241      ;
+; -1.897 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.346      ; 3.241      ;
+; -1.897 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.346      ; 3.241      ;
+; -1.887 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.345      ; 3.230      ;
+; -1.887 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.345      ; 3.230      ;
+; -1.887 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.345      ; 3.230      ;
+; -1.887 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.345      ; 3.230      ;
+; -1.870 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.345      ; 3.213      ;
+; -1.870 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.345      ; 3.213      ;
+; -1.870 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.345      ; 3.213      ;
+; -1.870 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.345      ; 3.213      ;
+; -1.868 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.300      ; 3.166      ;
+; -1.868 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.300      ; 3.166      ;
+; -1.868 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.300      ; 3.166      ;
+; -1.868 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.300      ; 3.166      ;
+; -1.852 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.346      ; 3.196      ;
+; -1.852 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.346      ; 3.196      ;
+; -1.852 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.346      ; 3.196      ;
+; -1.852 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.346      ; 3.196      ;
+; -1.828 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.338      ; 3.164      ;
+; -1.828 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 1.000        ; 0.338      ; 3.164      ;
+; -1.828 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 1.000        ; 0.338      ; 3.164      ;
+; -1.828 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 1.000        ; 0.338      ; 3.164      ;
+; -1.797 ; current_state.S_READ2 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 2.714      ;
+; -1.790 ; current_state.S_READ2 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.081     ; 2.707      ;
+; -1.787 ; current_state.S_IDLE  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 2.705      ;
+; -1.784 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.096      ;
+; -1.784 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.096      ;
+; -1.784 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.096      ;
+; -1.784 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.096      ;
+; -1.783 ; current_state.S_IDLE  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 2.701      ;
+; -1.778 ; current_state.S_READ3 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 2.696      ;
+; -1.772 ; current_state.S_READ3 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.080     ; 2.690      ;
+; -1.703 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.299      ; 3.000      ;
+; -1.703 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.299      ; 3.000      ;
+; -1.703 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.299      ; 3.000      ;
+; -1.703 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.299      ; 3.000      ;
+; -1.686 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.299      ; 2.983      ;
+; -1.686 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.299      ; 2.983      ;
+; -1.686 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.299      ; 2.983      ;
+; -1.686 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.299      ; 2.983      ;
+; -1.663 ; current_state.S_READ3 ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.338      ; 2.999      ;
++--------+-----------------------+------------------------------+--------------+-------------+--------------+------------+------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------+
@@ -285,106 +285,106 @@ No paths to report.
 +-------+------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node              ; To Node                      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
-; 0.558 ; current_state.READ_OP  ; current_state.IDLE           ; clk          ; clk         ; 0.000        ; 0.081      ; 0.825      ;
-; 0.627 ; current_state.WRITE_OP ; current_state.IDLE           ; clk          ; clk         ; 0.000        ; 0.081      ; 0.894      ;
-; 0.629 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[1]~en   ; clk          ; clk         ; 0.000        ; 0.081      ; 0.896      ;
-; 0.730 ; current_state.IDLE     ; current_state.WRITE_OP       ; clk          ; clk         ; 0.000        ; 0.081      ; 0.997      ;
-; 0.764 ; current_state.IDLE     ; current_state.READ_OP        ; clk          ; clk         ; 0.000        ; 0.081      ; 1.031      ;
-; 0.948 ; current_state.BURST_4  ; current_state.IDLE           ; clk          ; clk         ; 0.000        ; 0.081      ; 1.215      ;
-; 0.995 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[2]~en   ; clk          ; clk         ; 0.000        ; 0.080      ; 1.261      ;
-; 0.996 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[3]~en   ; clk          ; clk         ; 0.000        ; 0.080      ; 1.262      ;
-; 0.998 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[0]~en   ; clk          ; clk         ; 0.000        ; 0.080      ; 1.264      ;
-; 1.081 ; current_state.BURST_2  ; current_state.BURST_3        ; clk          ; clk         ; 0.000        ; 0.081      ; 1.348      ;
-; 1.109 ; current_state.BURST_3  ; current_state.BURST_4        ; clk          ; clk         ; 0.000        ; 0.081      ; 1.376      ;
-; 1.118 ; SRAM:u_sram|tmp_ram~7  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.297     ; 1.007      ;
-; 1.119 ; SRAM:u_sram|tmp_ram~9  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.297     ; 1.008      ;
-; 1.121 ; SRAM:u_sram|tmp_ram~10 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.297     ; 1.010      ;
-; 1.121 ; SRAM:u_sram|tmp_ram~8  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.297     ; 1.010      ;
-; 1.252 ; SRAM:u_sram|tmp_ram~14 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.334     ; 1.104      ;
-; 1.255 ; SRAM:u_sram|tmp_ram~12 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.334     ; 1.107      ;
-; 1.343 ; SRAM:u_sram|tmp_ram~20 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.330     ; 1.199      ;
-; 1.346 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 0.000        ; 0.508      ; 2.040      ;
-; 1.346 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 0.000        ; 0.508      ; 2.040      ;
-; 1.346 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 0.000        ; 0.508      ; 2.040      ;
-; 1.346 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 0.000        ; 0.508      ; 2.040      ;
-; 1.369 ; SRAM:u_sram|tmp_ram~22 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.330     ; 1.225      ;
-; 1.375 ; current_state.IDLE     ; current_state.BURST_1        ; clk          ; clk         ; 0.000        ; 0.081      ; 1.642      ;
-; 1.420 ; SRAM:u_sram|tmp_ram~21 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.330     ; 1.276      ;
-; 1.439 ; SRAM:u_sram|tmp_ram~17 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.359     ; 1.266      ;
-; 1.479 ; current_state.BURST_1  ; current_state.BURST_2        ; clk          ; clk         ; 0.000        ; 0.081      ; 1.746      ;
-; 1.541 ; SRAM:u_sram|tmp_ram~15 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.359     ; 1.368      ;
-; 1.575 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.841      ;
-; 1.575 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.841      ;
-; 1.608 ; SRAM:u_sram|tmp_ram~13 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.334     ; 1.460      ;
-; 1.625 ; current_state.IDLE     ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.891      ;
-; 1.625 ; current_state.IDLE     ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.891      ;
-; 1.660 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 0.000        ; 0.512      ; 2.358      ;
-; 1.660 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 0.000        ; 0.512      ; 2.358      ;
-; 1.660 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 0.000        ; 0.512      ; 2.358      ;
-; 1.660 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 0.000        ; 0.512      ; 2.358      ;
-; 1.671 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.395      ;
-; 1.671 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.395      ;
-; 1.671 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.395      ;
-; 1.671 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.395      ;
-; 1.681 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.405      ;
-; 1.681 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.405      ;
-; 1.681 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.405      ;
-; 1.681 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.405      ;
-; 1.704 ; current_state.BURST_1  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.970      ;
-; 1.707 ; current_state.BURST_1  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.973      ;
-; 1.709 ; current_state.IDLE     ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.975      ;
-; 1.710 ; current_state.IDLE     ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.976      ;
-; 1.733 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.999      ;
-; 1.733 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 1.999      ;
-; 1.744 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.468      ;
-; 1.744 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.468      ;
-; 1.744 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.468      ;
-; 1.744 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.468      ;
-; 1.745 ; current_state.BURST_3  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 2.011      ;
-; 1.746 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.474      ; 2.406      ;
-; 1.746 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 0.000        ; 0.474      ; 2.406      ;
-; 1.746 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 0.000        ; 0.474      ; 2.406      ;
-; 1.746 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 0.000        ; 0.474      ; 2.406      ;
-; 1.748 ; current_state.BURST_3  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 2.014      ;
-; 1.750 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 0.000        ; 0.508      ; 2.444      ;
-; 1.750 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 0.000        ; 0.508      ; 2.444      ;
-; 1.750 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 0.000        ; 0.508      ; 2.444      ;
-; 1.750 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 0.000        ; 0.508      ; 2.444      ;
-; 1.775 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.499      ;
-; 1.775 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.499      ;
-; 1.775 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.499      ;
-; 1.775 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.499      ;
-; 1.778 ; SRAM:u_sram|tmp_ram~11 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.334     ; 1.630      ;
-; 1.782 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 0.000        ; 0.508      ; 2.476      ;
-; 1.782 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 0.000        ; 0.508      ; 2.476      ;
-; 1.782 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 0.000        ; 0.508      ; 2.476      ;
-; 1.782 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 0.000        ; 0.508      ; 2.476      ;
-; 1.782 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 2.048      ;
-; 1.782 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 2.048      ;
-; 1.810 ; current_state.IDLE     ; burst_addr_reg[0]            ; clk          ; clk         ; 0.000        ; 0.081      ; 2.077      ;
-; 1.810 ; current_state.IDLE     ; burst_addr_reg[1]            ; clk          ; clk         ; 0.000        ; 0.081      ; 2.077      ;
-; 1.811 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.535      ;
-; 1.811 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.535      ;
-; 1.811 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.535      ;
-; 1.811 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.535      ;
-; 1.813 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 2.079      ;
-; 1.816 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 2.082      ;
-; 1.825 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 2.091      ;
-; 1.826 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 2.092      ;
-; 1.837 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 2.103      ;
-; 1.837 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 2.103      ;
-; 1.868 ; SRAM:u_sram|tmp_ram~19 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.330     ; 1.724      ;
-; 1.871 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 0.000        ; 0.508      ; 2.565      ;
-; 1.871 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 0.000        ; 0.508      ; 2.565      ;
-; 1.871 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 0.000        ; 0.508      ; 2.565      ;
-; 1.871 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 0.000        ; 0.508      ; 2.565      ;
-; 1.883 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.474      ; 2.543      ;
-; 1.883 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 0.000        ; 0.474      ; 2.543      ;
-; 1.883 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 0.000        ; 0.474      ; 2.543      ;
-; 1.883 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 0.000        ; 0.474      ; 2.543      ;
-; 1.893 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 2.159      ;
-; 1.894 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.080      ; 2.160      ;
-; 1.900 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.538      ; 2.624      ;
+; 0.600 ; current_state.S_READ3  ; current_state.S_READ4        ; clk          ; clk         ; 0.000        ; 0.080      ; 0.866      ;
+; 0.608 ; current_state.S_READ2  ; current_state.S_READ3        ; clk          ; clk         ; 0.000        ; 0.080      ; 0.874      ;
+; 0.669 ; current_state.S_READ4  ; current_state.S_IDLE         ; clk          ; clk         ; 0.000        ; 0.080      ; 0.935      ;
+; 0.712 ; current_state.S_IDLE   ; current_state.S_WRITE        ; clk          ; clk         ; 0.000        ; 0.080      ; 0.978      ;
+; 0.727 ; current_state.S_WRITE  ; current_state.S_IDLE         ; clk          ; clk         ; 0.000        ; 0.080      ; 0.993      ;
+; 0.983 ; current_state.S_IDLE   ; current_state.S_READ1        ; clk          ; clk         ; 0.000        ; 0.080      ; 1.249      ;
+; 1.078 ; current_state.S_READ1  ; current_state.S_READ2        ; clk          ; clk         ; 0.000        ; 0.081      ; 1.345      ;
+; 1.080 ; current_state.S_READ1  ; current_state.S_IDLE         ; clk          ; clk         ; 0.000        ; 0.080      ; 1.346      ;
+; 1.139 ; SRAM:u_sram|tmp_ram~17 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.337     ; 0.988      ;
+; 1.155 ; current_state.S_READ3  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.422      ;
+; 1.192 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.476      ; 1.854      ;
+; 1.192 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 0.000        ; 0.476      ; 1.854      ;
+; 1.192 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 0.000        ; 0.476      ; 1.854      ;
+; 1.192 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 0.000        ; 0.476      ; 1.854      ;
+; 1.214 ; SRAM:u_sram|tmp_ram~15 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.337     ; 1.063      ;
+; 1.224 ; current_state.S_WRITE  ; SRAM:u_sram|Data_out[3]~en   ; clk          ; clk         ; 0.000        ; 0.081      ; 1.491      ;
+; 1.313 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.580      ;
+; 1.315 ; current_state.S_IDLE   ; current_state.S_IDLE         ; clk          ; clk         ; 0.000        ; 0.080      ; 1.581      ;
+; 1.316 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[3]~en   ; clk          ; clk         ; 0.000        ; 0.081      ; 1.583      ;
+; 1.356 ; SRAM:u_sram|tmp_ram~20 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.313     ; 1.229      ;
+; 1.396 ; current_state.S_READ3  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.663      ;
+; 1.405 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 0.000        ; 0.524      ; 2.115      ;
+; 1.405 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 0.000        ; 0.524      ; 2.115      ;
+; 1.405 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 0.000        ; 0.524      ; 2.115      ;
+; 1.405 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 0.000        ; 0.524      ; 2.115      ;
+; 1.424 ; SRAM:u_sram|tmp_ram~22 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.313     ; 1.297      ;
+; 1.441 ; SRAM:u_sram|tmp_ram~21 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.313     ; 1.314      ;
+; 1.458 ; SRAM:u_sram|tmp_ram~14 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.345     ; 1.299      ;
+; 1.484 ; SRAM:u_sram|tmp_ram~19 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.313     ; 1.357      ;
+; 1.488 ; current_state.S_READ3  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.755      ;
+; 1.521 ; current_state.S_WRITE  ; SRAM:u_sram|Data_out[0]~en   ; clk          ; clk         ; 0.000        ; 0.088      ; 1.795      ;
+; 1.521 ; current_state.S_WRITE  ; SRAM:u_sram|Data_out[1]~en   ; clk          ; clk         ; 0.000        ; 0.088      ; 1.795      ;
+; 1.521 ; current_state.S_WRITE  ; SRAM:u_sram|Data_out[2]~en   ; clk          ; clk         ; 0.000        ; 0.088      ; 1.795      ;
+; 1.532 ; current_state.S_READ3  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.799      ;
+; 1.557 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.824      ;
+; 1.563 ; SRAM:u_sram|tmp_ram~10 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.299     ; 1.450      ;
+; 1.597 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.516      ; 2.299      ;
+; 1.597 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.516      ; 2.299      ;
+; 1.597 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.516      ; 2.299      ;
+; 1.597 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.516      ; 2.299      ;
+; 1.621 ; SRAM:u_sram|tmp_ram~8  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.299     ; 1.508      ;
+; 1.638 ; current_state.S_IDLE   ; burst_addr_reg[0]            ; clk          ; clk         ; 0.000        ; 0.081      ; 1.905      ;
+; 1.638 ; current_state.S_IDLE   ; burst_addr_reg[1]            ; clk          ; clk         ; 0.000        ; 0.081      ; 1.905      ;
+; 1.645 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.912      ;
+; 1.655 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[0]~en   ; clk          ; clk         ; 0.000        ; 0.088      ; 1.929      ;
+; 1.655 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[1]~en   ; clk          ; clk         ; 0.000        ; 0.088      ; 1.929      ;
+; 1.655 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[2]~en   ; clk          ; clk         ; 0.000        ; 0.088      ; 1.929      ;
+; 1.659 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.926      ;
+; 1.695 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 1.962      ;
+; 1.700 ; SRAM:u_sram|tmp_ram~18 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.337     ; 1.549      ;
+; 1.704 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 0.000        ; 0.491      ; 2.381      ;
+; 1.704 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 0.000        ; 0.491      ; 2.381      ;
+; 1.704 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 0.000        ; 0.491      ; 2.381      ;
+; 1.704 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 0.000        ; 0.491      ; 2.381      ;
+; 1.717 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.476      ; 2.379      ;
+; 1.717 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 0.000        ; 0.476      ; 2.379      ;
+; 1.717 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 0.000        ; 0.476      ; 2.379      ;
+; 1.717 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 0.000        ; 0.476      ; 2.379      ;
+; 1.721 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 0.000        ; 0.491      ; 2.398      ;
+; 1.721 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 0.000        ; 0.491      ; 2.398      ;
+; 1.721 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 0.000        ; 0.491      ; 2.398      ;
+; 1.721 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 0.000        ; 0.491      ; 2.398      ;
+; 1.743 ; SRAM:u_sram|tmp_ram~7  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.299     ; 1.630      ;
+; 1.781 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 2.048      ;
+; 1.796 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 2.063      ;
+; 1.824 ; SRAM:u_sram|tmp_ram~13 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.345     ; 1.665      ;
+; 1.832 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 2.099      ;
+; 1.833 ; SRAM:u_sram|tmp_ram~16 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.337     ; 1.682      ;
+; 1.887 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 2.154      ;
+; 1.889 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 0.000        ; 0.524      ; 2.599      ;
+; 1.889 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 0.000        ; 0.524      ; 2.599      ;
+; 1.889 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 0.000        ; 0.524      ; 2.599      ;
+; 1.889 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 0.000        ; 0.524      ; 2.599      ;
+; 1.896 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 2.163      ;
+; 1.899 ; current_state.S_READ2  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 2.166      ;
+; 1.907 ; current_state.S_IDLE   ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.476      ; 2.569      ;
+; 1.907 ; current_state.S_IDLE   ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 0.000        ; 0.476      ; 2.569      ;
+; 1.907 ; current_state.S_IDLE   ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 0.000        ; 0.476      ; 2.569      ;
+; 1.907 ; current_state.S_IDLE   ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 0.000        ; 0.476      ; 2.569      ;
+; 1.919 ; current_state.S_READ2  ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.476      ; 2.581      ;
+; 1.919 ; current_state.S_READ2  ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 0.000        ; 0.476      ; 2.581      ;
+; 1.919 ; current_state.S_READ2  ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 0.000        ; 0.476      ; 2.581      ;
+; 1.919 ; current_state.S_READ2  ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 0.000        ; 0.476      ; 2.581      ;
+; 1.937 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 0.000        ; 0.524      ; 2.647      ;
+; 1.937 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 0.000        ; 0.524      ; 2.647      ;
+; 1.937 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 0.000        ; 0.524      ; 2.647      ;
+; 1.937 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 0.000        ; 0.524      ; 2.647      ;
+; 1.941 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.516      ; 2.643      ;
+; 1.941 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.516      ; 2.643      ;
+; 1.941 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.516      ; 2.643      ;
+; 1.941 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.516      ; 2.643      ;
+; 1.970 ; SRAM:u_sram|tmp_ram~11 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.345     ; 1.811      ;
+; 2.005 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.476      ; 2.667      ;
+; 2.005 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 0.000        ; 0.476      ; 2.667      ;
+; 2.005 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 0.000        ; 0.476      ; 2.667      ;
+; 2.005 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 0.000        ; 0.476      ; 2.667      ;
+; 2.011 ; current_state.S_READ1  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 2.278      ;
+; 2.016 ; SRAM:u_sram|tmp_ram~12 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.345     ; 1.857      ;
+; 2.023 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 2.290      ;
+; 2.033 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.081      ; 2.300      ;
 +-------+------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -399,7 +399,7 @@ No synchronizer chains to report.
 +------------+-----------------+------------+---------------------------------------------------------------+
 ; Fmax       ; Restricted Fmax ; Clock Name ; Note                                                          ;
 +------------+-----------------+------------+---------------------------------------------------------------+
-; 301.48 MHz ; 250.0 MHz       ; clk        ; limit due to minimum period restriction (max I/O toggle rate) ;
+; 336.13 MHz ; 250.0 MHz       ; clk        ; limit due to minimum period restriction (max I/O toggle rate) ;
 +------------+-----------------+------------+---------------------------------------------------------------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -409,7 +409,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------+--------+-------------------+
 ; Clock ; Slack  ; End Point TNS     ;
 +-------+--------+-------------------+
-; clk   ; -2.317 ; -45.071           ;
+; clk   ; -1.975 ; -41.972           ;
 +-------+--------+-------------------+
 
 
@@ -418,7 +418,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------+-------+-------------------+
 ; Clock ; Slack ; End Point TNS     ;
 +-------+-------+-------------------+
-; clk   ; 0.506 ; 0.000             ;
+; clk   ; 0.549 ; 0.000             ;
 +-------+-------+-------------------+
 
 
@@ -439,116 +439,116 @@ No paths to report.
 +-------+--------+---------------------------------+
 ; Clock ; Slack  ; End Point TNS                   ;
 +-------+--------+---------------------------------+
-; clk   ; -3.000 ; -45.405                         ;
+; clk   ; -3.000 ; -44.120                         ;
 +-------+--------+---------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------+
-; Slow 1200mV 0C Model Setup: 'clk'                                                                                                    ;
-+--------+------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
-; Slack  ; From Node              ; To Node                      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+--------+------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
-; -2.317 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 3.243      ;
-; -2.316 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 3.242      ;
-; -2.316 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 3.242      ;
-; -2.315 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 3.241      ;
-; -2.224 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 3.150      ;
-; -2.223 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 3.149      ;
-; -2.223 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 3.149      ;
-; -2.222 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 3.148      ;
-; -2.038 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.273      ; 3.310      ;
-; -2.038 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.273      ; 3.310      ;
-; -2.038 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.273      ; 3.310      ;
-; -2.038 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.273      ; 3.310      ;
-; -1.979 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.288      ;
-; -1.979 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.288      ;
-; -1.979 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.288      ;
-; -1.979 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.288      ;
-; -1.958 ; current_state.BURST_1  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.884      ;
-; -1.957 ; current_state.BURST_1  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.883      ;
-; -1.957 ; current_state.BURST_1  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.883      ;
-; -1.956 ; current_state.BURST_1  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.882      ;
-; -1.945 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.273      ; 3.217      ;
-; -1.945 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.273      ; 3.217      ;
-; -1.945 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.273      ; 3.217      ;
-; -1.945 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.273      ; 3.217      ;
-; -1.886 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.195      ;
-; -1.886 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.195      ;
-; -1.886 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.195      ;
-; -1.886 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.195      ;
-; -1.886 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.195      ;
-; -1.886 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.195      ;
-; -1.886 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.195      ;
-; -1.886 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.195      ;
-; -1.878 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.804      ;
-; -1.877 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.803      ;
-; -1.860 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.786      ;
-; -1.859 ; current_state.BURST_4  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.785      ;
-; -1.858 ; current_state.BURST_4  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.784      ;
-; -1.858 ; current_state.BURST_4  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.784      ;
-; -1.857 ; current_state.BURST_4  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.783      ;
-; -1.855 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.781      ;
-; -1.840 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.300      ; 3.139      ;
-; -1.840 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.300      ; 3.139      ;
-; -1.840 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.300      ; 3.139      ;
-; -1.840 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.300      ; 3.139      ;
-; -1.761 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.070      ;
-; -1.761 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.070      ;
-; -1.761 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.070      ;
-; -1.761 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.070      ;
-; -1.758 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.300      ; 3.057      ;
-; -1.758 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.300      ; 3.057      ;
-; -1.758 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.300      ; 3.057      ;
-; -1.758 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.300      ; 3.057      ;
-; -1.753 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.679      ;
-; -1.752 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.678      ;
-; -1.748 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.300      ; 3.047      ;
-; -1.748 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.300      ; 3.047      ;
-; -1.748 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.300      ; 3.047      ;
-; -1.748 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.300      ; 3.047      ;
-; -1.745 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.054      ;
-; -1.745 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.054      ;
-; -1.745 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.054      ;
-; -1.745 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.054      ;
-; -1.735 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.661      ;
-; -1.730 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.656      ;
-; -1.726 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.035      ;
-; -1.726 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.035      ;
-; -1.726 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.035      ;
-; -1.726 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.310      ; 3.035      ;
-; -1.718 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.644      ;
-; -1.717 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.643      ;
-; -1.715 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.300      ; 3.014      ;
-; -1.715 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.300      ; 3.014      ;
-; -1.715 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.300      ; 3.014      ;
-; -1.715 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.300      ; 3.014      ;
-; -1.705 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.273      ; 2.977      ;
-; -1.705 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.273      ; 2.977      ;
-; -1.705 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.273      ; 2.977      ;
-; -1.705 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.273      ; 2.977      ;
-; -1.703 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.629      ;
-; -1.698 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.624      ;
-; -1.690 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.300      ; 2.989      ;
-; -1.690 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.300      ; 2.989      ;
-; -1.690 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.300      ; 2.989      ;
-; -1.690 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.300      ; 2.989      ;
-; -1.677 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.273      ; 2.949      ;
-; -1.677 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.273      ; 2.949      ;
-; -1.677 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.273      ; 2.949      ;
-; -1.677 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.273      ; 2.949      ;
-; -1.665 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.300      ; 2.964      ;
-; -1.665 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.300      ; 2.964      ;
-; -1.665 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.300      ; 2.964      ;
-; -1.665 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.300      ; 2.964      ;
-; -1.641 ; current_state.IDLE     ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.567      ;
-; -1.636 ; current_state.IDLE     ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.073     ; 2.562      ;
-; -1.634 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.329      ; 2.962      ;
-; -1.634 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 1.000        ; 0.329      ; 2.962      ;
-; -1.634 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 1.000        ; 0.329      ; 2.962      ;
-; -1.634 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 1.000        ; 0.329      ; 2.962      ;
-; -1.628 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.300      ; 2.927      ;
-; -1.628 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.300      ; 2.927      ;
-+--------+------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Slow 1200mV 0C Model Setup: 'clk'                                                                                                   ;
++--------+-----------------------+------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node             ; To Node                      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------------------+------------------------------+--------------+-------------+--------------+------------+------------+
+; -1.975 ; burst_addr_reg[1]     ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 2.902      ;
+; -1.969 ; burst_addr_reg[1]     ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 2.896      ;
+; -1.959 ; burst_addr_reg[0]     ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 2.886      ;
+; -1.953 ; burst_addr_reg[0]     ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 2.880      ;
+; -1.908 ; current_state.S_WRITE ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 2.836      ;
+; -1.896 ; current_state.S_WRITE ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 2.824      ;
+; -1.869 ; current_state.S_READ1 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 2.797      ;
+; -1.857 ; current_state.S_READ1 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 2.785      ;
+; -1.854 ; burst_addr_reg[1]     ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 2.781      ;
+; -1.848 ; burst_addr_reg[1]     ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 2.775      ;
+; -1.838 ; burst_addr_reg[0]     ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 2.765      ;
+; -1.832 ; burst_addr_reg[0]     ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 2.759      ;
+; -1.829 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.142      ;
+; -1.829 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.142      ;
+; -1.829 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.142      ;
+; -1.829 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.142      ;
+; -1.790 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.103      ;
+; -1.790 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.103      ;
+; -1.790 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.103      ;
+; -1.790 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 1.000        ; 0.314      ; 3.103      ;
+; -1.776 ; current_state.S_WRITE ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 2.704      ;
+; -1.775 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.288      ; 3.062      ;
+; -1.775 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.288      ; 3.062      ;
+; -1.775 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.288      ; 3.062      ;
+; -1.775 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.288      ; 3.062      ;
+; -1.770 ; current_state.S_WRITE ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 2.698      ;
+; -1.746 ; SRAM:u_sram|tmp_ram~9 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.433     ; 2.312      ;
+; -1.737 ; current_state.S_READ1 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 2.665      ;
+; -1.736 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.288      ; 3.023      ;
+; -1.736 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.288      ; 3.023      ;
+; -1.736 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.288      ; 3.023      ;
+; -1.736 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.288      ; 3.023      ;
+; -1.731 ; current_state.S_READ1 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 2.659      ;
+; -1.723 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.313      ; 3.035      ;
+; -1.723 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 1.000        ; 0.313      ; 3.035      ;
+; -1.723 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 1.000        ; 0.313      ; 3.035      ;
+; -1.723 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 1.000        ; 0.313      ; 3.035      ;
+; -1.699 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.287      ; 2.985      ;
+; -1.699 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.287      ; 2.985      ;
+; -1.699 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.287      ; 2.985      ;
+; -1.699 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.287      ; 2.985      ;
+; -1.699 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.313      ; 3.011      ;
+; -1.699 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 1.000        ; 0.313      ; 3.011      ;
+; -1.699 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 1.000        ; 0.313      ; 3.011      ;
+; -1.699 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 1.000        ; 0.313      ; 3.011      ;
+; -1.693 ; current_state.S_IDLE  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 2.621      ;
+; -1.681 ; current_state.S_IDLE  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 2.609      ;
+; -1.680 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.287      ; 2.966      ;
+; -1.680 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.287      ; 2.966      ;
+; -1.680 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.287      ; 2.966      ;
+; -1.680 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.287      ; 2.966      ;
+; -1.664 ; current_state.S_READ2 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 2.591      ;
+; -1.658 ; current_state.S_READ2 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 2.585      ;
+; -1.647 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.320      ; 2.966      ;
+; -1.647 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.320      ; 2.966      ;
+; -1.647 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.320      ; 2.966      ;
+; -1.647 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.320      ; 2.966      ;
+; -1.635 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.275      ; 2.909      ;
+; -1.635 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.275      ; 2.909      ;
+; -1.635 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.275      ; 2.909      ;
+; -1.635 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.275      ; 2.909      ;
+; -1.625 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.319      ; 2.943      ;
+; -1.625 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.319      ; 2.943      ;
+; -1.625 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.319      ; 2.943      ;
+; -1.625 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.319      ; 2.943      ;
+; -1.609 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.319      ; 2.927      ;
+; -1.609 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.319      ; 2.927      ;
+; -1.609 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.319      ; 2.927      ;
+; -1.609 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.319      ; 2.927      ;
+; -1.608 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.320      ; 2.927      ;
+; -1.608 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.320      ; 2.927      ;
+; -1.608 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.320      ; 2.927      ;
+; -1.608 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.320      ; 2.927      ;
+; -1.596 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.275      ; 2.870      ;
+; -1.596 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.275      ; 2.870      ;
+; -1.596 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.275      ; 2.870      ;
+; -1.596 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.275      ; 2.870      ;
+; -1.580 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.314      ; 2.893      ;
+; -1.580 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 1.000        ; 0.314      ; 2.893      ;
+; -1.580 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 1.000        ; 0.314      ; 2.893      ;
+; -1.580 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 1.000        ; 0.314      ; 2.893      ;
+; -1.561 ; current_state.S_IDLE  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 2.489      ;
+; -1.560 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.288      ; 2.847      ;
+; -1.560 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.288      ; 2.847      ;
+; -1.560 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.288      ; 2.847      ;
+; -1.560 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.288      ; 2.847      ;
+; -1.555 ; current_state.S_IDLE  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 2.483      ;
+; -1.543 ; current_state.S_READ2 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 2.470      ;
+; -1.537 ; current_state.S_READ2 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.072     ; 2.464      ;
+; -1.518 ; current_state.S_READ3 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 2.446      ;
+; -1.513 ; current_state.S_READ3 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.071     ; 2.441      ;
+; -1.467 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.274      ; 2.740      ;
+; -1.467 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.274      ; 2.740      ;
+; -1.467 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.274      ; 2.740      ;
+; -1.467 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.274      ; 2.740      ;
+; -1.451 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.274      ; 2.724      ;
+; -1.451 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.274      ; 2.724      ;
+; -1.451 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.274      ; 2.724      ;
+; -1.451 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.274      ; 2.724      ;
+; -1.432 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.320      ; 2.751      ;
++--------+-----------------------+------------------------------+--------------+-------------+--------------+------------+------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------+
@@ -556,106 +556,106 @@ No paths to report.
 +-------+------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node              ; To Node                      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
-; 0.506 ; current_state.READ_OP  ; current_state.IDLE           ; clk          ; clk         ; 0.000        ; 0.072      ; 0.749      ;
-; 0.581 ; current_state.WRITE_OP ; current_state.IDLE           ; clk          ; clk         ; 0.000        ; 0.072      ; 0.824      ;
-; 0.583 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[1]~en   ; clk          ; clk         ; 0.000        ; 0.072      ; 0.826      ;
-; 0.670 ; current_state.IDLE     ; current_state.WRITE_OP       ; clk          ; clk         ; 0.000        ; 0.072      ; 0.913      ;
-; 0.699 ; current_state.IDLE     ; current_state.READ_OP        ; clk          ; clk         ; 0.000        ; 0.072      ; 0.942      ;
-; 0.861 ; current_state.BURST_4  ; current_state.IDLE           ; clk          ; clk         ; 0.000        ; 0.072      ; 1.104      ;
-; 0.914 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[2]~en   ; clk          ; clk         ; 0.000        ; 0.072      ; 1.157      ;
-; 0.916 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[3]~en   ; clk          ; clk         ; 0.000        ; 0.072      ; 1.159      ;
-; 0.918 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[0]~en   ; clk          ; clk         ; 0.000        ; 0.072      ; 1.161      ;
-; 0.988 ; current_state.BURST_2  ; current_state.BURST_3        ; clk          ; clk         ; 0.000        ; 0.072      ; 1.231      ;
-; 1.003 ; SRAM:u_sram|tmp_ram~7  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.273     ; 0.901      ;
-; 1.004 ; SRAM:u_sram|tmp_ram~9  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.273     ; 0.902      ;
-; 1.005 ; SRAM:u_sram|tmp_ram~10 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.273     ; 0.903      ;
-; 1.005 ; SRAM:u_sram|tmp_ram~8  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.273     ; 0.903      ;
-; 1.020 ; current_state.BURST_3  ; current_state.BURST_4        ; clk          ; clk         ; 0.000        ; 0.072      ; 1.263      ;
-; 1.156 ; SRAM:u_sram|tmp_ram~14 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.310     ; 1.017      ;
-; 1.159 ; SRAM:u_sram|tmp_ram~12 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.310     ; 1.020      ;
-; 1.216 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 0.000        ; 0.460      ; 1.847      ;
-; 1.216 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 0.000        ; 0.460      ; 1.847      ;
-; 1.216 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 0.000        ; 0.460      ; 1.847      ;
-; 1.216 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 0.000        ; 0.460      ; 1.847      ;
-; 1.233 ; SRAM:u_sram|tmp_ram~20 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.300     ; 1.104      ;
-; 1.250 ; SRAM:u_sram|tmp_ram~22 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.300     ; 1.121      ;
-; 1.256 ; current_state.IDLE     ; current_state.BURST_1        ; clk          ; clk         ; 0.000        ; 0.072      ; 1.499      ;
-; 1.316 ; SRAM:u_sram|tmp_ram~17 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.329     ; 1.158      ;
-; 1.318 ; SRAM:u_sram|tmp_ram~21 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.300     ; 1.189      ;
-; 1.324 ; current_state.BURST_1  ; current_state.BURST_2        ; clk          ; clk         ; 0.000        ; 0.072      ; 1.567      ;
-; 1.396 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.639      ;
-; 1.397 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.640      ;
-; 1.429 ; SRAM:u_sram|tmp_ram~15 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.329     ; 1.271      ;
-; 1.461 ; current_state.IDLE     ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.704      ;
-; 1.462 ; current_state.IDLE     ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.705      ;
-; 1.464 ; SRAM:u_sram|tmp_ram~13 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.310     ; 1.325      ;
-; 1.508 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 0.000        ; 0.470      ; 2.149      ;
-; 1.508 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 0.000        ; 0.470      ; 2.149      ;
-; 1.508 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 0.000        ; 0.470      ; 2.149      ;
-; 1.508 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 0.000        ; 0.470      ; 2.149      ;
-; 1.509 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.170      ;
-; 1.509 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.170      ;
-; 1.509 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.170      ;
-; 1.509 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.170      ;
-; 1.531 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.192      ;
-; 1.531 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.192      ;
-; 1.531 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.192      ;
-; 1.531 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.192      ;
-; 1.537 ; current_state.IDLE     ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.780      ;
-; 1.538 ; current_state.IDLE     ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.781      ;
-; 1.539 ; current_state.BURST_1  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.782      ;
-; 1.540 ; current_state.BURST_1  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.783      ;
-; 1.571 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.232      ;
-; 1.571 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.232      ;
-; 1.571 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.232      ;
-; 1.571 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.232      ;
-; 1.576 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 0.000        ; 0.460      ; 2.207      ;
-; 1.576 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 0.000        ; 0.460      ; 2.207      ;
-; 1.576 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 0.000        ; 0.460      ; 2.207      ;
-; 1.576 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 0.000        ; 0.460      ; 2.207      ;
-; 1.592 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.432      ; 2.195      ;
-; 1.592 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 0.000        ; 0.432      ; 2.195      ;
-; 1.592 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 0.000        ; 0.432      ; 2.195      ;
-; 1.592 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 0.000        ; 0.432      ; 2.195      ;
-; 1.600 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.843      ;
-; 1.600 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.843      ;
-; 1.605 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.848      ;
-; 1.606 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.849      ;
-; 1.607 ; SRAM:u_sram|tmp_ram~11 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.310     ; 1.468      ;
-; 1.609 ; current_state.BURST_3  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.852      ;
-; 1.610 ; current_state.BURST_3  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.853      ;
-; 1.620 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 0.000        ; 0.460      ; 2.251      ;
-; 1.620 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 0.000        ; 0.460      ; 2.251      ;
-; 1.620 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 0.000        ; 0.460      ; 2.251      ;
-; 1.620 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 0.000        ; 0.460      ; 2.251      ;
-; 1.624 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.285      ;
-; 1.624 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.285      ;
-; 1.624 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.285      ;
-; 1.624 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.285      ;
-; 1.654 ; current_state.IDLE     ; burst_addr_reg[0]            ; clk          ; clk         ; 0.000        ; 0.072      ; 1.897      ;
-; 1.654 ; current_state.IDLE     ; burst_addr_reg[1]            ; clk          ; clk         ; 0.000        ; 0.072      ; 1.897      ;
-; 1.654 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.315      ;
-; 1.654 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.315      ;
-; 1.654 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.315      ;
-; 1.654 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.315      ;
-; 1.655 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.898      ;
-; 1.656 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.899      ;
-; 1.666 ; SRAM:u_sram|tmp_ram~19 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.300     ; 1.537      ;
-; 1.679 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.922      ;
-; 1.680 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.923      ;
-; 1.689 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.932      ;
-; 1.691 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.934      ;
-; 1.694 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.937      ;
-; 1.694 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.937      ;
-; 1.708 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.432      ; 2.311      ;
-; 1.708 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 0.000        ; 0.432      ; 2.311      ;
-; 1.708 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 0.000        ; 0.432      ; 2.311      ;
-; 1.708 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 0.000        ; 0.432      ; 2.311      ;
-; 1.714 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.375      ;
-; 1.714 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.375      ;
-; 1.714 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.375      ;
-; 1.714 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.490      ; 2.375      ;
-; 1.734 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.432      ; 2.337      ;
+; 0.549 ; current_state.S_READ3  ; current_state.S_READ4        ; clk          ; clk         ; 0.000        ; 0.072      ; 0.792      ;
+; 0.561 ; current_state.S_READ2  ; current_state.S_READ3        ; clk          ; clk         ; 0.000        ; 0.071      ; 0.803      ;
+; 0.609 ; current_state.S_READ4  ; current_state.S_IDLE         ; clk          ; clk         ; 0.000        ; 0.072      ; 0.852      ;
+; 0.650 ; current_state.S_IDLE   ; current_state.S_WRITE        ; clk          ; clk         ; 0.000        ; 0.072      ; 0.893      ;
+; 0.662 ; current_state.S_WRITE  ; current_state.S_IDLE         ; clk          ; clk         ; 0.000        ; 0.072      ; 0.905      ;
+; 0.890 ; current_state.S_IDLE   ; current_state.S_READ1        ; clk          ; clk         ; 0.000        ; 0.072      ; 1.133      ;
+; 0.992 ; current_state.S_READ1  ; current_state.S_READ2        ; clk          ; clk         ; 0.000        ; 0.073      ; 1.236      ;
+; 0.999 ; current_state.S_READ1  ; current_state.S_IDLE         ; clk          ; clk         ; 0.000        ; 0.072      ; 1.242      ;
+; 1.058 ; SRAM:u_sram|tmp_ram~17 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.313     ; 0.916      ;
+; 1.067 ; current_state.S_READ3  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.311      ;
+; 1.098 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.434      ; 1.703      ;
+; 1.098 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 0.000        ; 0.434      ; 1.703      ;
+; 1.098 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 0.000        ; 0.434      ; 1.703      ;
+; 1.098 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 0.000        ; 0.434      ; 1.703      ;
+; 1.124 ; SRAM:u_sram|tmp_ram~15 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.313     ; 0.982      ;
+; 1.127 ; current_state.S_WRITE  ; SRAM:u_sram|Data_out[3]~en   ; clk          ; clk         ; 0.000        ; 0.073      ; 1.371      ;
+; 1.191 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.434      ;
+; 1.200 ; current_state.S_IDLE   ; current_state.S_IDLE         ; clk          ; clk         ; 0.000        ; 0.072      ; 1.443      ;
+; 1.220 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[3]~en   ; clk          ; clk         ; 0.000        ; 0.073      ; 1.464      ;
+; 1.238 ; SRAM:u_sram|tmp_ram~20 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.287     ; 1.122      ;
+; 1.270 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 0.000        ; 0.480      ; 1.921      ;
+; 1.270 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 0.000        ; 0.480      ; 1.921      ;
+; 1.270 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 0.000        ; 0.480      ; 1.921      ;
+; 1.270 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 0.000        ; 0.480      ; 1.921      ;
+; 1.290 ; current_state.S_READ3  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.534      ;
+; 1.304 ; SRAM:u_sram|tmp_ram~14 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.319     ; 1.156      ;
+; 1.324 ; SRAM:u_sram|tmp_ram~22 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.287     ; 1.208      ;
+; 1.334 ; SRAM:u_sram|tmp_ram~21 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.287     ; 1.218      ;
+; 1.340 ; SRAM:u_sram|tmp_ram~19 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.287     ; 1.224      ;
+; 1.365 ; current_state.S_READ3  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.609      ;
+; 1.374 ; current_state.S_WRITE  ; SRAM:u_sram|Data_out[0]~en   ; clk          ; clk         ; 0.000        ; 0.080      ; 1.625      ;
+; 1.374 ; current_state.S_WRITE  ; SRAM:u_sram|Data_out[1]~en   ; clk          ; clk         ; 0.000        ; 0.080      ; 1.625      ;
+; 1.374 ; current_state.S_WRITE  ; SRAM:u_sram|Data_out[2]~en   ; clk          ; clk         ; 0.000        ; 0.080      ; 1.625      ;
+; 1.406 ; current_state.S_READ3  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.650      ;
+; 1.414 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.657      ;
+; 1.439 ; SRAM:u_sram|tmp_ram~10 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.274     ; 1.336      ;
+; 1.443 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.473      ; 2.087      ;
+; 1.443 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.473      ; 2.087      ;
+; 1.443 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.473      ; 2.087      ;
+; 1.443 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.473      ; 2.087      ;
+; 1.489 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.732      ;
+; 1.491 ; current_state.S_IDLE   ; burst_addr_reg[0]            ; clk          ; clk         ; 0.000        ; 0.073      ; 1.735      ;
+; 1.491 ; current_state.S_IDLE   ; burst_addr_reg[1]            ; clk          ; clk         ; 0.000        ; 0.073      ; 1.735      ;
+; 1.492 ; SRAM:u_sram|tmp_ram~8  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.274     ; 1.389      ;
+; 1.495 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[0]~en   ; clk          ; clk         ; 0.000        ; 0.080      ; 1.746      ;
+; 1.495 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[1]~en   ; clk          ; clk         ; 0.000        ; 0.080      ; 1.746      ;
+; 1.495 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[2]~en   ; clk          ; clk         ; 0.000        ; 0.080      ; 1.746      ;
+; 1.534 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.777      ;
+; 1.558 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 0.000        ; 0.446      ; 2.175      ;
+; 1.558 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 0.000        ; 0.446      ; 2.175      ;
+; 1.558 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 0.000        ; 0.446      ; 2.175      ;
+; 1.558 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 0.000        ; 0.446      ; 2.175      ;
+; 1.563 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.806      ;
+; 1.568 ; SRAM:u_sram|tmp_ram~18 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.313     ; 1.426      ;
+; 1.570 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.434      ; 2.175      ;
+; 1.570 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 0.000        ; 0.434      ; 2.175      ;
+; 1.570 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 0.000        ; 0.434      ; 2.175      ;
+; 1.570 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 0.000        ; 0.434      ; 2.175      ;
+; 1.595 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 0.000        ; 0.447      ; 2.213      ;
+; 1.595 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 0.000        ; 0.447      ; 2.213      ;
+; 1.595 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 0.000        ; 0.447      ; 2.213      ;
+; 1.595 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 0.000        ; 0.447      ; 2.213      ;
+; 1.603 ; SRAM:u_sram|tmp_ram~7  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.274     ; 1.500      ;
+; 1.622 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.865      ;
+; 1.643 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.887      ;
+; 1.663 ; SRAM:u_sram|tmp_ram~16 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.313     ; 1.521      ;
+; 1.666 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.910      ;
+; 1.668 ; SRAM:u_sram|tmp_ram~13 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.319     ; 1.520      ;
+; 1.716 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 1.960      ;
+; 1.720 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 0.000        ; 0.480      ; 2.371      ;
+; 1.720 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 0.000        ; 0.480      ; 2.371      ;
+; 1.720 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 0.000        ; 0.480      ; 2.371      ;
+; 1.720 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 0.000        ; 0.480      ; 2.371      ;
+; 1.734 ; current_state.S_READ2  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.977      ;
+; 1.742 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.072      ; 1.985      ;
+; 1.743 ; current_state.S_IDLE   ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.434      ; 2.348      ;
+; 1.743 ; current_state.S_IDLE   ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 0.000        ; 0.434      ; 2.348      ;
+; 1.743 ; current_state.S_IDLE   ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 0.000        ; 0.434      ; 2.348      ;
+; 1.743 ; current_state.S_IDLE   ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 0.000        ; 0.434      ; 2.348      ;
+; 1.746 ; current_state.S_READ2  ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.433      ; 2.350      ;
+; 1.746 ; current_state.S_READ2  ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 0.000        ; 0.433      ; 2.350      ;
+; 1.746 ; current_state.S_READ2  ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 0.000        ; 0.433      ; 2.350      ;
+; 1.746 ; current_state.S_READ2  ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 0.000        ; 0.433      ; 2.350      ;
+; 1.755 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.473      ; 2.399      ;
+; 1.755 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.473      ; 2.399      ;
+; 1.755 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.473      ; 2.399      ;
+; 1.755 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.473      ; 2.399      ;
+; 1.758 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 0.000        ; 0.479      ; 2.408      ;
+; 1.758 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 0.000        ; 0.479      ; 2.408      ;
+; 1.758 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 0.000        ; 0.479      ; 2.408      ;
+; 1.758 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 0.000        ; 0.479      ; 2.408      ;
+; 1.814 ; SRAM:u_sram|tmp_ram~11 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.319     ; 1.666      ;
+; 1.814 ; current_state.S_READ1  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 2.058      ;
+; 1.828 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.433      ; 2.432      ;
+; 1.828 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 0.000        ; 0.433      ; 2.432      ;
+; 1.828 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 0.000        ; 0.433      ; 2.432      ;
+; 1.828 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 0.000        ; 0.433      ; 2.432      ;
+; 1.832 ; SRAM:u_sram|tmp_ram~12 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.319     ; 1.684      ;
+; 1.837 ; current_state.S_READ1  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 2.081      ;
+; 1.841 ; current_state.S_WRITE  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.073      ; 2.085      ;
 +-------+------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -670,7 +670,7 @@ No synchronizer chains to report.
 +-------+--------+-------------------+
 ; Clock ; Slack  ; End Point TNS     ;
 +-------+--------+-------------------+
-; clk   ; -0.771 ; -11.736           ;
+; clk   ; -0.595 ; -9.746            ;
 +-------+--------+-------------------+
 
 
@@ -679,7 +679,7 @@ No synchronizer chains to report.
 +-------+-------+-------------------+
 ; Clock ; Slack ; End Point TNS     ;
 +-------+-------+-------------------+
-; clk   ; 0.257 ; 0.000             ;
+; clk   ; 0.266 ; 0.000             ;
 +-------+-------+-------------------+
 
 
@@ -700,116 +700,116 @@ No paths to report.
 +-------+--------+---------------------------------+
 ; Clock ; Slack  ; End Point TNS                   ;
 +-------+--------+---------------------------------+
-; clk   ; -3.000 ; -38.350                         ;
+; clk   ; -3.000 ; -37.316                         ;
 +-------+--------+---------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------+
-; Fast 1200mV 0C Model Setup: 'clk'                                                                                                    ;
-+--------+------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
-; Slack  ; From Node              ; To Node                      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+--------+------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
-; -0.771 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.716      ;
-; -0.769 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.714      ;
-; -0.769 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.714      ;
-; -0.769 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.714      ;
-; -0.679 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.624      ;
-; -0.677 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.622      ;
-; -0.677 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.622      ;
-; -0.677 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.622      ;
-; -0.631 ; current_state.BURST_1  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.576      ;
-; -0.629 ; current_state.BURST_1  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.574      ;
-; -0.629 ; current_state.BURST_1  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.574      ;
-; -0.629 ; current_state.BURST_1  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.574      ;
-; -0.598 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.136      ; 1.721      ;
-; -0.598 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.136      ; 1.721      ;
-; -0.598 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.136      ; 1.721      ;
-; -0.598 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.136      ; 1.721      ;
-; -0.588 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.533      ;
-; -0.586 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.531      ;
-; -0.569 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.708      ;
-; -0.569 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.708      ;
-; -0.569 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.708      ;
-; -0.569 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.708      ;
-; -0.569 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.514      ;
-; -0.565 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.510      ;
-; -0.558 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.699      ;
-; -0.558 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.699      ;
-; -0.558 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.699      ;
-; -0.558 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.699      ;
-; -0.526 ; current_state.BURST_4  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.471      ;
-; -0.524 ; current_state.BURST_4  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.469      ;
-; -0.524 ; current_state.BURST_4  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.469      ;
-; -0.524 ; current_state.BURST_4  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.469      ;
-; -0.513 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.652      ;
-; -0.513 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.652      ;
-; -0.513 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.652      ;
-; -0.513 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.652      ;
-; -0.511 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.136      ; 1.634      ;
-; -0.511 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.136      ; 1.634      ;
-; -0.511 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.136      ; 1.634      ;
-; -0.511 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.136      ; 1.634      ;
-; -0.505 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.450      ;
-; -0.503 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.448      ;
-; -0.490 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.435      ;
-; -0.488 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.433      ;
-; -0.486 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.431      ;
-; -0.482 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.427      ;
-; -0.482 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.623      ;
-; -0.482 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.623      ;
-; -0.482 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.623      ;
-; -0.482 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.623      ;
-; -0.477 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.616      ;
-; -0.477 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.616      ;
-; -0.477 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.616      ;
-; -0.477 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.616      ;
-; -0.475 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.616      ;
-; -0.475 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.616      ;
-; -0.475 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.616      ;
-; -0.475 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.616      ;
-; -0.471 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.416      ;
-; -0.468 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.136      ; 1.591      ;
-; -0.468 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.136      ; 1.591      ;
-; -0.468 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.136      ; 1.591      ;
-; -0.468 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.136      ; 1.591      ;
-; -0.467 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.412      ;
-; -0.460 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.601      ;
-; -0.460 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.601      ;
-; -0.460 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.601      ;
-; -0.460 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.601      ;
-; -0.459 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.600      ;
-; -0.459 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.600      ;
-; -0.459 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.600      ;
-; -0.459 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.154      ; 1.600      ;
-; -0.458 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.136      ; 1.581      ;
-; -0.458 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.136      ; 1.581      ;
-; -0.458 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.136      ; 1.581      ;
-; -0.458 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.136      ; 1.581      ;
-; -0.437 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.576      ;
-; -0.437 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.576      ;
-; -0.437 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.576      ;
-; -0.437 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.576      ;
-; -0.430 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.569      ;
-; -0.430 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.569      ;
-; -0.430 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.569      ;
-; -0.430 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.569      ;
-; -0.429 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.568      ;
-; -0.429 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.568      ;
-; -0.429 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.568      ;
-; -0.429 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.568      ;
-; -0.415 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.554      ;
-; -0.415 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.554      ;
-; -0.415 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.554      ;
-; -0.415 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.152      ; 1.554      ;
-; -0.408 ; current_state.IDLE     ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.353      ;
-; -0.406 ; current_state.IDLE     ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.042     ; 1.351      ;
-; -0.401 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.167      ; 1.555      ;
-; -0.401 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 1.000        ; 0.167      ; 1.555      ;
-; -0.401 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 1.000        ; 0.167      ; 1.555      ;
-; -0.401 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 1.000        ; 0.167      ; 1.555      ;
-; -0.392 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.136      ; 1.515      ;
-; -0.392 ; current_state.BURST_4  ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.136      ; 1.515      ;
-+--------+------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Fast 1200mV 0C Model Setup: 'clk'                                                                                                   ;
++--------+-----------------------+------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node             ; To Node                      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------------------+------------------------------+--------------+-------------+--------------+------------+------------+
+; -0.595 ; burst_addr_reg[1]     ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 1.541      ;
+; -0.590 ; burst_addr_reg[1]     ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 1.536      ;
+; -0.588 ; burst_addr_reg[0]     ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 1.534      ;
+; -0.583 ; burst_addr_reg[0]     ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 1.529      ;
+; -0.574 ; current_state.S_WRITE ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.040     ; 1.521      ;
+; -0.569 ; current_state.S_WRITE ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.040     ; 1.516      ;
+; -0.547 ; current_state.S_READ1 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.040     ; 1.494      ;
+; -0.542 ; current_state.S_READ1 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.040     ; 1.489      ;
+; -0.533 ; SRAM:u_sram|tmp_ram~9 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.228     ; 1.292      ;
+; -0.520 ; burst_addr_reg[1]     ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 1.466      ;
+; -0.515 ; burst_addr_reg[1]     ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 1.461      ;
+; -0.513 ; burst_addr_reg[0]     ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 1.459      ;
+; -0.508 ; burst_addr_reg[0]     ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 1.454      ;
+; -0.503 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.145      ; 1.635      ;
+; -0.503 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.145      ; 1.635      ;
+; -0.503 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.145      ; 1.635      ;
+; -0.503 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.145      ; 1.635      ;
+; -0.502 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.157      ; 1.646      ;
+; -0.502 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 1.000        ; 0.157      ; 1.646      ;
+; -0.502 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 1.000        ; 0.157      ; 1.646      ;
+; -0.502 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 1.000        ; 0.157      ; 1.646      ;
+; -0.499 ; current_state.S_WRITE ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.040     ; 1.446      ;
+; -0.494 ; current_state.S_WRITE ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.040     ; 1.441      ;
+; -0.476 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.145      ; 1.608      ;
+; -0.476 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.145      ; 1.608      ;
+; -0.476 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.145      ; 1.608      ;
+; -0.476 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.145      ; 1.608      ;
+; -0.475 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.157      ; 1.619      ;
+; -0.475 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 1.000        ; 0.157      ; 1.619      ;
+; -0.475 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 1.000        ; 0.157      ; 1.619      ;
+; -0.475 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 1.000        ; 0.157      ; 1.619      ;
+; -0.472 ; current_state.S_READ1 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.040     ; 1.419      ;
+; -0.467 ; current_state.S_READ1 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.040     ; 1.414      ;
+; -0.431 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.144      ; 1.562      ;
+; -0.431 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.144      ; 1.562      ;
+; -0.431 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.144      ; 1.562      ;
+; -0.431 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.144      ; 1.562      ;
+; -0.429 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.156      ; 1.572      ;
+; -0.429 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 1.000        ; 0.156      ; 1.572      ;
+; -0.429 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 1.000        ; 0.156      ; 1.572      ;
+; -0.429 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 1.000        ; 0.156      ; 1.572      ;
+; -0.424 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.144      ; 1.555      ;
+; -0.424 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.144      ; 1.555      ;
+; -0.424 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.144      ; 1.555      ;
+; -0.424 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.144      ; 1.555      ;
+; -0.422 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.156      ; 1.565      ;
+; -0.422 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 1.000        ; 0.156      ; 1.565      ;
+; -0.422 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 1.000        ; 0.156      ; 1.565      ;
+; -0.422 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 1.000        ; 0.156      ; 1.565      ;
+; -0.420 ; current_state.S_IDLE  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.040     ; 1.367      ;
+; -0.416 ; current_state.S_READ2 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 1.362      ;
+; -0.415 ; current_state.S_IDLE  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.040     ; 1.362      ;
+; -0.411 ; current_state.S_READ2 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 1.357      ;
+; -0.410 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.139      ; 1.536      ;
+; -0.410 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.139      ; 1.536      ;
+; -0.410 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.139      ; 1.536      ;
+; -0.410 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.139      ; 1.536      ;
+; -0.407 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.159      ; 1.553      ;
+; -0.407 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.159      ; 1.553      ;
+; -0.407 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.159      ; 1.553      ;
+; -0.407 ; current_state.S_WRITE ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.159      ; 1.553      ;
+; -0.383 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.139      ; 1.509      ;
+; -0.383 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.139      ; 1.509      ;
+; -0.383 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.139      ; 1.509      ;
+; -0.383 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.139      ; 1.509      ;
+; -0.380 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.159      ; 1.526      ;
+; -0.380 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.159      ; 1.526      ;
+; -0.380 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.159      ; 1.526      ;
+; -0.380 ; current_state.S_READ1 ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.159      ; 1.526      ;
+; -0.379 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.158      ; 1.524      ;
+; -0.379 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.158      ; 1.524      ;
+; -0.379 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.158      ; 1.524      ;
+; -0.379 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.158      ; 1.524      ;
+; -0.372 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 1.000        ; 0.158      ; 1.517      ;
+; -0.372 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 1.000        ; 0.158      ; 1.517      ;
+; -0.372 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 1.000        ; 0.158      ; 1.517      ;
+; -0.372 ; burst_addr_reg[0]     ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 1.000        ; 0.158      ; 1.517      ;
+; -0.356 ; current_state.S_READ3 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 1.000        ; -0.040     ; 1.303      ;
+; -0.349 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.145      ; 1.481      ;
+; -0.349 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.145      ; 1.481      ;
+; -0.349 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.145      ; 1.481      ;
+; -0.349 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.145      ; 1.481      ;
+; -0.348 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.157      ; 1.492      ;
+; -0.348 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 1.000        ; 0.157      ; 1.492      ;
+; -0.348 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 1.000        ; 0.157      ; 1.492      ;
+; -0.348 ; current_state.S_IDLE  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 1.000        ; 0.157      ; 1.492      ;
+; -0.345 ; current_state.S_IDLE  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.040     ; 1.292      ;
+; -0.341 ; current_state.S_READ2 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 1.287      ;
+; -0.340 ; current_state.S_IDLE  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.040     ; 1.287      ;
+; -0.336 ; current_state.S_READ2 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 1.000        ; -0.041     ; 1.282      ;
+; -0.319 ; current_state.S_READ3 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 1.000        ; -0.040     ; 1.266      ;
+; -0.295 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 1.000        ; 0.138      ; 1.420      ;
+; -0.295 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 1.000        ; 0.138      ; 1.420      ;
+; -0.295 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 1.000        ; 0.138      ; 1.420      ;
+; -0.295 ; burst_addr_reg[1]     ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 1.000        ; 0.138      ; 1.420      ;
+; -0.287 ; current_state.S_READ3 ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 1.000        ; 0.145      ; 1.419      ;
+; -0.287 ; current_state.S_READ3 ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 1.000        ; 0.145      ; 1.419      ;
+; -0.287 ; current_state.S_READ3 ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 1.000        ; 0.145      ; 1.419      ;
+; -0.287 ; current_state.S_READ3 ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 1.000        ; 0.145      ; 1.419      ;
+; -0.286 ; current_state.S_READ3 ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 1.000        ; 0.157      ; 1.430      ;
++--------+-----------------------+------------------------------+--------------+-------------+--------------+------------+------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------+
@@ -817,106 +817,106 @@ No paths to report.
 +-------+------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
 ; Slack ; From Node              ; To Node                      ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
 +-------+------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
-; 0.257 ; current_state.READ_OP  ; current_state.IDLE           ; clk          ; clk         ; 0.000        ; 0.041      ; 0.382      ;
-; 0.283 ; current_state.WRITE_OP ; current_state.IDLE           ; clk          ; clk         ; 0.000        ; 0.041      ; 0.408      ;
-; 0.285 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[1]~en   ; clk          ; clk         ; 0.000        ; 0.041      ; 0.410      ;
-; 0.337 ; current_state.IDLE     ; current_state.WRITE_OP       ; clk          ; clk         ; 0.000        ; 0.041      ; 0.462      ;
-; 0.352 ; current_state.IDLE     ; current_state.READ_OP        ; clk          ; clk         ; 0.000        ; 0.041      ; 0.477      ;
-; 0.420 ; current_state.BURST_4  ; current_state.IDLE           ; clk          ; clk         ; 0.000        ; 0.041      ; 0.545      ;
-; 0.448 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[2]~en   ; clk          ; clk         ; 0.000        ; 0.040      ; 0.572      ;
-; 0.449 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[3]~en   ; clk          ; clk         ; 0.000        ; 0.040      ; 0.573      ;
-; 0.450 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[0]~en   ; clk          ; clk         ; 0.000        ; 0.040      ; 0.574      ;
-; 0.469 ; current_state.BURST_2  ; current_state.BURST_3        ; clk          ; clk         ; 0.000        ; 0.041      ; 0.594      ;
-; 0.479 ; current_state.BURST_3  ; current_state.BURST_4        ; clk          ; clk         ; 0.000        ; 0.041      ; 0.604      ;
-; 0.512 ; SRAM:u_sram|tmp_ram~9  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.137     ; 0.459      ;
-; 0.512 ; SRAM:u_sram|tmp_ram~7  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.137     ; 0.459      ;
-; 0.514 ; SRAM:u_sram|tmp_ram~10 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.137     ; 0.461      ;
-; 0.514 ; SRAM:u_sram|tmp_ram~8  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.137     ; 0.461      ;
-; 0.568 ; SRAM:u_sram|tmp_ram~14 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.153     ; 0.499      ;
-; 0.570 ; SRAM:u_sram|tmp_ram~12 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.153     ; 0.501      ;
-; 0.597 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 0.000        ; 0.245      ; 0.926      ;
-; 0.597 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 0.000        ; 0.245      ; 0.926      ;
-; 0.597 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 0.000        ; 0.245      ; 0.926      ;
-; 0.597 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 0.000        ; 0.245      ; 0.926      ;
-; 0.609 ; SRAM:u_sram|tmp_ram~20 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.155     ; 0.538      ;
-; 0.619 ; SRAM:u_sram|tmp_ram~22 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.155     ; 0.548      ;
-; 0.640 ; current_state.IDLE     ; current_state.BURST_1        ; clk          ; clk         ; 0.000        ; 0.041      ; 0.765      ;
-; 0.647 ; SRAM:u_sram|tmp_ram~17 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.168     ; 0.563      ;
-; 0.650 ; SRAM:u_sram|tmp_ram~21 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.155     ; 0.579      ;
-; 0.654 ; current_state.BURST_1  ; current_state.BURST_2        ; clk          ; clk         ; 0.000        ; 0.041      ; 0.779      ;
-; 0.704 ; SRAM:u_sram|tmp_ram~15 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.168     ; 0.620      ;
-; 0.713 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.837      ;
-; 0.714 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.838      ;
-; 0.724 ; SRAM:u_sram|tmp_ram~13 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.153     ; 0.655      ;
-; 0.755 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 0.000        ; 0.243      ; 1.082      ;
-; 0.755 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 0.000        ; 0.243      ; 1.082      ;
-; 0.755 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 0.000        ; 0.243      ; 1.082      ;
-; 0.755 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 0.000        ; 0.243      ; 1.082      ;
-; 0.766 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.108      ;
-; 0.766 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.108      ;
-; 0.766 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.108      ;
-; 0.766 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.108      ;
-; 0.772 ; current_state.BURST_1  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.896      ;
-; 0.773 ; current_state.BURST_1  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.897      ;
-; 0.775 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.117      ;
-; 0.775 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.117      ;
-; 0.775 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.117      ;
-; 0.775 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.117      ;
-; 0.782 ; current_state.IDLE     ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.906      ;
-; 0.782 ; current_state.IDLE     ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.906      ;
-; 0.787 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.911      ;
-; 0.787 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.911      ;
-; 0.791 ; current_state.BURST_3  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.915      ;
-; 0.792 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 0.000        ; 0.245      ; 1.121      ;
-; 0.792 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 0.000        ; 0.245      ; 1.121      ;
-; 0.792 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 0.000        ; 0.245      ; 1.121      ;
-; 0.792 ; current_state.BURST_3  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 0.000        ; 0.245      ; 1.121      ;
-; 0.792 ; current_state.BURST_3  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.916      ;
-; 0.796 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.226      ; 1.106      ;
-; 0.796 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 0.000        ; 0.226      ; 1.106      ;
-; 0.796 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 0.000        ; 0.226      ; 1.106      ;
-; 0.796 ; current_state.WRITE_OP ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 0.000        ; 0.226      ; 1.106      ;
-; 0.804 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.928      ;
-; 0.805 ; SRAM:u_sram|tmp_ram~11 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.153     ; 0.736      ;
-; 0.805 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.929      ;
-; 0.806 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.148      ;
-; 0.806 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.148      ;
-; 0.806 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.148      ;
-; 0.806 ; current_state.BURST_2  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.148      ;
-; 0.819 ; current_state.IDLE     ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.943      ;
-; 0.822 ; current_state.IDLE     ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.946      ;
-; 0.824 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.948      ;
-; 0.826 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.950      ;
-; 0.827 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.951      ;
-; 0.827 ; current_state.READ_OP  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.951      ;
-; 0.836 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.178      ;
-; 0.836 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.178      ;
-; 0.836 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.178      ;
-; 0.836 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.178      ;
-; 0.838 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.962      ;
-; 0.838 ; current_state.WRITE_OP ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.962      ;
-; 0.841 ; SRAM:u_sram|tmp_ram~19 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.155     ; 0.770      ;
-; 0.847 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 0.000        ; 0.245      ; 1.176      ;
-; 0.847 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 0.000        ; 0.245      ; 1.176      ;
-; 0.847 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 0.000        ; 0.245      ; 1.176      ;
-; 0.847 ; current_state.IDLE     ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 0.000        ; 0.245      ; 1.176      ;
-; 0.852 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 0.000        ; 0.245      ; 1.181      ;
-; 0.852 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 0.000        ; 0.245      ; 1.181      ;
-; 0.852 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 0.000        ; 0.245      ; 1.181      ;
-; 0.852 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 0.000        ; 0.245      ; 1.181      ;
-; 0.853 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.195      ;
-; 0.853 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.195      ;
-; 0.853 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.195      ;
-; 0.853 ; current_state.READ_OP  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.195      ;
-; 0.861 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.985      ;
-; 0.862 ; current_state.BURST_2  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.040      ; 0.986      ;
-; 0.864 ; current_state.IDLE     ; burst_addr_reg[0]            ; clk          ; clk         ; 0.000        ; 0.041      ; 0.989      ;
-; 0.864 ; current_state.IDLE     ; burst_addr_reg[1]            ; clk          ; clk         ; 0.000        ; 0.041      ; 0.989      ;
-; 0.865 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.207      ;
-; 0.865 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.207      ;
-; 0.865 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.207      ;
-; 0.865 ; current_state.BURST_1  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.258      ; 1.207      ;
-; 0.866 ; SRAM:u_sram|tmp_ram~18 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.168     ; 0.782      ;
+; 0.266 ; current_state.S_READ2  ; current_state.S_READ3        ; clk          ; clk         ; 0.000        ; 0.040      ; 0.390      ;
+; 0.274 ; current_state.S_READ3  ; current_state.S_READ4        ; clk          ; clk         ; 0.000        ; 0.041      ; 0.399      ;
+; 0.303 ; current_state.S_READ4  ; current_state.S_IDLE         ; clk          ; clk         ; 0.000        ; 0.041      ; 0.428      ;
+; 0.327 ; current_state.S_IDLE   ; current_state.S_WRITE        ; clk          ; clk         ; 0.000        ; 0.041      ; 0.452      ;
+; 0.336 ; current_state.S_WRITE  ; current_state.S_IDLE         ; clk          ; clk         ; 0.000        ; 0.041      ; 0.461      ;
+; 0.465 ; current_state.S_IDLE   ; current_state.S_READ1        ; clk          ; clk         ; 0.000        ; 0.041      ; 0.590      ;
+; 0.482 ; current_state.S_READ1  ; current_state.S_IDLE         ; clk          ; clk         ; 0.000        ; 0.041      ; 0.607      ;
+; 0.488 ; current_state.S_READ1  ; current_state.S_READ2        ; clk          ; clk         ; 0.000        ; 0.042      ; 0.614      ;
+; 0.513 ; SRAM:u_sram|tmp_ram~17 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.156     ; 0.441      ;
+; 0.516 ; current_state.S_READ3  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.642      ;
+; 0.547 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.229      ; 0.860      ;
+; 0.547 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 0.000        ; 0.229      ; 0.860      ;
+; 0.547 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 0.000        ; 0.229      ; 0.860      ;
+; 0.547 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 0.000        ; 0.229      ; 0.860      ;
+; 0.553 ; current_state.S_WRITE  ; SRAM:u_sram|Data_out[3]~en   ; clk          ; clk         ; 0.000        ; 0.042      ; 0.679      ;
+; 0.555 ; SRAM:u_sram|tmp_ram~15 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.156     ; 0.483      ;
+; 0.579 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[3]~en   ; clk          ; clk         ; 0.000        ; 0.042      ; 0.705      ;
+; 0.609 ; SRAM:u_sram|tmp_ram~20 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.144     ; 0.549      ;
+; 0.614 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.739      ;
+; 0.619 ; current_state.S_IDLE   ; current_state.S_IDLE         ; clk          ; clk         ; 0.000        ; 0.041      ; 0.744      ;
+; 0.628 ; current_state.S_READ3  ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.754      ;
+; 0.634 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 0.000        ; 0.250      ; 0.968      ;
+; 0.634 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 0.000        ; 0.250      ; 0.968      ;
+; 0.634 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 0.000        ; 0.250      ; 0.968      ;
+; 0.634 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 0.000        ; 0.250      ; 0.968      ;
+; 0.649 ; SRAM:u_sram|tmp_ram~22 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.144     ; 0.589      ;
+; 0.653 ; SRAM:u_sram|tmp_ram~21 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.144     ; 0.593      ;
+; 0.660 ; SRAM:u_sram|tmp_ram~14 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.158     ; 0.586      ;
+; 0.662 ; current_state.S_READ3  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.788      ;
+; 0.668 ; SRAM:u_sram|tmp_ram~19 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.144     ; 0.608      ;
+; 0.705 ; current_state.S_READ3  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.831      ;
+; 0.709 ; SRAM:u_sram|tmp_ram~10 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.138     ; 0.655      ;
+; 0.716 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.248      ; 1.048      ;
+; 0.716 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.248      ; 1.048      ;
+; 0.716 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.248      ; 1.048      ;
+; 0.716 ; current_state.S_WRITE  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.248      ; 1.048      ;
+; 0.728 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.853      ;
+; 0.735 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[0]~en   ; clk          ; clk         ; 0.000        ; 0.053      ; 0.872      ;
+; 0.735 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[1]~en   ; clk          ; clk         ; 0.000        ; 0.053      ; 0.872      ;
+; 0.735 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[2]~en   ; clk          ; clk         ; 0.000        ; 0.053      ; 0.872      ;
+; 0.737 ; SRAM:u_sram|tmp_ram~8  ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.138     ; 0.683      ;
+; 0.744 ; current_state.S_WRITE  ; SRAM:u_sram|Data_out[0]~en   ; clk          ; clk         ; 0.000        ; 0.053      ; 0.881      ;
+; 0.744 ; current_state.S_WRITE  ; SRAM:u_sram|Data_out[1]~en   ; clk          ; clk         ; 0.000        ; 0.053      ; 0.881      ;
+; 0.744 ; current_state.S_WRITE  ; SRAM:u_sram|Data_out[2]~en   ; clk          ; clk         ; 0.000        ; 0.053      ; 0.881      ;
+; 0.755 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.880      ;
+; 0.763 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.888      ;
+; 0.773 ; SRAM:u_sram|tmp_ram~18 ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; -0.156     ; 0.701      ;
+; 0.775 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.900      ;
+; 0.780 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 0.000        ; 0.235      ; 1.099      ;
+; 0.780 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 0.000        ; 0.235      ; 1.099      ;
+; 0.780 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 0.000        ; 0.235      ; 1.099      ;
+; 0.780 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 0.000        ; 0.235      ; 1.099      ;
+; 0.786 ; current_state.S_IDLE   ; burst_addr_reg[0]            ; clk          ; clk         ; 0.000        ; 0.042      ; 0.912      ;
+; 0.786 ; current_state.S_IDLE   ; burst_addr_reg[1]            ; clk          ; clk         ; 0.000        ; 0.042      ; 0.912      ;
+; 0.793 ; SRAM:u_sram|tmp_ram~7  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.138     ; 0.739      ;
+; 0.804 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.229      ; 1.117      ;
+; 0.804 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 0.000        ; 0.229      ; 1.117      ;
+; 0.804 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 0.000        ; 0.229      ; 1.117      ;
+; 0.804 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 0.000        ; 0.229      ; 1.117      ;
+; 0.816 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~19       ; clk          ; clk         ; 0.000        ; 0.234      ; 1.134      ;
+; 0.816 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~20       ; clk          ; clk         ; 0.000        ; 0.234      ; 1.134      ;
+; 0.816 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~21       ; clk          ; clk         ; 0.000        ; 0.234      ; 1.134      ;
+; 0.816 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~22       ; clk          ; clk         ; 0.000        ; 0.234      ; 1.134      ;
+; 0.827 ; SRAM:u_sram|tmp_ram~16 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.156     ; 0.755      ;
+; 0.829 ; burst_addr_reg[1]      ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.954      ;
+; 0.830 ; SRAM:u_sram|tmp_ram~13 ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; -0.158     ; 0.756      ;
+; 0.831 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.957      ;
+; 0.851 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.977      ;
+; 0.863 ; current_state.S_IDLE   ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 0.989      ;
+; 0.866 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[2]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 0.991      ;
+; 0.871 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 0.000        ; 0.250      ; 1.205      ;
+; 0.871 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 0.000        ; 0.250      ; 1.205      ;
+; 0.871 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 0.000        ; 0.250      ; 1.205      ;
+; 0.871 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 0.000        ; 0.250      ; 1.205      ;
+; 0.883 ; current_state.S_READ2  ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 1.008      ;
+; 0.895 ; current_state.S_READ2  ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.228      ; 1.207      ;
+; 0.895 ; current_state.S_READ2  ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 0.000        ; 0.228      ; 1.207      ;
+; 0.895 ; current_state.S_READ2  ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 0.000        ; 0.228      ; 1.207      ;
+; 0.895 ; current_state.S_READ2  ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 0.000        ; 0.228      ; 1.207      ;
+; 0.897 ; SRAM:u_sram|tmp_ram~11 ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; -0.158     ; 0.823      ;
+; 0.901 ; current_state.S_IDLE   ; SRAM:u_sram|tmp_ram~7        ; clk          ; clk         ; 0.000        ; 0.229      ; 1.214      ;
+; 0.901 ; current_state.S_IDLE   ; SRAM:u_sram|tmp_ram~8        ; clk          ; clk         ; 0.000        ; 0.229      ; 1.214      ;
+; 0.901 ; current_state.S_IDLE   ; SRAM:u_sram|tmp_ram~9        ; clk          ; clk         ; 0.000        ; 0.229      ; 1.214      ;
+; 0.901 ; current_state.S_IDLE   ; SRAM:u_sram|tmp_ram~10       ; clk          ; clk         ; 0.000        ; 0.229      ; 1.214      ;
+; 0.918 ; current_state.S_READ1  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 1.044      ;
+; 0.918 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 0.000        ; 0.249      ; 1.251      ;
+; 0.918 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 0.000        ; 0.249      ; 1.251      ;
+; 0.918 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 0.000        ; 0.249      ; 1.251      ;
+; 0.918 ; burst_addr_reg[1]      ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 0.000        ; 0.249      ; 1.251      ;
+; 0.921 ; burst_addr_reg[0]      ; SRAM:u_sram|Data_out[0]~reg0 ; clk          ; clk         ; 0.000        ; 0.041      ; 1.046      ;
+; 0.927 ; SRAM:u_sram|tmp_ram~12 ; SRAM:u_sram|Data_out[1]~reg0 ; clk          ; clk         ; 0.000        ; -0.158     ; 0.853      ;
+; 0.937 ; current_state.S_WRITE  ; SRAM:u_sram|Data_out[3]~reg0 ; clk          ; clk         ; 0.000        ; 0.042      ; 1.063      ;
+; 0.937 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~11       ; clk          ; clk         ; 0.000        ; 0.249      ; 1.270      ;
+; 0.937 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~12       ; clk          ; clk         ; 0.000        ; 0.249      ; 1.270      ;
+; 0.937 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~13       ; clk          ; clk         ; 0.000        ; 0.249      ; 1.270      ;
+; 0.937 ; burst_addr_reg[0]      ; SRAM:u_sram|tmp_ram~14       ; clk          ; clk         ; 0.000        ; 0.249      ; 1.270      ;
+; 0.938 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~15       ; clk          ; clk         ; 0.000        ; 0.248      ; 1.270      ;
+; 0.938 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~16       ; clk          ; clk         ; 0.000        ; 0.248      ; 1.270      ;
+; 0.938 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~17       ; clk          ; clk         ; 0.000        ; 0.248      ; 1.270      ;
+; 0.938 ; current_state.S_READ3  ; SRAM:u_sram|tmp_ram~18       ; clk          ; clk         ; 0.000        ; 0.248      ; 1.270      ;
 +-------+------------------------+------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -931,10 +931,10 @@ No synchronizer chains to report.
 +------------------+---------+-------+----------+---------+---------------------+
 ; Clock            ; Setup   ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
 +------------------+---------+-------+----------+---------+---------------------+
-; Worst-case Slack ; -2.561  ; 0.257 ; N/A      ; N/A     ; -3.000              ;
-;  clk             ; -2.561  ; 0.257 ; N/A      ; N/A     ; -3.000              ;
-; Design-wide TNS  ; -51.796 ; 0.0   ; 0.0      ; 0.0     ; -45.405             ;
-;  clk             ; -51.796 ; 0.000 ; N/A      ; N/A     ; -45.405             ;
+; Worst-case Slack ; -2.297  ; 0.266 ; N/A      ; N/A     ; -3.000              ;
+;  clk             ; -2.297  ; 0.266 ; N/A      ; N/A     ; -3.000              ;
+; Design-wide TNS  ; -49.393 ; 0.0   ; 0.0      ; 0.0     ; -44.12              ;
+;  clk             ; -49.393 ; 0.000 ; N/A      ; N/A     ; -44.120             ;
 +------------------+---------+-------+----------+---------+---------------------+
 
 
@@ -961,9 +961,10 @@ No synchronizer chains to report.
 ; address[0]              ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; clk                     ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; din[0]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; rst                     ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; rw                      ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; mem                     ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
+; reset                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; burst                   ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
-; we                      ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; din[1]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; din[2]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
 ; din[3]                  ; 2.5 V        ; 2000 ps         ; 2000 ps         ;
@@ -1020,7 +1021,7 @@ No synchronizer chains to report.
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; clk        ; clk      ; 465      ; 0        ; 0        ; 0        ;
+; clk        ; clk      ; 359      ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -1030,7 +1031,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; clk        ; clk      ; 465      ; 0        ; 0        ; 0        ;
+; clk        ; clk      ; 359      ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -1054,8 +1055,8 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 9     ; 9    ;
-; Unconstrained Input Port Paths  ; 74    ; 74   ;
+; Unconstrained Input Ports       ; 10    ; 10   ;
+; Unconstrained Input Port Paths  ; 77    ; 77   ;
 ; Unconstrained Output Ports      ; 4     ; 4    ;
 ; Unconstrained Output Port Paths ; 8     ; 8    ;
 +---------------------------------+-------+------+
@@ -1082,8 +1083,9 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; din[1]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; din[2]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; din[3]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rst        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; we         ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; mem        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reset      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rw         ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +------------+--------------------------------------------------------------------------------------+
 
 
@@ -1111,8 +1113,9 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; din[1]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; din[2]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; din[3]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rst        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; we         ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; mem        ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reset      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rw         ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +------------+--------------------------------------------------------------------------------------+
 
 
@@ -1134,7 +1137,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Sun Dec 14 14:44:04 2025
+    Info: Processing started: Fri Dec 19 09:17:13 2025
 Info: Command: quartus_sta lab -c lab
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -1151,64 +1154,64 @@ Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1200mV 85C Model
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -2.561
+Info (332146): Worst-case setup slack is -2.297
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.561             -51.796 clk 
-Info (332146): Worst-case hold slack is 0.558
+    Info (332119):    -2.297             -49.393 clk 
+Info (332146): Worst-case hold slack is 0.600
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.558               0.000 clk 
+    Info (332119):     0.600               0.000 clk 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000             -45.405 clk 
+    Info (332119):    -3.000             -44.120 clk 
 Info: Analyzing Slow 1200mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -2.317
+Info (332146): Worst-case setup slack is -1.975
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.317             -45.071 clk 
-Info (332146): Worst-case hold slack is 0.506
+    Info (332119):    -1.975             -41.972 clk 
+Info (332146): Worst-case hold slack is 0.549
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.506               0.000 clk 
+    Info (332119):     0.549               0.000 clk 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000             -45.405 clk 
+    Info (332119):    -3.000             -44.120 clk 
 Info: Analyzing Fast 1200mV 0C Model
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -0.771
+Info (332146): Worst-case setup slack is -0.595
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.771             -11.736 clk 
-Info (332146): Worst-case hold slack is 0.257
+    Info (332119):    -0.595              -9.746 clk 
+Info (332146): Worst-case hold slack is 0.266
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.257               0.000 clk 
+    Info (332119):     0.266               0.000 clk 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -3.000
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.000             -38.350 clk 
+    Info (332119):    -3.000             -37.316 clk 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 5 warnings
     Info: Peak virtual memory: 4929 megabytes
-    Info: Processing ended: Sun Dec 14 14:44:05 2025
-    Info: Elapsed time: 00:00:01
+    Info: Processing ended: Fri Dec 19 09:17:15 2025
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:02
 
 

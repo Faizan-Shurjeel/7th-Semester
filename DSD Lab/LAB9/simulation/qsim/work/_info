@@ -1,6 +1,7 @@
 m255
 K4
 z2
+!s11e MIXED_VERSIONS
 !s11f vlog 2020.1 2020.02, Feb 28 2020
 13
 !s112 1.1
@@ -33,6 +34,102 @@ Z5 !s108 1766107583.000000
 Z6 o-work work
 Z7 tCvgOpt 0
 ntraffic@controller
+Etrafficcontroller
+Z8 w1766127362
+Z9 DPx8 cyclonev 18 cyclonev_atom_pack 0 22 3HQPc5MVbmOPN?>a5EBYj2
+Z10 DPx8 cyclonev 19 cyclonev_components 0 22 jZ]H46BQLgIP5mfRTO`3B1
+Z11 DPx12 altera_lnsim 23 altera_lnsim_components 0 22 ^Ch;U@;bMk1;>A2B<UV`k2
+Z12 DPx4 ieee 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
+Z13 DPx6 altera 11 dffeas_pack 0 22 dc5N=DKXMMTVYdUQ@D3FA2
+Z14 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
+Z15 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z16 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+Z17 DPx6 altera 28 altera_primitives_components 0 22 ca:ehlQAg4;_gVV:^8MAg3
+!i122 16
+R0
+Z18 8trafficController.vho
+Z19 FtrafficController.vho
+l0
+L39 1
+Vb;Y@I4DF5k0_YUNbL4Q<k1
+!s100 0;VZJE?TbB8zWUYST3E<J0
+Z20 OV;C;2020.1;71
+32
+Z21 !s110 1766127363
+!i10b 1
+Z22 !s108 1766127363.000000
+Z23 !s90 -work|work|trafficController.vho|
+Z24 !s107 trafficController.vho|
+!i113 1
+R6
+Z25 tExplicit 1 CvgOpt 0
+Astructure
+R9
+R10
+R11
+R12
+R13
+R14
+R15
+R16
+R17
+DEx4 work 17 trafficcontroller 0 22 b;Y@I4DF5k0_YUNbL4Q<k1
+!i122 16
+l173
+L65 1518
+Vh^]``:hCH:Q58W00k<bPf3
+!s100 eUL@5dG00ne`jDB5c^l]l1
+R20
+32
+R21
+!i10b 1
+R22
+R23
+R24
+!i113 1
+R6
+R25
+Etrafficcontroller_vhd_vec_tst
+Z26 w1766127361
+R15
+R16
+!i122 17
+R0
+Z27 8Waveform1.vwf.vht
+Z28 FWaveform1.vwf.vht
+l0
+L32 1
+V0MXW1ZFF`FjXmF1O6PoU91
+!s100 GCX4SGUaUf[Bj4db?;4d>1
+R20
+32
+Z29 !s110 1766127364
+!i10b 1
+R22
+Z30 !s90 -work|work|Waveform1.vwf.vht|
+!s107 Waveform1.vwf.vht|
+!i113 1
+R6
+R25
+Atrafficcontroller_arch
+R15
+R16
+DEx4 work 29 trafficcontroller_vhd_vec_tst 0 22 0MXW1ZFF`FjXmF1O6PoU91
+!i122 17
+l57
+L34 58
+VachzZoI=A424X1Az_Ae>P2
+!s100 zo]ZVgocTZPj90nYM<Bn]1
+R20
+32
+R29
+!i10b 1
+R22
+R30
+Z31 !s107 Waveform1.vwf.vht|
+!i113 1
+R6
+R25
 vtrafficController_vlg_vec_tst
 R1
 !i10b 1

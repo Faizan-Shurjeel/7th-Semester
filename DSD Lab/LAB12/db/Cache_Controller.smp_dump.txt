@@ -1,0 +1,7 @@
+
+State Machine - |Cache_Controller|current_state
+Name current_state.s_RESULT current_state.s_COMPARE current_state.s_READ current_state.s_IDLE 
+current_state.s_IDLE 0 0 0 0 
+current_state.s_READ 0 0 1 1 
+current_state.s_COMPARE 0 1 0 1 
+current_state.s_RESULT 1 0 0 1 

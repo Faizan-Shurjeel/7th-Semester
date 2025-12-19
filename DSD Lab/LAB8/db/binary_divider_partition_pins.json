@@ -1,0 +1,113 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "quotient[0]",
+					"strict" : false
+				},
+				{
+					"name" : "quotient[1]",
+					"strict" : false
+				},
+				{
+					"name" : "quotient[2]",
+					"strict" : false
+				},
+				{
+					"name" : "quotient[3]",
+					"strict" : false
+				},
+				{
+					"name" : "remi[0]",
+					"strict" : false
+				},
+				{
+					"name" : "remi[1]",
+					"strict" : false
+				},
+				{
+					"name" : "remi[2]",
+					"strict" : false
+				},
+				{
+					"name" : "remi[3]",
+					"strict" : false
+				},
+				{
+					"name" : "done",
+					"strict" : false
+				},
+				{
+					"name" : "debug_state[0]",
+					"strict" : false
+				},
+				{
+					"name" : "debug_state[1]",
+					"strict" : false
+				},
+				{
+					"name" : "debug_state[2]",
+					"strict" : false
+				},
+				{
+					"name" : "debug_counter[0]",
+					"strict" : false
+				},
+				{
+					"name" : "debug_counter[1]",
+					"strict" : false
+				},
+				{
+					"name" : "debug_counter[2]",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "start",
+					"strict" : false
+				},
+				{
+					"name" : "dividend[0]",
+					"strict" : false
+				},
+				{
+					"name" : "dividend[1]",
+					"strict" : false
+				},
+				{
+					"name" : "dividend[2]",
+					"strict" : false
+				},
+				{
+					"name" : "dividend[3]",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[3]",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[2]",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[1]",
+					"strict" : false
+				},
+				{
+					"name" : "divisor[0]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

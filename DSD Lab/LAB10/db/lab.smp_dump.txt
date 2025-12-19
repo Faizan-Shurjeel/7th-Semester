@@ -1,10 +1,9 @@
 
 State Machine - |lab|current_state
-Name current_state.BURST_4 current_state.BURST_3 current_state.BURST_2 current_state.BURST_1 current_state.READ_OP current_state.WRITE_OP current_state.IDLE 
-current_state.IDLE 0 0 0 0 0 0 0 
-current_state.WRITE_OP 0 0 0 0 0 1 1 
-current_state.READ_OP 0 0 0 0 1 0 1 
-current_state.BURST_1 0 0 0 1 0 0 1 
-current_state.BURST_2 0 0 1 0 0 0 1 
-current_state.BURST_3 0 1 0 0 0 0 1 
-current_state.BURST_4 1 0 0 0 0 0 1 
+Name current_state.S_READ4 current_state.S_READ3 current_state.S_READ2 current_state.S_READ1 current_state.S_WRITE current_state.S_IDLE 
+current_state.S_IDLE 0 0 0 0 0 0 
+current_state.S_WRITE 0 0 0 0 1 1 
+current_state.S_READ1 0 0 0 1 0 1 
+current_state.S_READ2 0 0 1 0 0 1 
+current_state.S_READ3 0 1 0 0 0 1 
+current_state.S_READ4 1 0 0 0 0 1 

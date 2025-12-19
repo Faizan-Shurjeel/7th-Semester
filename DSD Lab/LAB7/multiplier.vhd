@@ -1,116 +1,105 @@
 library ieee;
-use IEEE.std_logic_unsigned.all;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
---N=5;
-entity multiplier is port(
-		clk,rst,sbtn : IN std_logic;
-		numb : out std_logic_vector(6 downto 0);
-		PROUT : OUT std_logic_vector(9 downto 0)
-			
-); end multiplier; 
+entity multiplier is
+    generic(
+        N : integer := 5
+    );
+    port(
+        clk   : in  std_logic;
+        rst   : in  std_logic;
+        start : in  std_logic;
+        M     : in  signed(N-1 downto 0);  -- Multiplicand
+        Q_in  : in  signed(N-1 downto 0);  -- Multiplier
+        P     : out signed(2*N-1 downto 0); -- Final product
+        done  : out std_logic
+    );
+end multiplier;
 
-architecture bhv of multiplier is 
-	signal A: std_logic_vector(6 downto 0);     --A|AC
-	signal B,Bcomp : std_logic_vector(5 downto 0);
-	signal AC : std_logic_vector(1 downto 0);
-	signal Prod : std_logic_vector(9 downto 0); -- temporary product register
-	signal PH : std_logic_vector(5 downto 0);  -- to hold upper 6 bits of P register
-	signal PL : std_logic_vector(3 downto 0);
-	-----------------
-	type boothstate is (START,IDLE,WORKi,ADDI,SUBT,DECR,DONE);
-	signal state, next_state : boothstate;
-	signal N: integer range 0 to 5;
-
+architecture Behavioral of multiplier is
+  
+    signal A     : signed(N-1 downto 0) := (others => '0');  
+    signal Q     : signed(N-1 downto 0) := (others => '0');  
+    signal Qm1   : std_logic := '0';                         
+    signal SC    : integer range 0 to N := 0;                
+    signal M_reg : signed(N-1 downto 0) := (others => '0');  
+    
+    type state_type is (IDLE, INIT, CHECK_BITS, ADD_SUB, SHIFT_REG, FINISH);
+    signal state : state_type := IDLE;
+    
 begin
+    process(clk)
+    begin
+        if rising_edge(clk) then
+            if rst = '1' then
+                A     <= (others => '0');
+                Q     <= (others => '0');
+                Qm1   <= '0';
+                SC    <= 0;
+                M_reg <= (others => '0');
+                done  <= '0';
+                state <= IDLE;
+                
+            else
+                case state is
+                    when IDLE =>
+                        done <= '0';
+                        if start = '1' then
+                            state <= INIT;
+                        end if;
+                    
+                    when INIT =>
+                        -- Initialize: A=0, Q=Multiplier, Qm1=0, SC=N
+                        A     <= (others => '0');
+                        Q     <= Q_in;
+                        Qm1   <= '0';
+                        M_reg <= M;
+                        SC    <= N;
+                        state <= CHECK_BITS;
+                    
+                    when CHECK_BITS =>
+                        
+                        state <= ADD_SUB;
+                    
+                    when ADD_SUB =>
+                        
+                        if Q(0) = '0' and Qm1 = '1' then
+                            
+                            A <= A + M_reg;
+                        elsif Q(0) = '1' and Qm1 = '0' then
+                            
+                            A <= A - M_reg;
+                        end if;
+                        
+                        state <= SHIFT_REG;
+                    
+                    when SHIFT_REG =>
 
-process(state)
-begin
-case state is
-	when StART => numb <= "0000001";
-	when IDLE  => numb <= "0000010";
-	when WORKi => numb <= "0000100";
-	when Addi  => numb <= "0001000";
-	when SUBT  => numb <= "0010000";
-	when DECR  => numb <= "0100000";
-	when DONE  => numb <= "1000000";
-end case;
-end process;
-----------
-	process(clk,rst,sbtn)
-	begin
-		if (sbtn='1') then
-			if rst ='0' then
-				if rising_edge(clk) then
-					state <=next_state;
-				end if;
-			else
-				state<=IDLE;
-			end if;
-		else
-			state <= START;
-		end if;
-	end process;
-
-	process (clk) --- State transitions
-	begin
-		if rising_edge(clk) then
-			case state is
-				when START =>
-					next_state<=IDLE;
-				
-				when IDLE => -- init
-					A <="1101100";
-					--AC <= A(1 downto 0);
-					B <= "000010";
-					Bcomp <= "111110";
-					Prod <= "0000000000";
-					N <=5;   -- define N as "signal N: integer range 0 to 5";
-					next_state <= WORKi;
-					
-				
-				when WORKi =>
-					A <= A(6)& A(6 downto 1);
-					AC <= A ( 1 downto 0);
-					Prod <= Prod(9) & Prod(9 downto 1);
-					PH <= Prod(9 downto 4);
-					PL <= Prod( 3 downto 0);
-					case AC is
-						when "01" =>
-							next_state <=ADDI;
-						when "10" =>
-							next_state <= SUBT;
-						when others =>
-							next_state <= DECR;
-					end case;
-				when ADDI =>
-					Prod(9 downto 4) <= PH + B;
-					next_state <= DECR;
-				when SUBT =>
-					Prod(9 downto 4) <= PH + Bcomp;
-					next_state <= DECR;
-				when DECR =>
-					N <= N-1;
-					if (N=0) then
-						next_state <= DONE;
-					else
-						next_state <=WORKi;
-					
-					end if;
-				when DONE =>
-					PROUT <=Prod;
-					next_state <= IDLE;
-				when others =>
-					next_state <=IDLE;
-			end case;
-		
-		
-		
-		
-		end if;
-	
-		
-	
-	end process;
-
-end bhv;	
+                        Qm1 <= Q(0);                      
+                        Q   <= A(0) & Q(N-1 downto 1);    
+                        A   <= A(N-1) & A(N-1 downto 1);  
+                        
+                        
+                        SC <= SC - 1;
+                        
+                        
+                        if SC = 1 then
+                            state <= FINISH;
+                        else
+                            state <= CHECK_BITS;
+                        end if;
+                    
+                    when FINISH =>
+                        done  <= '1';
+                        state <= IDLE;
+                        
+                end case;
+            end if;
+        end if;
+    end process;
+    
+   
+    P <= A & Q;
+    
+end Behavioral;

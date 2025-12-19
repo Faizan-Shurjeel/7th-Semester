@@ -1,135 +1,144 @@
---------------------------------------------------------------
--- SRAM Wrapper with FSM and Burst Mode
---------------------------------------------------------------
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 entity lab is
-	 generic( width: integer:=4;
-			depth: integer:=4;
-			addr: integer:=2
-	);
-    Port ( clk : in STD_LOGIC;
-           rst : in STD_LOGIC;
-           we : in STD_LOGIC;
-           burst : in STD_LOGIC; 
-           address : in STD_LOGIC_VECTOR (addr-1 downto 0);
-           din : in STD_LOGIC_VECTOR (width-1 downto 0);
-           dout : out STD_LOGIC_VECTOR (width-1 downto 0));
+    generic (
+        width      : integer := 4;
+        addr_width : integer := 2
+    );
+    port (
+        clk      : in  std_logic;
+        reset    : in  std_logic;
+        mem      : in  std_logic;
+        rw       : in  std_logic;
+        burst    : in  std_logic;
+        address  : in  std_logic_vector(addr_width-1 downto 0);
+        din      : in  std_logic_vector(width-1 downto 0);
+        dout     : out std_logic_vector(width-1 downto 0)
+    );
 end lab;
 
-architecture Behavioral of lab is
+architecture behavioral of lab is
 
     component SRAM is
-		port( 
-        Clock: in std_logic;
-        Enable: in std_logic;
-        Read: in std_logic;
-        Write: in std_logic;
-        Read_Addr: in std_logic_vector(addr-1 downto 0);
-        Write_Addr: in std_logic_vector(addr-1 downto 0);
-        Data_in: in std_logic_vector(width-1 downto 0);
-        Data_out: out std_logic_vector(width-1 downto 0)
-    );
+        generic (
+            width      : integer;
+            depth      : integer;
+            addr_width : integer
+        );
+        port (
+            Clock      : in  std_logic;
+            Enable     : in  std_logic;
+            Read       : in  std_logic;
+            Write      : in  std_logic;
+            Read_Addr  : in  std_logic_vector(addr_width-1 downto 0);
+            Write_Addr : in  std_logic_vector(addr_width-1 downto 0);
+            Data_in    : in  std_logic_vector(width-1 downto 0);
+            Data_out   : out std_logic_vector(width-1 downto 0)
+        );
     end component;
 
-    type state_type is (IDLE, WRITE_OP, READ_OP, BURST_1, BURST_2, BURST_3, BURST_4);
+    type state_type is (S_IDLE, S_WRITE, S_READ1, S_READ2, S_READ3, S_READ4);
     signal current_state, next_state : state_type;
 
-    signal sram_we : STD_LOGIC;
-    signal sram_addr : STD_LOGIC_VECTOR(addr-1 downto 0);
-    signal sram_din : STD_LOGIC_VECTOR(width-1  downto 0);
-    signal sram_dout : STD_LOGIC_VECTOR(width-1 downto 0);
+    signal sram_oe          : std_logic;
+    signal sram_we          : std_logic;
+    signal sram_address     : std_logic_vector(addr_width-1 downto 0);
     
-    signal burst_addr_reg : unsigned(addr-1 downto 0);
+    -- This will be a REAL register now.
+    signal burst_addr_reg   : unsigned(addr_width-1 downto 0);
 
 begin
-	 
-	 u_sram : SRAM 
 
+    u_sram : SRAM
+    generic map (
+        width      => width,
+        depth      => 4, 
+        addr_width => addr_width
+    )
     port map (
-        Clock => clk,
-        Enable => '1',       
-        Read => not sram_we, 
-        Write => sram_we,
-        Read_Addr => sram_addr,
-        Write_Addr => sram_addr,
-        Data_in => sram_din,
-        Data_out => sram_dout
+        Clock      => clk,
+        Enable     => '1',
+        Read       => sram_oe,
+        Write      => sram_we,
+        Read_Addr  => sram_address, 
+        Write_Addr => sram_address, 
+        Data_in    => din,
+        Data_out   => dout
     );
-
-    -- output assignment
-    dout <= sram_dout;
-    sram_din <= din;
-
-    -- State Register
-    process(clk, rst)
+    
+    process(clk, reset)
     begin
-        if rst = '1' then
-            current_state <= IDLE;
+        if reset = '1' then
+            current_state  <= S_IDLE;
             burst_addr_reg <= (others => '0');
         elsif rising_edge(clk) then
             current_state <= next_state;
-            
-            if current_state = IDLE and burst = '1' then
+
+            -- Capture initial address when starting burst read
+            if current_state = S_IDLE and next_state = S_READ1 then
                 burst_addr_reg <= unsigned(address);
+            -- Increment address during burst reads
+            elsif current_state = S_READ1 and next_state = S_READ2 then
+                burst_addr_reg <= burst_addr_reg + 1;
+            elsif current_state = S_READ2 and next_state = S_READ3 then
+                burst_addr_reg <= burst_addr_reg + 1;
+            elsif current_state = S_READ3 and next_state = S_READ4 then
+                burst_addr_reg <= burst_addr_reg + 1;
             end if;
         end if;
     end process;
 
-    -- Next State and Output Logic
-    process(current_state, we, burst, address, burst_addr_reg)
+    process(current_state, mem, rw, burst, address, burst_addr_reg) 
     begin
-        -- Defaults
-        sram_we <= '0';
-        sram_addr <= address;
-        next_state <= current_state;
+        next_state   <= current_state;
+        sram_oe      <= '0';
+        sram_we      <= '0';
+        sram_address <= address; 
 
         case current_state is
-            when IDLE =>
-                if burst = '1' then
-                    next_state <= BURST_1;
-                elsif we = '1' then
-                    next_state <= WRITE_OP;
-                else
-                    next_state <= READ_OP;
+            when S_IDLE =>
+                if mem = '1' then
+                    if rw = '1' then
+                        next_state <= S_READ1;
+                    else
+                        next_state <= S_WRITE;
+                    end if;
                 end if;
 
-            when WRITE_OP =>
+            when S_WRITE =>
                 sram_we <= '1';
-                sram_addr <= address;
-                next_state <= IDLE;
+                next_state <= S_IDLE;
 
-            when READ_OP =>
-                sram_we <= '0';
-                sram_addr <= address;
-                next_state <= IDLE;
+            when S_READ1 =>
+                sram_oe <= '1';
+                sram_address <= std_logic_vector(burst_addr_reg);
+                if burst = '1' then
+                    next_state <= S_READ2;
+                else
+                    next_state <= S_IDLE;
+                end if;
 
-            -- Burst Sequence
-            when BURST_1 =>
-                sram_we <= '0';
-                sram_addr <= std_logic_vector(burst_addr_reg);
-                next_state <= BURST_2;
+            when S_READ2 =>
+                sram_oe <= '1';
+                sram_address <= std_logic_vector(burst_addr_reg);
+                next_state <= S_READ3;
 
-            when BURST_2 =>
-                sram_we <= '0';
-                sram_addr <= std_logic_vector(burst_addr_reg + 1);
-                next_state <= BURST_3;
+            when S_READ3 =>
+                sram_oe <= '1';
+                sram_address <= std_logic_vector(burst_addr_reg);
+                next_state <= S_READ4;
 
-            when BURST_3 =>
-                sram_we <= '0';
-                sram_addr <= std_logic_vector(burst_addr_reg + 2);
-                next_state <= BURST_4;
-
-            when BURST_4 =>
-                sram_we <= '0';
-                sram_addr <= std_logic_vector(burst_addr_reg + 3);
-                next_state <= IDLE;
+            when S_READ4 =>
+                sram_oe <= '1';
+                sram_address <= std_logic_vector(burst_addr_reg);
+                next_state <= S_IDLE;
 
             when others =>
-                next_state <= IDLE;
+                next_state <= S_IDLE;
+
         end case;
     end process;
 
-end Behavioral;
+end behavioral;

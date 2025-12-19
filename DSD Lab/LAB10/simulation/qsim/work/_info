@@ -10,14 +10,14 @@ z2
 cModel Technology
 Z0 dD:/7th-Semester/DSD Lab/LAB10/simulation/qsim
 Ehard_block
-Z1 w1765522256
+Z1 w1766124933
 Z2 DPx4 ieee 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
 Z3 DPx10 cycloneive 20 cycloneive_atom_pack 0 22 WOh:M[al;oVzG5c`<He>D0
 Z4 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
 Z5 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z6 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
 Z7 DPx10 cycloneive 21 cycloneive_components 0 22 zGMDhP>8e@2k@f0e<PY]k2
-!i122 6
+!i122 36
 R0
 Z8 8lab.vho
 Z9 Flab.vho
@@ -27,9 +27,9 @@ VB]0;STalBkCB1_B4BXQDW2
 !s100 >mXi5[`cD`bFC`UBKA<om3
 Z10 OV;C;2020.1;71
 32
-Z11 !s110 1765522257
+Z11 !s110 1766124934
 !i10b 1
-Z12 !s108 1765522257.000000
+Z12 !s108 1766124934.000000
 Z13 !s90 -work|work|lab.vho|
 Z14 !s107 lab.vho|
 !i113 1
@@ -43,7 +43,7 @@ R5
 R6
 R7
 DEx4 work 10 hard_block 0 22 B]0;STalBkCB1_B4BXQDW2
-!i122 6
+!i122 36
 l65
 L51 20
 Via>5o7W??azG@W@@eFOTF0
@@ -68,14 +68,14 @@ R4
 R5
 R6
 Z18 DPx6 altera 28 altera_primitives_components 0 22 ca:ehlQAg4;_gVV:^8MAg3
-!i122 6
+!i122 36
 R0
 R8
 R9
 l0
 L80 1
-VNjFSaIhCJd;WmR`G2_^SC2
-!s100 =TaC^_7blif3jF_^cb0m72
+VLIXmG:zMKZkT3I9aG5bdk2
+!s100 V6BdA<d7@1LE4O?>VXKUC2
 R10
 32
 R11
@@ -95,12 +95,12 @@ R4
 R5
 R6
 R18
-DEx4 work 3 lab 0 22 NjFSaIhCJd;WmR`G2_^SC2
-!i122 6
-l208
-L112 1114
-Ve19OD>cUEOEHmYbo88Pjg2
-!s100 ;O;U@MM^5c9i<Y?RLNQlm0
+DEx4 work 3 lab 0 22 LIXmG:zMKZkT3I9aG5bdk2
+!i122 36
+l232
+L111 1507
+V5AQJh10`WiH;NW?k5C9]z2
+!s100 XjRW?:bNbVVm3TogFkM]X3
 R10
 32
 R11
@@ -112,13 +112,13 @@ R14
 R15
 R16
 Elab_vhd_vec_tst
-Z19 w1765522255
+Z19 w1766124932
 R5
 R6
-!i122 7
+!i122 37
 R0
-Z20 8Waveform.vwf.vht
-Z21 FWaveform.vwf.vht
+Z20 8Waveform2.vwf.vht
+Z21 FWaveform2.vwf.vht
 l0
 L32 1
 VlN3ggRFI@K0N4ffzX6og10
@@ -128,8 +128,8 @@ R10
 R11
 !i10b 1
 R12
-Z22 !s90 -work|work|Waveform.vwf.vht|
-Z23 !s107 Waveform.vwf.vht|
+Z22 !s90 -work|work|Waveform2.vwf.vht|
+Z23 !s107 Waveform2.vwf.vht|
 !i113 1
 R15
 R16
@@ -137,11 +137,11 @@ Alab_arch
 R5
 R6
 Z24 DEx4 work 15 lab_vhd_vec_tst 0 22 lN3ggRFI@K0N4ffzX6og10
-!i122 7
+!i122 37
 l57
-Z25 L34 194
-VW63hHlPi_Z99Wl:gLXjD^3
-!s100 ^F7^A0m:A22UQ@f^DU7_Q1
+L34 139
+VOG][VI4hR6FoDJk>g7L:[3
+!s100 GV^Me?QC3FaYR;I1CYhXF1
 R10
 32
 R11

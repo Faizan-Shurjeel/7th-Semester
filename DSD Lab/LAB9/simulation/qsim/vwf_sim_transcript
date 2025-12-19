@@ -7,7 +7,7 @@ Note: if both Questa Intel FPGA Edition and ModelSim executables are available, 
 
 **** Generating the ModelSim Testbench ****
 
-quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off trafficController -c trafficController --vector_source="D:/7th-Semester/DSD Lab/LAB9/Waveform.vwf" --testbench_file="D:/7th-Semester/DSD Lab/LAB9/simulation/qsim/Waveform.vwf.vt"
+quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off trafficController -c trafficController --vector_source="D:/7th-Semester/DSD Lab/LAB9/Waveform1.vwf" --testbench_file="D:/7th-Semester/DSD Lab/LAB9/simulation/qsim/Waveform1.vwf.vht"
 
 TBBmalloc: skip allocation functions replacement in ucrtbase.dll: unknown prologue for function _msize
 
@@ -28,17 +28,15 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: Altera and sold by Altera or its authorized distributors.  Please
     Info: refer to the Altera Software License Subscription Agreements 
     Info: on the Quartus Prime software download page.
-    Info: Processing started: Fri Dec 19 06:26:20 2025
-Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off trafficController -c trafficController --vector_source="D:/7th-Semester/DSD Lab/LAB9/Waveform.vwf" --testbench_file="D:/7th-Semester/DSD Lab/LAB9/simulation/qsim/Waveform.vwf.vt"
+    Info: Processing started: Fri Dec 19 11:56:00 2025
+Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off trafficController -c trafficController --vector_source="D:/7th-Semester/DSD Lab/LAB9/Waveform1.vwf" --testbench_file="D:/7th-Semester/DSD Lab/LAB9/simulation/qsim/Waveform1.vwf.vht"
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-
-Completed successfully. 
 
 Completed successfully. 
 
 **** Generating the functional simulation netlist ****
 
-quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory="D:/7th-Semester/DSD Lab/LAB9/simulation/qsim/" trafficController -c trafficController
+quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="D:/7th-Semester/DSD Lab/LAB9/simulation/qsim/" trafficController -c trafficController
 
 TBBmalloc: skip allocation functions replacement in ucrtbase.dll: unknown prologue for function _msize
 
@@ -59,14 +57,14 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: Altera and sold by Altera or its authorized distributors.  Please
     Info: refer to the Altera Software License Subscription Agreements 
     Info: on the Quartus Prime software download page.
-    Info: Processing started: Fri Dec 19 06:26:21 2025
-Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory="D:/7th-Semester/DSD Lab/LAB9/simulation/qsim/" trafficController -c trafficController
+    Info: Processing started: Fri Dec 19 11:56:02 2025
+Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="D:/7th-Semester/DSD Lab/LAB9/simulation/qsim/" trafficController -c trafficController
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (204019): Generated file trafficController.vo in folder "D:/7th-Semester/DSD Lab/LAB9/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file trafficController.vho in folder "D:/7th-Semester/DSD Lab/LAB9/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 4759 megabytes
-    Info: Processing ended: Fri Dec 19 06:26:22 2025
-    Info: Elapsed time: 00:00:01
+    Info: Processing ended: Fri Dec 19 11:56:02 2025
+    Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:01
 
 Completed successfully. 
@@ -91,65 +89,93 @@ Reading pref.tcl
 
 # ** Warning: (vlib-34) Library already exists at "work".
 
-# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 
-# Start time: 06:26:23 on Dec 19,2025
-# vlog -work work trafficController.vo 
+# Start time: 11:56:03 on Dec 19,2025
+# vcom -work work trafficController.vho 
 
-# -- Compiling module trafficController
+# -- Loading package STANDARD
 
-# 
-# Top level modules:
-# 	trafficController
+# -- Loading package TEXTIO
 
-# End time: 06:26:23 on Dec 19,2025, Elapsed time: 0:00:00
+# -- Loading package std_logic_1164
+
+# -- Loading package VITAL_Timing
+
+# -- Loading package VITAL_Primitives
+
+# -- Loading package dffeas_pack
+# -- Loading package altera_primitives_components
+
+# -- Loading package altera_lnsim_components
+
+# -- Loading package cyclonev_atom_pack
+# -- Loading package cyclonev_components
+
+# -- Compiling entity trafficController
+
+# -- Compiling architecture structure of trafficController
+
+# End time: 11:56:03 on Dec 19,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 
-# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 
-# Start time: 06:26:23 on Dec 19,2025
-# vlog -work work Waveform.vwf.vt 
+# Start time: 11:56:03 on Dec 19,2025
+# vcom -work work Waveform1.vwf.vht 
 
-# -- Compiling module trafficController_vlg_vec_tst
+# -- Loading package STANDARD
 
-# 
+# -- Loading package TEXTIO
 
-# Top level modules:
-# 	trafficController_vlg_vec_tst
+# -- Loading package std_logic_1164
+# -- Compiling entity trafficController_vhd_vec_tst
 
-# End time: 06:26:23 on Dec 19,2025, Elapsed time: 0:00:00
+# -- Compiling architecture trafficController_arch of trafficController_vhd_vec_tst
+
+# End time: 11:56:04 on Dec 19,2025, Elapsed time: 0:00:01
+
 # Errors: 0, Warnings: 0
 
-# vsim -c -t 1ps -L cyclonev_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.trafficController_vlg_vec_tst 
-# Start time: 06:26:23 on Dec 19,2025
-# Loading work.trafficController_vlg_vec_tst
-# Loading work.trafficController
-# Loading cyclonev_ver.cyclonev_io_obuf
-# Loading cyclonev_ver.cyclonev_io_ibuf
-# Loading cyclonev_ver.cyclonev_clkena
-# Loading cyclonev_ver.cyclonev_lcell_comb
-# Loading altera_ver.dffeas
-# Loading altera_ver.PRIM_GDFF_LOW
+# vsim -c -t 1ps -L cyclonev -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.trafficController_vhd_vec_tst 
+# Start time: 11:56:04 on Dec 19,2025
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.trafficcontroller_vhd_vec_tst(trafficcontroller_arch)
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading altera.dffeas_pack
+# Loading altera.altera_primitives_components
+# Loading altera_lnsim.altera_lnsim_components
+# Loading cyclonev.cyclonev_atom_pack(body)
+# Loading cyclonev.cyclonev_components
+# Loading work.trafficcontroller(structure)
+# Loading ieee.std_logic_arith(body)
+# Loading cyclonev.cyclonev_io_obuf(arch)
+# Loading cyclonev.cyclonev_io_ibuf(arch)
+# Loading cyclonev.cyclonev_clkena(behavior)
+# Loading altera.dffeas(vital_dffeas)
+# Loading cyclonev.cyclonev_lcell_comb(vital_lcell_comb)
+# ** Warning: Design size of 15357 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Expect performance to be adversely affected.
 
-# after#25
+# after#34
 
-# ** Note: $finish    : Waveform.vwf.vt(57)
-#    Time: 1 us  Iteration: 0  Instance: /trafficController_vlg_vec_tst
-
-# End time: 06:26:23 on Dec 19,2025, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
+# End time: 11:56:04 on Dec 19,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
 
 Completed successfully. 
 
 **** Converting ModelSim VCD to vector waveform ****
 
-Reading D:/7th-Semester/DSD Lab/LAB9/Waveform.vwf...
+Reading D:/7th-Semester/DSD Lab/LAB9/Waveform1.vwf...
 
 Reading D:/7th-Semester/DSD Lab/LAB9/simulation/qsim/trafficController.msim.vcd...
 
 Processing channel transitions... 
 
-Writing the resulting VWF to D:/7th-Semester/DSD Lab/LAB9/simulation/qsim/trafficController_20251219062623.sim.vwf
+Writing the resulting VWF to D:/7th-Semester/DSD Lab/LAB9/simulation/qsim/trafficController_20251219115605.sim.vwf
 
 Finished VCD to VWF conversion.
 

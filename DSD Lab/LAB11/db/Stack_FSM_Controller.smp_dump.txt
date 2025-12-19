@@ -1,0 +1,6 @@
+
+State Machine - |Stack_FSM_Controller|current_state
+Name current_state.s_Pop current_state.s_Push current_state.s_Idle 
+current_state.s_Idle 0 0 0 
+current_state.s_Push 0 1 1 
+current_state.s_Pop 1 0 1 

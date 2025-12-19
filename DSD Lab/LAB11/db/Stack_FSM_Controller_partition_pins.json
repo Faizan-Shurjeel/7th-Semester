@@ -1,0 +1,97 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "Data_Out[0]",
+					"strict" : false
+				},
+				{
+					"name" : "Data_Out[1]",
+					"strict" : false
+				},
+				{
+					"name" : "Data_Out[2]",
+					"strict" : false
+				},
+				{
+					"name" : "Data_Out[3]",
+					"strict" : false
+				},
+				{
+					"name" : "Data_Out[4]",
+					"strict" : false
+				},
+				{
+					"name" : "Data_Out[5]",
+					"strict" : false
+				},
+				{
+					"name" : "Data_Out[6]",
+					"strict" : false
+				},
+				{
+					"name" : "Data_Out[7]",
+					"strict" : false
+				},
+				{
+					"name" : "Full",
+					"strict" : false
+				},
+				{
+					"name" : "Empty",
+					"strict" : false
+				},
+				{
+					"name" : "Clk",
+					"strict" : false
+				},
+				{
+					"name" : "Rst",
+					"strict" : false
+				},
+				{
+					"name" : "Data_In[0]",
+					"strict" : false
+				},
+				{
+					"name" : "Pop",
+					"strict" : false
+				},
+				{
+					"name" : "Push",
+					"strict" : false
+				},
+				{
+					"name" : "Data_In[1]",
+					"strict" : false
+				},
+				{
+					"name" : "Data_In[2]",
+					"strict" : false
+				},
+				{
+					"name" : "Data_In[3]",
+					"strict" : false
+				},
+				{
+					"name" : "Data_In[4]",
+					"strict" : false
+				},
+				{
+					"name" : "Data_In[5]",
+					"strict" : false
+				},
+				{
+					"name" : "Data_In[6]",
+					"strict" : false
+				},
+				{
+					"name" : "Data_In[7]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,133 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "nmcand[0]",
+					"strict" : false
+				},
+				{
+					"name" : "nmcand[1]",
+					"strict" : false
+				},
+				{
+					"name" : "nmcand[2]",
+					"strict" : false
+				},
+				{
+					"name" : "nmcand[3]",
+					"strict" : false
+				},
+				{
+					"name" : "product[0]",
+					"strict" : false
+				},
+				{
+					"name" : "product[1]",
+					"strict" : false
+				},
+				{
+					"name" : "product[2]",
+					"strict" : false
+				},
+				{
+					"name" : "product[3]",
+					"strict" : false
+				},
+				{
+					"name" : "product[4]",
+					"strict" : false
+				},
+				{
+					"name" : "product[5]",
+					"strict" : false
+				},
+				{
+					"name" : "product[6]",
+					"strict" : false
+				},
+				{
+					"name" : "product[7]",
+					"strict" : false
+				},
+				{
+					"name" : "product[8]",
+					"strict" : false
+				},
+				{
+					"name" : "final[0]",
+					"strict" : false
+				},
+				{
+					"name" : "final[1]",
+					"strict" : false
+				},
+				{
+					"name" : "final[2]",
+					"strict" : false
+				},
+				{
+					"name" : "final[3]",
+					"strict" : false
+				},
+				{
+					"name" : "final[4]",
+					"strict" : false
+				},
+				{
+					"name" : "final[5]",
+					"strict" : false
+				},
+				{
+					"name" : "final[6]",
+					"strict" : false
+				},
+				{
+					"name" : "final[7]",
+					"strict" : false
+				},
+				{
+					"name" : "mcand[0]",
+					"strict" : false
+				},
+				{
+					"name" : "mcand[1]",
+					"strict" : false
+				},
+				{
+					"name" : "mcand[2]",
+					"strict" : false
+				},
+				{
+					"name" : "mcand[3]",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "st",
+					"strict" : false
+				},
+				{
+					"name" : "mplier[0]",
+					"strict" : false
+				},
+				{
+					"name" : "mplier[1]",
+					"strict" : false
+				},
+				{
+					"name" : "mplier[2]",
+					"strict" : false
+				},
+				{
+					"name" : "mplier[3]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

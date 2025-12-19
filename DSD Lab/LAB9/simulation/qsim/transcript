@@ -1,35 +1,54 @@
 # do trafficController.do
 # ** Warning: (vlib-34) Library already exists at "work".
-# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 06:26:23 on Dec 19,2025
-# vlog -work work trafficController.vo 
-# -- Compiling module trafficController
-# 
-# Top level modules:
-# 	trafficController
-# End time: 06:26:23 on Dec 19,2025, Elapsed time: 0:00:00
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 11:56:03 on Dec 19,2025
+# vcom -work work trafficController.vho 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package VITAL_Timing
+# -- Loading package VITAL_Primitives
+# -- Loading package dffeas_pack
+# -- Loading package altera_primitives_components
+# -- Loading package altera_lnsim_components
+# -- Loading package cyclonev_atom_pack
+# -- Loading package cyclonev_components
+# -- Compiling entity trafficController
+# -- Compiling architecture structure of trafficController
+# End time: 11:56:03 on Dec 19,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 06:26:23 on Dec 19,2025
-# vlog -work work Waveform.vwf.vt 
-# -- Compiling module trafficController_vlg_vec_tst
-# 
-# Top level modules:
-# 	trafficController_vlg_vec_tst
-# End time: 06:26:23 on Dec 19,2025, Elapsed time: 0:00:00
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 11:56:03 on Dec 19,2025
+# vcom -work work Waveform1.vwf.vht 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity trafficController_vhd_vec_tst
+# -- Compiling architecture trafficController_arch of trafficController_vhd_vec_tst
+# End time: 11:56:04 on Dec 19,2025, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
-# vsim -c -t 1ps -L cyclonev_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.trafficController_vlg_vec_tst 
-# Start time: 06:26:23 on Dec 19,2025
-# Loading work.trafficController_vlg_vec_tst
-# Loading work.trafficController
-# Loading cyclonev_ver.cyclonev_io_obuf
-# Loading cyclonev_ver.cyclonev_io_ibuf
-# Loading cyclonev_ver.cyclonev_clkena
-# Loading cyclonev_ver.cyclonev_lcell_comb
-# Loading altera_ver.dffeas
-# Loading altera_ver.PRIM_GDFF_LOW
-# after#25
-# ** Note: $finish    : Waveform.vwf.vt(57)
-#    Time: 1 us  Iteration: 0  Instance: /trafficController_vlg_vec_tst
-# End time: 06:26:23 on Dec 19,2025, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
+# vsim -c -t 1ps -L cyclonev -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.trafficController_vhd_vec_tst 
+# Start time: 11:56:04 on Dec 19,2025
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.trafficcontroller_vhd_vec_tst(trafficcontroller_arch)
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading altera.dffeas_pack
+# Loading altera.altera_primitives_components
+# Loading altera_lnsim.altera_lnsim_components
+# Loading cyclonev.cyclonev_atom_pack(body)
+# Loading cyclonev.cyclonev_components
+# Loading work.trafficcontroller(structure)
+# Loading ieee.std_logic_arith(body)
+# Loading cyclonev.cyclonev_io_obuf(arch)
+# Loading cyclonev.cyclonev_io_ibuf(arch)
+# Loading cyclonev.cyclonev_clkena(behavior)
+# Loading altera.dffeas(vital_dffeas)
+# Loading cyclonev.cyclonev_lcell_comb(vital_lcell_comb)
+# ** Warning: Design size of 15357 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Expect performance to be adversely affected.
+# after#34
+# End time: 11:56:04 on Dec 19,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
