@@ -3,7 +3,7 @@ $comment
 		vcd file Cache_Controller.msim.vcd -direction
 $end
 $date
-	Fri Dec 19 11:38:53 2025
+	Fri Dec 19 13:11:12 2025
 $end
 $version
 	ModelSim Version 2020.1
@@ -87,8 +87,8 @@ $var wire 1 e \Selector1~0_combout\ $end
 $var wire 1 f \current_state.s_RESULT~q\ $end
 $var wire 1 g \Led_Hit~2_combout\ $end
 $var wire 1 h \Led_Miss~0_combout\ $end
-$var wire 1 i \ALT_INV_Led_Miss~0_combout\ $end
-$var wire 1 j \ALT_INV_Reset~inputclkctrl_outclk\ $end
+$var wire 1 i \ALT_INV_Reset~inputclkctrl_outclk\ $end
+$var wire 1 j \ALT_INV_Led_Miss~0_combout\ $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
@@ -222,7 +222,7 @@ $end
 0K
 0[
 0_
-1j
+1i
 #45000
 1!
 17

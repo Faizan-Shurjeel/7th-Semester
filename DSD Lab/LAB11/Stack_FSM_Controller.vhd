@@ -61,7 +61,7 @@ begin
         end case;
     end process;
 
-    process(all)
+    process(CLK)
     begin
         if rising_edge(Clk) then
             if Rst = '1' then

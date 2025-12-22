@@ -10,7 +10,7 @@ z2
 cModel Technology
 Z0 dD:/7th-Semester/DSD Lab/LAB12/simulation/qsim
 Ecache_controller
-Z1 w1766126331
+Z1 w1766131870
 Z2 DPx10 cycloneive 20 cycloneive_atom_pack 0 22 WOh:M[al;oVzG5c`<He>D0
 Z3 DPx10 cycloneive 21 cycloneive_components 0 22 zGMDhP>8e@2k@f0e<PY]k2
 Z4 DPx4 ieee 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
@@ -19,7 +19,7 @@ Z6 DPx4 ieee 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
 Z7 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z8 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
 Z9 DPx6 altera 28 altera_primitives_components 0 22 ca:ehlQAg4;_gVV:^8MAg3
-!i122 0
+!i122 2
 R0
 Z10 8Cache_Controller.vho
 Z11 FCache_Controller.vho
@@ -29,9 +29,9 @@ VL[71b`=]H`enP<UYRT6^Y0
 !s100 KFTVKIkG49;G@T4QSYWzZ1
 Z12 OV;C;2020.1;71
 32
-Z13 !s110 1766126332
+Z13 !s110 1766131871
 !i10b 1
-Z14 !s108 1766126332.000000
+Z14 !s108 1766131871.000000
 Z15 !s90 -work|work|Cache_Controller.vho|
 Z16 !s107 Cache_Controller.vho|
 !i113 1
@@ -47,11 +47,11 @@ R7
 R8
 R9
 DEx4 work 16 cache_controller 0 22 L[71b`=]H`enP<UYRT6^Y0
-!i122 0
+!i122 2
 l164
 L107 475
-Vj]B6PiXcU18nC2E65DbA:2
-!s100 Wm@MGjZ[zgQ9JfkaKfiLg1
+VI;0>lEi=c7z@dCIVkmL<N2
+!s100 ?Q<Y2`Mlb_:DR0MYLAjNN2
 R12
 32
 R13
@@ -63,10 +63,10 @@ R16
 R17
 R18
 Ecache_controller_vhd_vec_tst
-Z19 w1766126330
+Z19 w1766131869
 R7
 R8
-!i122 1
+!i122 3
 R0
 Z20 8Waveform.vwf.vht
 Z21 FWaveform.vwf.vht
@@ -80,26 +80,26 @@ R13
 !i10b 1
 R14
 Z22 !s90 -work|work|Waveform.vwf.vht|
-!s107 Waveform.vwf.vht|
+Z23 !s107 Waveform.vwf.vht|
 !i113 1
 R17
 R18
 Acache_controller_arch
 R7
 R8
-DEx4 work 28 cache_controller_vhd_vec_tst 0 22 HJ9b8LcZlBm]8kJOVkI1@2
-!i122 1
+Z24 DEx4 work 28 cache_controller_vhd_vec_tst 0 22 HJ9b8LcZlBm]8kJOVkI1@2
+!i122 3
 l53
-L34 107
-Vj62FhMElEX>0V>Pd;]=SD0
-!s100 k2_^fk2<zl7nG@]0dDBiQ2
+Z25 L34 107
+Z26 Vj62FhMElEX>0V>Pd;]=SD0
+Z27 !s100 k2_^fk2<zl7nG@]0dDBiQ2
 R12
 32
 R13
 !i10b 1
 R14
 R22
-Z23 !s107 Waveform.vwf.vht|
+R23
 !i113 1
 R17
 R18
@@ -111,7 +111,7 @@ R6
 R7
 R8
 R3
-!i122 0
+!i122 2
 R0
 R10
 R11
@@ -137,7 +137,7 @@ R7
 R8
 R3
 DEx4 work 10 hard_block 0 22 B]0;STalBkCB1_B4BXQDW2
-!i122 0
+!i122 2
 l65
 L51 20
 Via>5o7W??azG@W@@eFOTF0

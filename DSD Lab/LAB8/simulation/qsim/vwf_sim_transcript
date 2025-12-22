@@ -28,7 +28,7 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: Altera and sold by Altera or its authorized distributors.  Please
     Info: refer to the Altera Software License Subscription Agreements 
     Info: on the Quartus Prime software download page.
-    Info: Processing started: Fri Dec 19 11:54:48 2025
+    Info: Processing started: Fri Dec 19 16:37:59 2025
 Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=vhdl --write_settings_files=off binary_divider -c binary_divider --vector_source="D:/7th-Semester/DSD Lab/LAB8/Waveform.vwf" --testbench_file="D:/7th-Semester/DSD Lab/LAB8/simulation/qsim/Waveform.vwf.vht"
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 
@@ -57,15 +57,15 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: Altera and sold by Altera or its authorized distributors.  Please
     Info: refer to the Altera Software License Subscription Agreements 
     Info: on the Quartus Prime software download page.
-    Info: Processing started: Fri Dec 19 11:54:49 2025
+    Info: Processing started: Fri Dec 19 16:38:00 2025
 Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=on --flatten_buses=off --tool=modelsim_oem --format=vhdl --output_directory="D:/7th-Semester/DSD Lab/LAB8/simulation/qsim/" binary_divider -c binary_divider
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (204019): Generated file binary_divider.vho in folder "D:/7th-Semester/DSD Lab/LAB8/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 4677 megabytes
-    Info: Processing ended: Fri Dec 19 11:54:49 2025
+    Info: Processing ended: Fri Dec 19 16:38:00 2025
     Info: Elapsed time: 00:00:00
-    Info: Total CPU time (on all processors): 00:00:00
+    Info: Total CPU time (on all processors): 00:00:01
 
 Completed successfully. 
 
@@ -91,7 +91,7 @@ Reading pref.tcl
 
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 
-# Start time: 11:54:50 on Dec 19,2025
+# Start time: 16:38:01 on Dec 19,2025
 # vcom -work work binary_divider.vho 
 
 # -- Loading package STANDARD
@@ -105,6 +105,7 @@ Reading pref.tcl
 # -- Loading package VITAL_Primitives
 
 # -- Loading package cycloneive_atom_pack
+
 # -- Loading package cycloneive_components
 
 # -- Compiling entity hard_block
@@ -118,12 +119,12 @@ Reading pref.tcl
 
 # -- Compiling architecture structure of binary_divider
 
-# End time: 11:54:50 on Dec 19,2025, Elapsed time: 0:00:00
+# End time: 16:38:01 on Dec 19,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
 
-# Start time: 11:54:50 on Dec 19,2025
+# Start time: 16:38:02 on Dec 19,2025
 # vcom -work work Waveform.vwf.vht 
 
 # -- Loading package STANDARD
@@ -136,12 +137,12 @@ Reading pref.tcl
 
 # -- Compiling architecture binary_divider_arch of binary_divider_vhd_vec_tst
 
-# End time: 11:54:50 on Dec 19,2025, Elapsed time: 0:00:00
+# End time: 16:38:02 on Dec 19,2025, Elapsed time: 0:00:00
 
 # Errors: 0, Warnings: 0
 
 # vsim -c -t 1ps -L cycloneive -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.binary_divider_vhd_vec_tst 
-# Start time: 11:54:50 on Dec 19,2025
+# Start time: 16:38:02 on Dec 19,2025
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -166,7 +167,7 @@ Reading pref.tcl
 
 # after#35
 
-# End time: 11:54:51 on Dec 19,2025, Elapsed time: 0:00:01
+# End time: 16:38:02 on Dec 19,2025, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 1
 
 Completed successfully. 
@@ -179,7 +180,7 @@ Reading D:/7th-Semester/DSD Lab/LAB8/simulation/qsim/binary_divider.msim.vcd...
 
 Processing channel transitions... 
 
-Writing the resulting VWF to D:/7th-Semester/DSD Lab/LAB8/simulation/qsim/binary_divider_20251219115451.sim.vwf
+Writing the resulting VWF to D:/7th-Semester/DSD Lab/LAB8/simulation/qsim/binary_divider_20251219163803.sim.vwf
 
 Finished VCD to VWF conversion.
 

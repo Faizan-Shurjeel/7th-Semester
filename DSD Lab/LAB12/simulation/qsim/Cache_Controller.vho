@@ -17,7 +17,7 @@
 -- PROGRAM "Quartus Prime"
 -- VERSION "Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition"
 
--- DATE "12/19/2025 11:38:51"
+-- DATE "12/19/2025 13:11:10"
 
 -- 
 -- Device: Altera EP4CE115F29C7 Package FBGA780
@@ -151,8 +151,8 @@ SIGNAL \Selector1~0_combout\ : std_logic;
 SIGNAL \current_state.s_RESULT~q\ : std_logic;
 SIGNAL \Led_Hit~2_combout\ : std_logic;
 SIGNAL \Led_Miss~0_combout\ : std_logic;
-SIGNAL \ALT_INV_Led_Miss~0_combout\ : std_logic;
 SIGNAL \ALT_INV_Reset~inputclkctrl_outclk\ : std_logic;
+SIGNAL \ALT_INV_Led_Miss~0_combout\ : std_logic;
 
 COMPONENT hard_block
     PORT (
@@ -176,8 +176,8 @@ ww_devpor <= devpor;
 \Reset~inputclkctrl_INCLK_bus\ <= (vcc & vcc & vcc & \Reset~input_o\);
 
 \Clk~inputclkctrl_INCLK_bus\ <= (vcc & vcc & vcc & \Clk~input_o\);
-\ALT_INV_Led_Miss~0_combout\ <= NOT \Led_Miss~0_combout\;
 \ALT_INV_Reset~inputclkctrl_outclk\ <= NOT \Reset~inputclkctrl_outclk\;
+\ALT_INV_Led_Miss~0_combout\ <= NOT \Led_Miss~0_combout\;
 auto_generated_inst : hard_block
 PORT MAP (
 	devoe => ww_devoe,

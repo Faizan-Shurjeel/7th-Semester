@@ -17,7 +17,7 @@
 -- PROGRAM "Quartus Prime"
 -- VERSION "Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition"
 
--- DATE "12/19/2025 11:56:02"
+-- DATE "12/19/2025 16:14:29"
 
 -- 
 -- Device: Altera 5CGXFC7C7F23C8 Package FBGA484
@@ -159,16 +159,16 @@ SIGNAL \state.YYR~DUPLICATE_q\ : std_logic;
 SIGNAL \yellow~0_combout\ : std_logic;
 SIGNAL \WideOr0~0_combout\ : std_logic;
 SIGNAL counter : std_logic_vector(31 DOWNTO 0);
-SIGNAL ALT_INV_counter : std_logic_vector(29 DOWNTO 0);
-SIGNAL \ALT_INV_btn~input_o\ : std_logic;
-SIGNAL \ALT_INV_state.PD~q\ : std_logic;
-SIGNAL \ALT_INV_state.YYR~DUPLICATE_q\ : std_logic;
 SIGNAL \ALT_INV_rst~input_o\ : std_logic;
-SIGNAL \ALT_INV_counter[27]~DUPLICATE_q\ : std_logic;
-SIGNAL \ALT_INV_state.YR~q\ : std_logic;
-SIGNAL \ALT_INV_state.RR~q\ : std_logic;
-SIGNAL \ALT_INV_state.YYR~q\ : std_logic;
+SIGNAL \ALT_INV_state.PD~q\ : std_logic;
+SIGNAL ALT_INV_counter : std_logic_vector(29 DOWNTO 0);
 SIGNAL \ALT_INV_state.GR~q\ : std_logic;
+SIGNAL \ALT_INV_state.YYR~DUPLICATE_q\ : std_logic;
+SIGNAL \ALT_INV_state.YYR~q\ : std_logic;
+SIGNAL \ALT_INV_state.YR~q\ : std_logic;
+SIGNAL \ALT_INV_counter[27]~DUPLICATE_q\ : std_logic;
+SIGNAL \ALT_INV_state.RR~q\ : std_logic;
+SIGNAL \ALT_INV_btn~input_o\ : std_logic;
 
 BEGIN
 
@@ -183,45 +183,45 @@ PDLED <= ww_PDLED;
 ww_devoe <= devoe;
 ww_devclrn <= devclrn;
 ww_devpor <= devpor;
-ALT_INV_counter(18) <= NOT counter(18);
-ALT_INV_counter(25) <= NOT counter(25);
-ALT_INV_counter(3) <= NOT counter(3);
-ALT_INV_counter(0) <= NOT counter(0);
-\ALT_INV_btn~input_o\ <= NOT \btn~input_o\;
+\ALT_INV_rst~input_o\ <= NOT \rst~input_o\;
 \ALT_INV_state.PD~q\ <= NOT \state.PD~q\;
+ALT_INV_counter(12) <= NOT counter(12);
+\ALT_INV_state.GR~q\ <= NOT \state.GR~q\;
+ALT_INV_counter(10) <= NOT counter(10);
+ALT_INV_counter(4) <= NOT counter(4);
 ALT_INV_counter(6) <= NOT counter(6);
 \ALT_INV_state.YYR~DUPLICATE_q\ <= NOT \state.YYR~DUPLICATE_q\;
-\ALT_INV_rst~input_o\ <= NOT \rst~input_o\;
-ALT_INV_counter(19) <= NOT counter(19);
-\ALT_INV_counter[27]~DUPLICATE_q\ <= NOT \counter[27]~DUPLICATE_q\;
-ALT_INV_counter(28) <= NOT counter(28);
-ALT_INV_counter(23) <= NOT counter(23);
-ALT_INV_counter(17) <= NOT counter(17);
-\ALT_INV_state.YR~q\ <= NOT \state.YR~q\;
-ALT_INV_counter(11) <= NOT counter(11);
-ALT_INV_counter(27) <= NOT counter(27);
+ALT_INV_counter(25) <= NOT counter(25);
+ALT_INV_counter(24) <= NOT counter(24);
 ALT_INV_counter(22) <= NOT counter(22);
-ALT_INV_counter(16) <= NOT counter(16);
-\ALT_INV_state.RR~q\ <= NOT \state.RR~q\;
+\ALT_INV_state.YYR~q\ <= NOT \state.YYR~q\;
+\ALT_INV_state.YR~q\ <= NOT \state.YR~q\;
+ALT_INV_counter(14) <= NOT counter(14);
+ALT_INV_counter(2) <= NOT counter(2);
+ALT_INV_counter(1) <= NOT counter(1);
+ALT_INV_counter(15) <= NOT counter(15);
+ALT_INV_counter(17) <= NOT counter(17);
+ALT_INV_counter(0) <= NOT counter(0);
+\ALT_INV_counter[27]~DUPLICATE_q\ <= NOT \counter[27]~DUPLICATE_q\;
 ALT_INV_counter(21) <= NOT counter(21);
+ALT_INV_counter(29) <= NOT counter(29);
+ALT_INV_counter(16) <= NOT counter(16);
+ALT_INV_counter(13) <= NOT counter(13);
+ALT_INV_counter(23) <= NOT counter(23);
+ALT_INV_counter(18) <= NOT counter(18);
+ALT_INV_counter(28) <= NOT counter(28);
+\ALT_INV_state.RR~q\ <= NOT \state.RR~q\;
+ALT_INV_counter(19) <= NOT counter(19);
+ALT_INV_counter(9) <= NOT counter(9);
+ALT_INV_counter(11) <= NOT counter(11);
+ALT_INV_counter(8) <= NOT counter(8);
+ALT_INV_counter(7) <= NOT counter(7);
+ALT_INV_counter(5) <= NOT counter(5);
+ALT_INV_counter(27) <= NOT counter(27);
+ALT_INV_counter(3) <= NOT counter(3);
+\ALT_INV_btn~input_o\ <= NOT \btn~input_o\;
 ALT_INV_counter(26) <= NOT counter(26);
 ALT_INV_counter(20) <= NOT counter(20);
-ALT_INV_counter(15) <= NOT counter(15);
-ALT_INV_counter(13) <= NOT counter(13);
-\ALT_INV_state.YYR~q\ <= NOT \state.YYR~q\;
-ALT_INV_counter(9) <= NOT counter(9);
-ALT_INV_counter(7) <= NOT counter(7);
-ALT_INV_counter(4) <= NOT counter(4);
-ALT_INV_counter(2) <= NOT counter(2);
-\ALT_INV_state.GR~q\ <= NOT \state.GR~q\;
-ALT_INV_counter(12) <= NOT counter(12);
-ALT_INV_counter(1) <= NOT counter(1);
-ALT_INV_counter(5) <= NOT counter(5);
-ALT_INV_counter(14) <= NOT counter(14);
-ALT_INV_counter(10) <= NOT counter(10);
-ALT_INV_counter(29) <= NOT counter(29);
-ALT_INV_counter(24) <= NOT counter(24);
-ALT_INV_counter(8) <= NOT counter(8);
 
 -- Location: IOOBUF_X62_Y0_N36
 \red~output\ : cyclonev_io_obuf

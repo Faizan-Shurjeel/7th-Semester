@@ -3,7 +3,7 @@ $comment
 		vcd file binary_divider.msim.vcd -direction
 $end
 $date
-	Fri Dec 19 11:54:51 2025
+	Fri Dec 19 16:38:02 2025
 $end
 $version
 	ModelSim Version 2020.1
